@@ -8,26 +8,66 @@
 
 /* Begin PBXBuildFile section */
 		BE5B8DDE276AA0710060C847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DDD276AA0710060C847 /* AppDelegate.swift */; };
-		BE5B8DE0276AA0710060C847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DDF276AA0710060C847 /* SceneDelegate.swift */; };
-		BE5B8DE2276AA0710060C847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DE1276AA0710060C847 /* ViewController.swift */; };
-		BE5B8DE5276AA0710060C847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5B8DE3276AA0710060C847 /* Main.storyboard */; };
 		BE5B8DE7276AA0750060C847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE5B8DE6276AA0750060C847 /* Assets.xcassets */; };
 		BE5B8DEA276AA0750060C847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5B8DE8276AA0750060C847 /* LaunchScreen.storyboard */; };
+		BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DF7276AA6740060C847 /* Alias.swift */; };
+		BE5B8DFB276AA6810060C847 /* NetworkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */; };
+		BE5B8DFD276AA6960060C847 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFC276AA6960060C847 /* Core.swift */; };
+		BE5B8DFF276AA69D0060C847 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFE276AA69D0060C847 /* Log.swift */; };
+		BE5B8E01276AA6A60060C847 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E00276AA6A60060C847 /* Request.swift */; };
+		BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E02276AA6C10060C847 /* EndPoint.swift */; };
+		BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E05276AA6DB0060C847 /* Session.swift */; };
+		BE5B8E08276AA6E50060C847 /* NetworkServiceInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */; };
+		BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E09276AA90C0060C847 /* Error.swift */; };
+		BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E0B276AAA9F0060C847 /* Configuration.swift */; };
+		BE5B8E15276AAB9E0060C847 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E14276AAB9E0060C847 /* NetworkTests.swift */; };
+		BE5B8E1D276AAC410060C847 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E1C276AAC410060C847 /* DomainTests.swift */; };
+		BE5B8E1F276AAC5C0060C847 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E1E276AAC5C0060C847 /* DataTests.swift */; };
+		BE5B8E21276AAC750060C847 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E20276AAC750060C847 /* ViewModelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE5B8E16276AAB9E0060C847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE5B8DD2276AA0700060C847 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE5B8DD9276AA0700060C847;
+			remoteInfo = Minifork;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BE5B8DDA276AA0710060C847 /* Minifork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minifork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5B8DDD276AA0710060C847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BE5B8DDF276AA0710060C847 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BE5B8DE1276AA0710060C847 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BE5B8DE4276AA0710060C847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE5B8DE6276AA0750060C847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE5B8DE9276AA0750060C847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE5B8DEB276AA0750060C847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE5B8DF7276AA6740060C847 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
+		BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtensions.swift; sourceTree = "<group>"; };
+		BE5B8DFC276AA6960060C847 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		BE5B8DFE276AA69D0060C847 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		BE5B8E00276AA6A60060C847 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		BE5B8E02276AA6C10060C847 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		BE5B8E05276AA6DB0060C847 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceInterfaces.swift; sourceTree = "<group>"; };
+		BE5B8E09276AA90C0060C847 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		BE5B8E0B276AAA9F0060C847 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BE5B8E12276AAB9E0060C847 /* MiniforkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniforkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE5B8E14276AAB9E0060C847 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
+		BE5B8E1C276AAC410060C847 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		BE5B8E1E276AAC5C0060C847 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		BE5B8E20276AAC750060C847 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE5B8DD7276AA0700060C847 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE5B8E0F276AAB9E0060C847 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5B8DDC276AA0710060C847 /* Minifork */,
+				BE5B8E13276AAB9E0060C847 /* MiniforkTests */,
 				BE5B8DDB276AA0710060C847 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5B8DDA276AA0710060C847 /* Minifork.app */,
+				BE5B8E12276AAB9E0060C847 /* MiniforkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,15 +98,121 @@
 		BE5B8DDC276AA0710060C847 /* Minifork */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8DDD276AA0710060C847 /* AppDelegate.swift */,
-				BE5B8DDF276AA0710060C847 /* SceneDelegate.swift */,
-				BE5B8DE1276AA0710060C847 /* ViewController.swift */,
-				BE5B8DE3276AA0710060C847 /* Main.storyboard */,
-				BE5B8DE6276AA0750060C847 /* Assets.xcassets */,
-				BE5B8DE8276AA0750060C847 /* LaunchScreen.storyboard */,
-				BE5B8DEB276AA0750060C847 /* Info.plist */,
+				BE5B8DF5276AA6430060C847 /* NetworkService */,
+				BE5B8DF4276AA63E0060C847 /* Data */,
+				BE5B8DF2276AA62B0060C847 /* Domain */,
+				BE5B8DF1276AA5FE0060C847 /* Application */,
 			);
 			path = Minifork;
+			sourceTree = "<group>";
+		};
+		BE5B8DF1276AA5FE0060C847 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8DEB276AA0750060C847 /* Info.plist */,
+				BE5B8DE6276AA0750060C847 /* Assets.xcassets */,
+				BE5B8DDD276AA0710060C847 /* AppDelegate.swift */,
+				BE5B8DE8276AA0750060C847 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BE5B8DF2276AA62B0060C847 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8DF3276AA6320060C847 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BE5B8DF3276AA6320060C847 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		BE5B8DF4276AA63E0060C847 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BE5B8DF5276AA6430060C847 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E0D276AAAAE0060C847 /* Interfaces */,
+				BE5B8DF6276AA6690060C847 /* Utils */,
+				BE5B8DFC276AA6960060C847 /* Core.swift */,
+				BE5B8DFE276AA69D0060C847 /* Log.swift */,
+				BE5B8E00276AA6A60060C847 /* Request.swift */,
+				BE5B8E02276AA6C10060C847 /* EndPoint.swift */,
+				BE5B8E05276AA6DB0060C847 /* Session.swift */,
+				BE5B8E09276AA90C0060C847 /* Error.swift */,
+				BE5B8E0B276AAA9F0060C847 /* Configuration.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		BE5B8DF6276AA6690060C847 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8DF7276AA6740060C847 /* Alias.swift */,
+				BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BE5B8E0D276AAAAE0060C847 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		BE5B8E13276AAB9E0060C847 /* MiniforkTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E25276AAD440060C847 /* ViewModel */,
+				BE5B8E24276AAD3E0060C847 /* Data */,
+				BE5B8E23276AAD380060C847 /* Domain */,
+				BE5B8E22276AAD2F0060C847 /* Network */,
+			);
+			path = MiniforkTests;
+			sourceTree = "<group>";
+		};
+		BE5B8E22276AAD2F0060C847 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E14276AAB9E0060C847 /* NetworkTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BE5B8E23276AAD380060C847 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E1C276AAC410060C847 /* DomainTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BE5B8E24276AAD3E0060C847 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E1E276AAC5C0060C847 /* DataTests.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BE5B8E25276AAD440060C847 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E20276AAC750060C847 /* ViewModelTests.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +235,24 @@
 			productReference = BE5B8DDA276AA0710060C847 /* Minifork.app */;
 			productType = "com.apple.product-type.application";
 		};
+		BE5B8E11276AAB9E0060C847 /* MiniforkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE5B8E18276AAB9E0060C847 /* Build configuration list for PBXNativeTarget "MiniforkTests" */;
+			buildPhases = (
+				BE5B8E0E276AAB9E0060C847 /* Sources */,
+				BE5B8E0F276AAB9E0060C847 /* Frameworks */,
+				BE5B8E10276AAB9E0060C847 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE5B8E17276AAB9E0060C847 /* PBXTargetDependency */,
+			);
+			name = MiniforkTests;
+			productName = MiniforkTests;
+			productReference = BE5B8E12276AAB9E0060C847 /* MiniforkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +265,10 @@
 				TargetAttributes = {
 					BE5B8DD9276AA0700060C847 = {
 						CreatedOnToolsVersion = 13.1;
+					};
+					BE5B8E11276AAB9E0060C847 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = BE5B8DD9276AA0700060C847;
 					};
 				};
 			};
@@ -116,6 +286,7 @@
 			projectRoot = "";
 			targets = (
 				BE5B8DD9276AA0700060C847 /* Minifork */,
+				BE5B8E11276AAB9E0060C847 /* MiniforkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -127,7 +298,13 @@
 			files = (
 				BE5B8DEA276AA0750060C847 /* LaunchScreen.storyboard in Resources */,
 				BE5B8DE7276AA0750060C847 /* Assets.xcassets in Resources */,
-				BE5B8DE5276AA0710060C847 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE5B8E10276AAB9E0060C847 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +315,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE5B8DE2276AA0710060C847 /* ViewController.swift in Sources */,
+				BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */,
+				BE5B8E01276AA6A60060C847 /* Request.swift in Sources */,
+				BE5B8DFB276AA6810060C847 /* NetworkExtensions.swift in Sources */,
+				BE5B8E08276AA6E50060C847 /* NetworkServiceInterfaces.swift in Sources */,
+				BE5B8DFF276AA69D0060C847 /* Log.swift in Sources */,
+				BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */,
+				BE5B8DFD276AA6960060C847 /* Core.swift in Sources */,
+				BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */,
+				BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */,
 				BE5B8DDE276AA0710060C847 /* AppDelegate.swift in Sources */,
-				BE5B8DE0276AA0710060C847 /* SceneDelegate.swift in Sources */,
+				BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE5B8E0E276AAB9E0060C847 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE5B8E15276AAB9E0060C847 /* NetworkTests.swift in Sources */,
+				BE5B8E1F276AAC5C0060C847 /* DataTests.swift in Sources */,
+				BE5B8E21276AAC750060C847 /* ViewModelTests.swift in Sources */,
+				BE5B8E1D276AAC410060C847 /* DomainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		BE5B8DE3276AA0710060C847 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE5B8DE4276AA0710060C847 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		BE5B8E17276AAB9E0060C847 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE5B8DD9276AA0700060C847 /* Minifork */;
+			targetProxy = BE5B8E16276AAB9E0060C847 /* PBXContainerItemProxy */;
 		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
 		BE5B8DE8276AA0750060C847 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +487,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9B4MUP9K5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Minifork/Info.plist;
+				INFOPLIST_FILE = Minifork/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -319,7 +515,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9B4MUP9K5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Minifork/Info.plist;
+				INFOPLIST_FILE = Minifork/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -335,6 +531,52 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BE5B8E19276AAB9E0060C847 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P9B4MUP9K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nandz.MiniforkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Minifork.app/Minifork";
+			};
+			name = Debug;
+		};
+		BE5B8E1A276AAB9E0060C847 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P9B4MUP9K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nandz.MiniforkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Minifork.app/Minifork";
 			};
 			name = Release;
 		};
@@ -355,6 +597,15 @@
 			buildConfigurations = (
 				BE5B8DEF276AA0750060C847 /* Debug */,
 				BE5B8DF0276AA0750060C847 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE5B8E18276AAB9E0060C847 /* Build configuration list for PBXNativeTarget "MiniforkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE5B8E19276AAB9E0060C847 /* Debug */,
+				BE5B8E1A276AAB9E0060C847 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
