@@ -20,14 +20,11 @@
 		BE5B8E08276AA6E50060C847 /* NetworkServiceInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */; };
 		BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E09276AA90C0060C847 /* Error.swift */; };
 		BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E0B276AAA9F0060C847 /* Configuration.swift */; };
-		BE5B8E15276AAB9E0060C847 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E14276AAB9E0060C847 /* NetworkTests.swift */; };
-		BE5B8E1D276AAC410060C847 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E1C276AAC410060C847 /* DomainTests.swift */; };
-		BE5B8E1F276AAC5C0060C847 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E1E276AAC5C0060C847 /* DataTests.swift */; };
-		BE5B8E21276AAC750060C847 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E20276AAC750060C847 /* ViewModelTests.swift */; };
+		BE5B8E48276AAF040060C847 /* MiniforkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E47276AAF040060C847 /* MiniforkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BE5B8E16276AAB9E0060C847 /* PBXContainerItemProxy */ = {
+		BE5B8E49276AAF040060C847 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE5B8DD2276AA0700060C847 /* Project object */;
 			proxyType = 1;
@@ -52,11 +49,8 @@
 		BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceInterfaces.swift; sourceTree = "<group>"; };
 		BE5B8E09276AA90C0060C847 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		BE5B8E0B276AAA9F0060C847 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		BE5B8E12276AAB9E0060C847 /* MiniforkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniforkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE5B8E14276AAB9E0060C847 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
-		BE5B8E1C276AAC410060C847 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
-		BE5B8E1E276AAC5C0060C847 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
-		BE5B8E20276AAC750060C847 /* ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
+		BE5B8E45276AAF040060C847 /* MiniforkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniforkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE5B8E47276AAF040060C847 /* MiniforkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniforkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +61,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE5B8E0F276AAB9E0060C847 /* Frameworks */ = {
+		BE5B8E42276AAF040060C847 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5B8DDC276AA0710060C847 /* Minifork */,
-				BE5B8E13276AAB9E0060C847 /* MiniforkTests */,
+				BE5B8E46276AAF040060C847 /* MiniforkTests */,
 				BE5B8DDB276AA0710060C847 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				BE5B8DDA276AA0710060C847 /* Minifork.app */,
-				BE5B8E12276AAB9E0060C847 /* MiniforkTests.xctest */,
+				BE5B8E45276AAF040060C847 /* MiniforkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,15 +136,9 @@
 		BE5B8DF5276AA6430060C847 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				BE5B8E33276AAEC40060C847 /* Implementations */,
 				BE5B8E0D276AAAAE0060C847 /* Interfaces */,
 				BE5B8DF6276AA6690060C847 /* Utils */,
-				BE5B8DFC276AA6960060C847 /* Core.swift */,
-				BE5B8DFE276AA69D0060C847 /* Log.swift */,
-				BE5B8E00276AA6A60060C847 /* Request.swift */,
-				BE5B8E02276AA6C10060C847 /* EndPoint.swift */,
-				BE5B8E05276AA6DB0060C847 /* Session.swift */,
-				BE5B8E09276AA90C0060C847 /* Error.swift */,
-				BE5B8E0B276AAA9F0060C847 /* Configuration.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -172,47 +160,50 @@
 			path = Interfaces;
 			sourceTree = "<group>";
 		};
-		BE5B8E13276AAB9E0060C847 /* MiniforkTests */ = {
+		BE5B8E33276AAEC40060C847 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8E25276AAD440060C847 /* ViewModel */,
-				BE5B8E24276AAD3E0060C847 /* Data */,
-				BE5B8E23276AAD380060C847 /* Domain */,
-				BE5B8E22276AAD2F0060C847 /* Network */,
+				BE5B8DFC276AA6960060C847 /* Core.swift */,
+				BE5B8DFE276AA69D0060C847 /* Log.swift */,
+				BE5B8E00276AA6A60060C847 /* Request.swift */,
+				BE5B8E02276AA6C10060C847 /* EndPoint.swift */,
+				BE5B8E05276AA6DB0060C847 /* Session.swift */,
+				BE5B8E09276AA90C0060C847 /* Error.swift */,
+				BE5B8E0B276AAA9F0060C847 /* Configuration.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		BE5B8E46276AAF040060C847 /* MiniforkTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E50276AAF210060C847 /* Domain */,
+				BE5B8E4F276AAF1D0060C847 /* Data */,
+				BE5B8E4E276AAF130060C847 /* ViewModels */,
+				BE5B8E47276AAF040060C847 /* MiniforkTests.swift */,
 			);
 			path = MiniforkTests;
 			sourceTree = "<group>";
 		};
-		BE5B8E22276AAD2F0060C847 /* Network */ = {
+		BE5B8E4E276AAF130060C847 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8E14276AAB9E0060C847 /* NetworkTests.swift */,
 			);
-			path = Network;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		BE5B8E23276AAD380060C847 /* Domain */ = {
+		BE5B8E4F276AAF1D0060C847 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8E1C276AAC410060C847 /* DomainTests.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		BE5B8E24276AAD3E0060C847 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				BE5B8E1E276AAC5C0060C847 /* DataTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		BE5B8E25276AAD440060C847 /* ViewModel */ = {
+		BE5B8E50276AAF210060C847 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8E20276AAC750060C847 /* ViewModelTests.swift */,
 			);
-			path = ViewModel;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,22 +226,22 @@
 			productReference = BE5B8DDA276AA0710060C847 /* Minifork.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BE5B8E11276AAB9E0060C847 /* MiniforkTests */ = {
+		BE5B8E44276AAF040060C847 /* MiniforkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BE5B8E18276AAB9E0060C847 /* Build configuration list for PBXNativeTarget "MiniforkTests" */;
+			buildConfigurationList = BE5B8E4B276AAF040060C847 /* Build configuration list for PBXNativeTarget "MiniforkTests" */;
 			buildPhases = (
-				BE5B8E0E276AAB9E0060C847 /* Sources */,
-				BE5B8E0F276AAB9E0060C847 /* Frameworks */,
-				BE5B8E10276AAB9E0060C847 /* Resources */,
+				BE5B8E41276AAF040060C847 /* Sources */,
+				BE5B8E42276AAF040060C847 /* Frameworks */,
+				BE5B8E43276AAF040060C847 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BE5B8E17276AAB9E0060C847 /* PBXTargetDependency */,
+				BE5B8E4A276AAF040060C847 /* PBXTargetDependency */,
 			);
 			name = MiniforkTests;
 			productName = MiniforkTests;
-			productReference = BE5B8E12276AAB9E0060C847 /* MiniforkTests.xctest */;
+			productReference = BE5B8E45276AAF040060C847 /* MiniforkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -266,7 +257,7 @@
 					BE5B8DD9276AA0700060C847 = {
 						CreatedOnToolsVersion = 13.1;
 					};
-					BE5B8E11276AAB9E0060C847 = {
+					BE5B8E44276AAF040060C847 = {
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = BE5B8DD9276AA0700060C847;
 					};
@@ -286,7 +277,7 @@
 			projectRoot = "";
 			targets = (
 				BE5B8DD9276AA0700060C847 /* Minifork */,
-				BE5B8E11276AAB9E0060C847 /* MiniforkTests */,
+				BE5B8E44276AAF040060C847 /* MiniforkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,7 +292,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE5B8E10276AAB9E0060C847 /* Resources */ = {
+		BE5B8E43276AAF040060C847 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,24 +320,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE5B8E0E276AAB9E0060C847 /* Sources */ = {
+		BE5B8E41276AAF040060C847 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE5B8E15276AAB9E0060C847 /* NetworkTests.swift in Sources */,
-				BE5B8E1F276AAC5C0060C847 /* DataTests.swift in Sources */,
-				BE5B8E21276AAC750060C847 /* ViewModelTests.swift in Sources */,
-				BE5B8E1D276AAC410060C847 /* DomainTests.swift in Sources */,
+				BE5B8E48276AAF040060C847 /* MiniforkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BE5B8E17276AAB9E0060C847 /* PBXTargetDependency */ = {
+		BE5B8E4A276AAF040060C847 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE5B8DD9276AA0700060C847 /* Minifork */;
-			targetProxy = BE5B8E16276AAB9E0060C847 /* PBXContainerItemProxy */;
+			targetProxy = BE5B8E49276AAF040060C847 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -534,7 +522,7 @@
 			};
 			name = Release;
 		};
-		BE5B8E19276AAB9E0060C847 /* Debug */ = {
+		BE5B8E4C276AAF040060C847 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -557,7 +545,7 @@
 			};
 			name = Debug;
 		};
-		BE5B8E1A276AAB9E0060C847 /* Release */ = {
+		BE5B8E4D276AAF040060C847 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -601,11 +589,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BE5B8E18276AAB9E0060C847 /* Build configuration list for PBXNativeTarget "MiniforkTests" */ = {
+		BE5B8E4B276AAF040060C847 /* Build configuration list for PBXNativeTarget "MiniforkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE5B8E19276AAB9E0060C847 /* Debug */,
-				BE5B8E1A276AAB9E0060C847 /* Release */,
+				BE5B8E4C276AAF040060C847 /* Debug */,
+				BE5B8E4D276AAF040060C847 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

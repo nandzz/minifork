@@ -7,21 +7,22 @@
 
 import Foundation
 
-
 public protocol NetworkService {
     var session: NetworkSession { get }
     var logger: NetworkLog { get }
     var error: NetworkError { get }
     var configuration: NetworkConfiguration { get }
+
+    func send(request: URLRequest, response: @escaping NetworkCompletion)
 }
 
 public protocol NetworkSession {
   var session: URLSession { get }
-  func request(with request: URLRequest, completion: NetworkCompletion)
+  func request(with request: URLRequest, completion: @escaping NetworkCompletion)
 }
 
 public protocol NetworkConfiguration {
-    var baseURL: BaseUrl { get }
+    var baseURL: NetworkBaseURL { get }
 }
 
 public protocol NetworkLog {
@@ -30,7 +31,7 @@ public protocol NetworkLog {
   func logRequest ()
 }
 
-public enum BaseUrl {
+public enum NetworkBaseURL {
   case url(scheme: String, host: String)
 }
 
@@ -44,17 +45,18 @@ public protocol NetworkEndPoint  {
   var method: HttpMethods { get }
   var queries: [URLQueryItem] { get }
 
-  func createURL()
+
 }
 
 public protocol NetworkRequest {
   var endPoint: NetworkEndPoint { get }
-  var body: Decodable { get }
+  var body: Decodable? { get }
   var header:  [String:String] { get }
 
   func setHeader()
-  func setBody()
-  func createRequest()
+  func setBody() throws
+  func createRequest() throws -> URLRequest
+  func createURL() throws -> URL
 }
 
 public protocol NetworkError {
