@@ -34,12 +34,13 @@ public struct DefaultNetworkRequest: NetworkRequest {
   }
 
   public func createRequest(with configuration: NetworkConfiguration) throws -> URLRequest {
-      let url = try createURL(with: configuration)
-      var request = URLRequest(url: url)
-      setHeader(request: &request)
-      guard body != nil else { return request }
-      try setBody(request: &request)
-      return request
+    let url = try createURL(with: configuration)
+    var request = URLRequest(url: url)
+    request.httpMethod = endPoint.method.rawValue
+    setHeader(request: &request)
+    guard body != nil else { return request }
+    try setBody(request: &request)
+    return request
   }
 
   public func createURL(with configuration: NetworkConfiguration) throws -> URL {
@@ -52,7 +53,7 @@ public struct DefaultNetworkRequest: NetworkRequest {
     components.path = endPoint.path
     if !endPoint.queries.isEmpty { components.queryItems = endPoint.queries }
     guard let url = components.url else {
-      throw NetworkTypeError.errorWithMessage("Url in wrong format")
+      throw NetworkTypeError.errorWithMessage("Url in wrong format, check Path, Host or Scheme")
     }
     return url
   }

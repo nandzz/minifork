@@ -36,25 +36,27 @@ public struct DefaultNetworkLog: NetworkLog {
                                 ✺ Request Error ✺
               """, terminator: "\n\n\n\n")
 
-        print(error)
+        print("  \(error)")
 
         print("""
-                 ✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺
+                ✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺
+                                ✺ Request Ended ✺
               """)
 
 
 
   }
-  public func logReponse(data: Data) {
+  public func logReponse(data: Data?) {
     print("""
                 ===========================================================
                                 ✺ Request Reponse ✺
               """, terminator: "\n\n\n\n")
 
-    print(data.prettyPrintedJSONString as Any)
+    print(data?.prettyPrintedJSONString as Any)
 
     print("""
-             ✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺
+                ✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺
+                                ✺ Request Ended ✺
           """)
   }
 

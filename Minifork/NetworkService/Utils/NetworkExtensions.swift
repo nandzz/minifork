@@ -21,3 +21,10 @@ extension Data {
 extension Encodable {
     func toJSONData() -> Data? { try? JSONEncoder().encode(self) }
 }
+
+extension HTTPURLResponse {
+     func ok() -> Bool {
+      return (200...299).contains(self.statusCode)
+     }
+}
+

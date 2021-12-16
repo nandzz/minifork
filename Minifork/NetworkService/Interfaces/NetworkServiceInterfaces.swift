@@ -10,10 +10,10 @@ import Foundation
 public protocol NetworkService {
     var session: NetworkSession { get }
     var logger: NetworkLog { get }
-    var error: NetworkError { get }
+    var errorResolver: NetworkError { get }
     var configuration: NetworkConfiguration { get }
 
-    func send(request: URLRequest, response: @escaping NetworkCompletion)
+    func send(request: NetworkRequest, completion: @escaping ServiceCompletion)
 }
 
 public protocol NetworkSession {
@@ -27,7 +27,7 @@ public protocol NetworkConfiguration {
 
 public protocol NetworkLog {
   func logError   (error: Error)
-  func logReponse (data: Data)
+  func logReponse (data: Data?)
   func logRequest (request: URLRequest)
 }
 

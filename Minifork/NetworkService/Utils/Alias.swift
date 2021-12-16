@@ -8,3 +8,4 @@
 import Foundation
 
 public typealias NetworkCompletion = (_ data: Data?,_ response: URLResponse?,_ error: Error?) -> Void
+public typealias ServiceCompletion = (Result<Data?, Error>) -> Void

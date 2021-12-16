@@ -20,7 +20,7 @@
 		BE5B8E08276AA6E50060C847 /* NetworkServiceInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */; };
 		BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E09276AA90C0060C847 /* Error.swift */; };
 		BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E0B276AAA9F0060C847 /* Configuration.swift */; };
-		BE5B8E48276AAF040060C847 /* MiniforkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E47276AAF040060C847 /* MiniforkTests.swift */; };
+		BEDB9781276B44B60014A5FA /* testBasicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9780276B44B60014A5FA /* testBasicRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		BE5B8E09276AA90C0060C847 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		BE5B8E0B276AAA9F0060C847 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		BE5B8E45276AAF040060C847 /* MiniforkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniforkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE5B8E47276AAF040060C847 /* MiniforkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniforkTests.swift; sourceTree = "<group>"; };
+		BEDB9780276B44B60014A5FA /* testBasicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testBasicRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,10 +177,8 @@
 		BE5B8E46276AAF040060C847 /* MiniforkTests */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8E50276AAF210060C847 /* Domain */,
-				BE5B8E4F276AAF1D0060C847 /* Data */,
+				BEDB977F276B449E0014A5FA /* NetworkService */,
 				BE5B8E4E276AAF130060C847 /* ViewModels */,
-				BE5B8E47276AAF040060C847 /* MiniforkTests.swift */,
 			);
 			path = MiniforkTests;
 			sourceTree = "<group>";
@@ -192,18 +190,12 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		BE5B8E4F276AAF1D0060C847 /* Data */ = {
+		BEDB977F276B449E0014A5FA /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB9780276B44B60014A5FA /* testBasicRequest.swift */,
 			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		BE5B8E50276AAF210060C847 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Domain;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,7 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE5B8E48276AAF040060C847 /* MiniforkTests.swift in Sources */,
+				BEDB9781276B44B60014A5FA /* testBasicRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -456,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -478,9 +470,9 @@
 				INFOPLIST_FILE = Minifork/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +483,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -506,9 +499,9 @@
 				INFOPLIST_FILE = Minifork/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -519,6 +512,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
