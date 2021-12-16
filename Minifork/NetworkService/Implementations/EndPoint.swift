@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DefaultNetworkEndPoint: NetworkEndPoint {
+public class DefaultNetworkEndPoint: NetworkEndPoint {
   public var path: String
   public var method: HttpMethods
   public var queries: [URLQueryItem]

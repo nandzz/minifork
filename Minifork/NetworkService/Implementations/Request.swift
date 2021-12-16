@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DefaultNetworkRequest: NetworkRequest {
+class DefaultNetworkRequest: NetworkRequest {
 
 
   public var endPoint: NetworkEndPoint

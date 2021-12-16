@@ -44,8 +44,6 @@ public protocol NetworkEndPoint  {
   var path: String { get }
   var method: HttpMethods { get }
   var queries: [URLQueryItem] { get }
-
-
 }
 
 public protocol NetworkRequest {

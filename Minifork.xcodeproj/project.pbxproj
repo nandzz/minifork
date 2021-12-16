@@ -21,6 +21,12 @@
 		BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E09276AA90C0060C847 /* Error.swift */; };
 		BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E0B276AAA9F0060C847 /* Configuration.swift */; };
 		BEDB9781276B44B60014A5FA /* testBasicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9780276B44B60014A5FA /* testBasicRequest.swift */; };
+		BEDB9783276B52540014A5FA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9782276B52540014A5FA /* Restaurant.swift */; };
+		BEDB9789276B54160014A5FA /* ServiceBoundaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9788276B54160014A5FA /* ServiceBoundaries.swift */; };
+		BEDB978B276B542C0014A5FA /* Restaurant+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB978A276B542C0014A5FA /* Restaurant+DTO.swift */; };
+		BEDB978E276B593B0014A5FA /* ServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB978D276B593B0014A5FA /* ServiceRequest.swift */; };
+		BEDB9791276B598D0014A5FA /* ServiceEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9790276B598D0014A5FA /* ServiceEndPoint.swift */; };
+		BEDB9796276B60CD0014A5FA /* RestaurantRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9795276B60CD0014A5FA /* RestaurantRepositoryInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		BE5B8E0B276AAA9F0060C847 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		BE5B8E45276AAF040060C847 /* MiniforkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniforkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEDB9780276B44B60014A5FA /* testBasicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testBasicRequest.swift; sourceTree = "<group>"; };
+		BEDB9782276B52540014A5FA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		BEDB9788276B54160014A5FA /* ServiceBoundaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBoundaries.swift; sourceTree = "<group>"; };
+		BEDB978A276B542C0014A5FA /* Restaurant+DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+DTO.swift"; sourceTree = "<group>"; };
+		BEDB978D276B593B0014A5FA /* ServiceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequest.swift; sourceTree = "<group>"; };
+		BEDB9790276B598D0014A5FA /* ServiceEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEndPoint.swift; sourceTree = "<group>"; };
+		BEDB9795276B60CD0014A5FA /* RestaurantRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRepositoryInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +104,7 @@
 		BE5B8DDC276AA0710060C847 /* Minifork */ = {
 			isa = PBXGroup;
 			children = (
+				BE5B8DF6276AA6690060C847 /* Utils */,
 				BE5B8DF5276AA6430060C847 /* NetworkService */,
 				BE5B8DF4276AA63E0060C847 /* Data */,
 				BE5B8DF2276AA62B0060C847 /* Domain */,
@@ -122,6 +135,7 @@
 		BE5B8DF3276AA6320060C847 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB9782276B52540014A5FA /* Restaurant.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -129,6 +143,8 @@
 		BE5B8DF4276AA63E0060C847 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB9792276B60A70014A5FA /* Repositoties */,
+				BEDB9784276B53B60014A5FA /* Services */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -137,8 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				BE5B8E33276AAEC40060C847 /* Implementations */,
-				BE5B8E0D276AAAAE0060C847 /* Interfaces */,
-				BE5B8DF6276AA6690060C847 /* Utils */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -150,14 +164,6 @@
 				BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		BE5B8E0D276AAAAE0060C847 /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */,
-			);
-			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		BE5B8E33276AAEC40060C847 /* Implementations */ = {
@@ -196,6 +202,66 @@
 				BEDB9780276B44B60014A5FA /* testBasicRequest.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		BEDB9784276B53B60014A5FA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BE5B8E07276AA6E50060C847 /* NetworkServiceInterfaces.swift */,
+				BEDB978C276B59150014A5FA /* Requests + EndPoints */,
+				BEDB9786276B53C90014A5FA /* Boundaries */,
+				BEDB9785276B53BB0014A5FA /* DataMapping */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BEDB9785276B53BB0014A5FA /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB978A276B542C0014A5FA /* Restaurant+DTO.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		BEDB9786276B53C90014A5FA /* Boundaries */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB9788276B54160014A5FA /* ServiceBoundaries.swift */,
+			);
+			path = Boundaries;
+			sourceTree = "<group>";
+		};
+		BEDB978C276B59150014A5FA /* Requests + EndPoints */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB978D276B593B0014A5FA /* ServiceRequest.swift */,
+				BEDB9790276B598D0014A5FA /* ServiceEndPoint.swift */,
+			);
+			path = "Requests + EndPoints";
+			sourceTree = "<group>";
+		};
+		BEDB9792276B60A70014A5FA /* Repositoties */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB9794276B60B40014A5FA /* Implementation */,
+				BEDB9793276B60B00014A5FA /* Interfaces */,
+			);
+			path = Repositoties;
+			sourceTree = "<group>";
+		};
+		BEDB9793276B60B00014A5FA /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB9795276B60CD0014A5FA /* RestaurantRepositoryInterface.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		BEDB9794276B60B40014A5FA /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,14 +364,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDB978B276B542C0014A5FA /* Restaurant+DTO.swift in Sources */,
 				BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */,
 				BE5B8E01276AA6A60060C847 /* Request.swift in Sources */,
 				BE5B8DFB276AA6810060C847 /* NetworkExtensions.swift in Sources */,
+				BEDB9796276B60CD0014A5FA /* RestaurantRepositoryInterface.swift in Sources */,
 				BE5B8E08276AA6E50060C847 /* NetworkServiceInterfaces.swift in Sources */,
+				BEDB978E276B593B0014A5FA /* ServiceRequest.swift in Sources */,
+				BEDB9789276B54160014A5FA /* ServiceBoundaries.swift in Sources */,
 				BE5B8DFF276AA69D0060C847 /* Log.swift in Sources */,
 				BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */,
 				BE5B8DFD276AA6960060C847 /* Core.swift in Sources */,
 				BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */,
+				BEDB9791276B598D0014A5FA /* ServiceEndPoint.swift in Sources */,
+				BEDB9783276B52540014A5FA /* Restaurant.swift in Sources */,
 				BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */,
 				BE5B8DDE276AA0710060C847 /* AppDelegate.swift in Sources */,
 				BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */,
