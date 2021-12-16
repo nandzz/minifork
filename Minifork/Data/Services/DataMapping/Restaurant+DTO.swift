@@ -121,3 +121,4 @@ extension RestaurantDTO.RatingsDTO {
     return .init(thefork: self.thefork.toDomain(), tripadvisor: self.tripadvisor.toDomain())
   }
 }
+

@@ -61,6 +61,14 @@
 		BEDB97DB276BA2430014A5FA /* Usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97D0276B91250014A5FA /* Usercase.swift */; };
 		BEDB97DD276BA4130014A5FA /* RestaurantRepositoryFavouriteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97DC276BA4130014A5FA /* RestaurantRepositoryFavouriteInterface.swift */; };
 		BEDB97DF276BA6330014A5FA /* RepositoryRestaurantFavourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97DE276BA6330014A5FA /* RepositoryRestaurantFavourite.swift */; };
+		BEDB97E2276BAC2D0014A5FA /* RestaurantRepositoryFavouriteInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97DC276BA4130014A5FA /* RestaurantRepositoryFavouriteInterface.swift */; };
+		BEDB97E4276BADD20014A5FA /* PersistenceStorageInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97E3276BADD20014A5FA /* PersistenceStorageInterface.swift */; };
+		BEDB97EA276BBE1F0014A5FA /* LocalDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97E9276BBE1F0014A5FA /* LocalDataStorage.swift */; };
+		BEDB97EB276BBE230014A5FA /* LocalDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97E9276BBE1F0014A5FA /* LocalDataStorage.swift */; };
+		BEDB97EE276BC0010014A5FA /* LocalDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97EC276BC0010014A5FA /* LocalDataStorage.xcdatamodeld */; };
+		BEDB97F1276BE8220014A5FA /* RestaurantEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97F0276BE8220014A5FA /* RestaurantEntity+Mapping.swift */; };
+		BEDB97F2276BE82C0014A5FA /* RestaurantEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97F0276BE8220014A5FA /* RestaurantEntity+Mapping.swift */; };
+		BEDB97F5276BFF340014A5FA /* StorageRestaurantFavourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97F4276BFF340014A5FA /* StorageRestaurantFavourite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +116,11 @@
 		BEDB97D6276BA0040014A5FA /* testRestaurantUserCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRestaurantUserCases.swift; sourceTree = "<group>"; };
 		BEDB97DC276BA4130014A5FA /* RestaurantRepositoryFavouriteInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRepositoryFavouriteInterface.swift; sourceTree = "<group>"; };
 		BEDB97DE276BA6330014A5FA /* RepositoryRestaurantFavourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRestaurantFavourite.swift; sourceTree = "<group>"; };
+		BEDB97E3276BADD20014A5FA /* PersistenceStorageInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStorageInterface.swift; sourceTree = "<group>"; };
+		BEDB97E9276BBE1F0014A5FA /* LocalDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStorage.swift; sourceTree = "<group>"; };
+		BEDB97ED276BC0010014A5FA /* LocalDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalDataStorage.xcdatamodel; sourceTree = "<group>"; };
+		BEDB97F0276BE8220014A5FA /* RestaurantEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantEntity+Mapping.swift"; sourceTree = "<group>"; };
+		BEDB97F4276BFF340014A5FA /* StorageRestaurantFavourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRestaurantFavourite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +202,7 @@
 		BE5B8DF4276AA63E0060C847 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB97E0276BAB9F0014A5FA /* PersistentStorage */,
 				BEDB9792276B60A70014A5FA /* Repositoties */,
 				BEDB9784276B53B60014A5FA /* Services */,
 			);
@@ -360,6 +374,50 @@
 			path = Usercase;
 			sourceTree = "<group>";
 		};
+		BEDB97E0276BAB9F0014A5FA /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB97F3276BFDD00014A5FA /* Implementations */,
+				BEDB97E5276BBDD80014A5FA /* Local */,
+				BEDB97E1276BABA80014A5FA /* Interfaces */,
+			);
+			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
+		BEDB97E1276BABA80014A5FA /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB97E3276BADD20014A5FA /* PersistenceStorageInterface.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		BEDB97E5276BBDD80014A5FA /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB97EF276BE7FB0014A5FA /* EntityMapping */,
+				BEDB97E9276BBE1F0014A5FA /* LocalDataStorage.swift */,
+				BEDB97EC276BC0010014A5FA /* LocalDataStorage.xcdatamodeld */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		BEDB97EF276BE7FB0014A5FA /* EntityMapping */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB97F0276BE8220014A5FA /* RestaurantEntity+Mapping.swift */,
+			);
+			path = EntityMapping;
+			sourceTree = "<group>";
+		};
+		BEDB97F3276BFDD00014A5FA /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB97F4276BFF340014A5FA /* StorageRestaurantFavourite.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,16 +521,21 @@
 				BEDB978B276B542C0014A5FA /* Restaurant+DTO.swift in Sources */,
 				BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */,
 				BEDB9799276B771B0014A5FA /* RepositoryRestaurantList.swift in Sources */,
+				BEDB97F5276BFF340014A5FA /* StorageRestaurantFavourite.swift in Sources */,
 				BE5B8E01276AA6A60060C847 /* Request.swift in Sources */,
 				BE5B8DFB276AA6810060C847 /* NetworkExtensions.swift in Sources */,
 				BEDB9796276B60CD0014A5FA /* RestaurantRepositoryListInterface.swift in Sources */,
+				BEDB97EA276BBE1F0014A5FA /* LocalDataStorage.swift in Sources */,
 				BE5B8E08276AA6E50060C847 /* NetworkServiceInterfaces.swift in Sources */,
+				BEDB97EE276BC0010014A5FA /* LocalDataStorage.xcdatamodeld in Sources */,
 				BEDB978E276B593B0014A5FA /* ServiceRequest.swift in Sources */,
 				BEDB9789276B54160014A5FA /* ServiceBoundaries.swift in Sources */,
 				BE5B8DFF276AA69D0060C847 /* Log.swift in Sources */,
+				BEDB97F1276BE8220014A5FA /* RestaurantEntity+Mapping.swift in Sources */,
 				BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */,
 				BE5B8DFD276AA6960060C847 /* Core.swift in Sources */,
 				BEDB979E276B7C5F0014A5FA /* Encoder.swift in Sources */,
+				BEDB97E4276BADD20014A5FA /* PersistenceStorageInterface.swift in Sources */,
 				BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */,
 				BEDB97CE276B8B380014A5FA /* Restaurant-getFav-usercase.swift in Sources */,
 				BEDB97CC276B8B270014A5FA /* Restaurant-saveFav-usercase.swift in Sources */,
@@ -493,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDB97F2276BE82C0014A5FA /* RestaurantEntity+Mapping.swift in Sources */,
 				BEDB97D8276BA0770014A5FA /* Restaurant-getlist-usercase.swift in Sources */,
 				BEDB97C3276B83960014A5FA /* ServiceEndPoint.swift in Sources */,
 				BEDB97C0276B83900014A5FA /* RestaurantRepositoryListInterface.swift in Sources */,
@@ -505,7 +569,9 @@
 				BEDB97B0276B83840014A5FA /* Encoder.swift in Sources */,
 				BEDB97DB276BA2430014A5FA /* Usercase.swift in Sources */,
 				BEDB97D9276BA07A0014A5FA /* Restaurant-saveFav-usercase.swift in Sources */,
+				BEDB97EB276BBE230014A5FA /* LocalDataStorage.swift in Sources */,
 				BEDB97C5276B83980014A5FA /* ServiceBoundaries.swift in Sources */,
+				BEDB97E2276BAC2D0014A5FA /* RestaurantRepositoryFavouriteInterface.swift in Sources */,
 				BEDB97AF276B83840014A5FA /* Decoder.swift in Sources */,
 				BEDB97C6276B839B0014A5FA /* Restaurant+DTO.swift in Sources */,
 				BEDB97B1276B83840014A5FA /* Alias.swift in Sources */,
@@ -795,6 +861,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BEDB97EC276BC0010014A5FA /* LocalDataStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BEDB97ED276BC0010014A5FA /* LocalDataStorage.xcdatamodel */,
+			);
+			currentVersion = BEDB97ED276BC0010014A5FA /* LocalDataStorage.xcdatamodel */;
+			path = LocalDataStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BE5B8DD2276AA0700060C847 /* Project object */;
 }

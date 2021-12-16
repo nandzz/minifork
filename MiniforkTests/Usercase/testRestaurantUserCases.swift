@@ -14,7 +14,7 @@ class testRestaurantUserCases: XCTestCase {
 
       let configurations = DefaultNetworkConfiguration(baseURL: .url(scheme: "https", host: "alanflament.github.io"))
       let service = DefaultService(configuration: configurations)
-      let repository = DefaultRestaurantRepository(service: service)
+      let repository = DefaultRepositoryRestaurantList(service: service)
       let expectation = XCTestExpectation(description: "repository-call-api-restaurant-list")
       
       UserCaseRestaurantGetList(repository: repository) { result in

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressEntity" representedClassName="AddressEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="locality" optional="YES" attributeType="String"/>
+        <attribute name="postalCode" optional="YES" attributeType="String"/>
+        <attribute name="street" optional="YES" attributeType="String"/>
+        <relationship name="adress" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="address" inverseEntity="RestaurantEntity"/>
+    </entity>
+    <entity name="BestOfferEntity" representedClassName="BestOfferEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="label" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="bestOffer" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="bestOffer" inverseEntity="RestaurantEntity"/>
+    </entity>
+    <entity name="PictureEntity" representedClassName="PictureEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="big" optional="YES" attributeType="String"/>
+        <attribute name="medium" optional="YES" attributeType="String"/>
+        <attribute name="small" optional="YES" attributeType="String"/>
+        <relationship name="mainPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="mainPhoto" inverseEntity="RestaurantEntity"/>
+    </entity>
+    <entity name="RatingEntity" representedClassName="RatingEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="ratingValue" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="reviewCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="thefork" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="thefork" inverseEntity="RatingsEntity"/>
+        <relationship name="tripadvisor" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="tripadvisor" inverseEntity="RatingsEntity"/>
+    </entity>
+    <entity name="RatingsEntity" representedClassName="RatingsEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="aggregateRatings" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="aggregateRatings" inverseEntity="RestaurantEntity"/>
+        <relationship name="thefork" maxCount="1" deletionRule="Deny" destinationEntity="RatingEntity" inverseName="thefork" inverseEntity="RatingEntity"/>
+        <relationship name="tripadvisor" maxCount="1" deletionRule="Deny" destinationEntity="RatingEntity" inverseName="tripadvisor" inverseEntity="RatingEntity"/>
+    </entity>
+    <entity name="RestaurantEntity" representedClassName="RestaurantEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="currenciesAccepted" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="priceRange" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="servesCuisine" optional="YES" attributeType="String"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="AddressEntity" inverseName="adress" inverseEntity="AddressEntity"/>
+        <relationship name="aggregateRatings" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="aggregateRatings" inverseEntity="RatingsEntity"/>
+        <relationship name="bestOffer" maxCount="1" deletionRule="Nullify" destinationEntity="BestOfferEntity" inverseName="bestOffer" inverseEntity="BestOfferEntity"/>
+        <relationship name="mainPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PictureEntity" inverseName="mainPhoto" inverseEntity="PictureEntity"/>
+    </entity>
+    <elements>
+        <element name="RestaurantEntity" positionX="-283.9744873046875" positionY="-232.8786163330078" width="128" height="178"/>
+        <element name="AddressEntity" positionX="-70.2847900390625" positionY="-295.2353363037109" width="128" height="118"/>
+        <element name="RatingEntity" positionX="11.46429443359375" positionY="207.3193359375" width="128" height="103"/>
+        <element name="RatingsEntity" positionX="218.82421875" positionY="-161.4089050292969" width="128" height="88"/>
+        <element name="PictureEntity" positionX="-64.38055419921875" positionY="17.98583984375" width="128" height="103"/>
+        <element name="BestOfferEntity" positionX="-397.5962524414062" positionY="29.27896118164062" width="128" height="88"/>
+    </elements>
+</model>

@@ -11,3 +11,4 @@ public typealias NetworkCompletion = (_ data: Data?,_ response: URLResponse?,_ e
 public typealias ServiceCompletion = (Result<Data?, Error>) -> Void
 public typealias RepositoryCompletionResponse<T> = (Result<T, Error>) -> Void
 public typealias RepositoryCompletionVoid = (Result<Void, Error>) -> Void
+public typealias StoragePersistenceCompletion<T> = (Result<T, Error>) -> Void
