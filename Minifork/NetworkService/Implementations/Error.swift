@@ -12,7 +12,19 @@ public struct DefaultNetworkError: NetworkError {
 
   public init() {}
   
-  func resolve(error: Error) -> Error {
-    fatalError()
+  public func resolve(error: Error) -> Error {
+    if let networkError = error as? URLError {
+      switch networkError.code {
+      case .notConnectedToInternet:
+        return NetworkTypeError.noInternetConnection
+      case .cannotFindHost:
+        return NetworkTypeError.errorWithMessage("Wrong Host")
+      case .networkConnectionLost:
+        return NetworkTypeError.errorWithMessage("Connection Lost")
+      default:
+        return NetworkTypeError.genericError(networkError)
+      }
+    }
+    return error
   }
 }

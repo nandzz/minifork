@@ -26,9 +26,9 @@ public protocol NetworkConfiguration {
 }
 
 public protocol NetworkLog {
-  func logError   (request: URLRequest)
+  func logError   (error: Error)
   func logReponse (data: Data)
-  func logRequest ()
+  func logRequest (request: URLRequest)
 }
 
 public enum NetworkBaseURL {
@@ -50,13 +50,13 @@ public protocol NetworkEndPoint  {
 
 public protocol NetworkRequest {
   var endPoint: NetworkEndPoint { get }
-  var body: Decodable? { get }
+  var body: Encodable? { get }
   var header:  [String:String] { get }
 
-  func setHeader()
-  func setBody() throws
-  func createRequest() throws -> URLRequest
-  func createURL() throws -> URL
+  func setHeader(request: inout URLRequest)
+  func setBody(request: inout URLRequest) throws
+  func createRequest(with configuration: NetworkConfiguration) throws -> URLRequest
+  func createURL(with configuration: NetworkConfiguration) throws -> URL
 }
 
 public protocol NetworkError {

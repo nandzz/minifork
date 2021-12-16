@@ -17,3 +17,7 @@ extension Data {
         return prettyPrintedString
     }
 }
+
+extension Encodable {
+    func toJSONData() -> Data? { try? JSONEncoder().encode(self) }
+}
