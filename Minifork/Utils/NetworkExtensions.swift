@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Data {
+public extension Data {
     // Source [https://gist.github.com/cprovatas/5c9f51813bc784ef1d7fcbfb89de74fe]
     var prettyPrintedJSONString: NSString? { /// NSString gives us a nice sanitized debugDescription
         guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
@@ -18,11 +18,11 @@ extension Data {
     }
 }
 
-extension Encodable {
+public extension Encodable {
     func toJSONData() -> Data? { try? JSONEncoder().encode(self) }
 }
 
-extension HTTPURLResponse {
+public extension HTTPURLResponse {
      func ok() -> Bool {
       return (200...299).contains(self.statusCode)
      }

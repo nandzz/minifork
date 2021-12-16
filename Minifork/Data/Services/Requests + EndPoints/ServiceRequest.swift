@@ -8,8 +8,6 @@
 import Foundation
 
 
-class DefaultServiceRequest: DefaultNetworkRequest {}
-
 struct ServiceRequests {
 
   // Here you can also pass parameters to the helper functions
@@ -17,3 +15,7 @@ struct ServiceRequests {
     return DefaultServiceRequest(endPoint: endPoint, body: nil, header: [:])
   }
 }
+
+// Boundary
+
+class DefaultServiceRequest: DefaultNetworkRequest {}

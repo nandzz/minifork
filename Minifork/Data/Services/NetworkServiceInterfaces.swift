@@ -66,6 +66,8 @@ public enum NetworkTypeError: Error {
   case notFound(Error)
   case errorWithMessage(String)
   case errorWithCode(Int)
+  case ErrorDecoding
+  case ErrorWaitingDataButNotPresent
   case noInternetConnection
 }
 

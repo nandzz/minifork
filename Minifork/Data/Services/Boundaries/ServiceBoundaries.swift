@@ -13,7 +13,10 @@ protocol RestaurantService {
 }
 
 // Boundary
-extension DefaultNetworkCore: RestaurantService {
+
+class DefaultService: DefaultNetworkCore {}
+
+extension DefaultService: RestaurantService {
   func getRestaurantList(request: NetworkRequest, completion: @escaping ServiceCompletion) {
     send(request: request, completion: completion)
   }

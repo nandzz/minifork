@@ -8,7 +8,6 @@
 import Foundation
 
 
-class DefaultServiceEndPoint: DefaultNetworkEndPoint {}
 
 struct ServiceEndPoints {
 
@@ -16,3 +15,7 @@ struct ServiceEndPoints {
     return DefaultServiceEndPoint(path: "/TFTest/test.json", method: .get, queries: [])
   }
 }
+
+// Boundary
+
+class DefaultServiceEndPoint: DefaultNetworkEndPoint {}

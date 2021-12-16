@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct RestaurntList {
+struct RestaurantList {
   let list: [Restaurant]
 }
 
@@ -21,34 +21,94 @@ struct Restaurant {
   let currenciesAccepted: String
   let address: Address
   let aggregateRatings: Ratings
-  let mainPhoto: Picture
+  let mainPhoto: Picture?
   let bestOffer: BestOffer
+
+
+  struct Address {
+    let street: String
+    let postalCode: String
+    let locality: String
+    let country: String
+  }
+
+  struct Rating {
+    let ratingValue: Double
+    let reviewCount: Int
+  }
+
+  struct Ratings {
+    let thefork: Rating
+    let tripadvisor: Rating
+  }
+
+  struct Picture {
+    let small: String
+    let medium: String
+    let big: String
+  }
+
+  struct BestOffer {
+    let name: String
+    let label: String
+  }
 }
 
-struct Address {
-  let street: String
-  let postalCode: String
-  let locality: String
-  let country: String
+extension RestaurantList {
+  func toDTO() -> RestaurantListDTO {
+    return .init(data: list.map({ $0.toDTO() }))
+  }
 }
 
-struct Rating {
-  let ratingValue: Double
-  let reviewCount: Int
+extension Restaurant {
+  func toDTO() -> RestaurantDTO {
+    return .init(name: self.name,
+                 uuid: self.uuid,
+                 servesCuisine: self.servesCuisine,
+                 priceRange: self.priceRange,
+                 currenciesAccepted: self.currenciesAccepted,
+                 address: self.address.toDTO(),
+                 aggregateRatings: self.aggregateRatings.toDTO(),
+                 mainPhoto: self.mainPhoto?.toDTO(),
+                 bestOffer: self.bestOffer.toDTO())
+  }
 }
 
-struct Ratings {
-  let theFork: Rating
-  let tripAdvisor: Rating
+extension Restaurant.Address {
+
+  func toDTO() -> RestaurantDTO.AddressDTO {
+    return .init(
+      street: self.street,
+      postalCode: self.postalCode,
+      locality: self.locality,
+      country: self.country)
+  }
 }
 
-struct Picture {
-  let small: String
-  let medium: String
-  let big: String
+extension Restaurant.BestOffer {
+  func toDTO() -> RestaurantDTO.BestOfferDTO {
+    return .init(name: self.name,
+                 label: self.label)
+  }
 }
 
-struct BestOffer {
-  let name: String
-  let label: String
+extension Restaurant.Picture {
+  func toDTO() -> RestaurantDTO.PictureDTO {
+    return .init(small: self.small,
+                 medium: self.medium,
+                 big: self.big)
+  }
+}
+
+extension Restaurant.Rating {
+  func toDTO() -> RestaurantDTO.RatingDTO {
+    return .init(ratingValue: self.ratingValue,
+                 reviewCount: self.reviewCount)
+  }
+}
+
+extension Restaurant.Ratings {
+  func toDTO() -> RestaurantDTO.RatingsDTO {
+    return .init(thefork: self.thefork.toDTO(), tripadvisor: self.tripadvisor.toDTO())
+  }
 }
