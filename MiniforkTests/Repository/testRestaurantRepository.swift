@@ -6,6 +6,8 @@
 //
 
 import XCTest
+@testable import Minifork
+
 
 class testRestaurantRepository: XCTestCase {
 

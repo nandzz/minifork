@@ -122,3 +122,9 @@ extension RestaurantDTO.RatingsDTO {
   }
 }
 
+
+extension RestaurantDTO {
+  static func mock(uuid: String) -> RestaurantDTO {
+    return RestaurantDTO(name: "SushiKing", uuid: "123", servesCuisine: "Cinese", priceRange: 23, currenciesAccepted: "EUA", address: AddressDTO(street: "Lucio Dalla", postalCode: "2003", locality: "VI", country: "Italia"), aggregateRatings: RatingsDTO(thefork: RatingDTO(ratingValue: 20.0, reviewCount: 4), tripadvisor: RatingDTO(ratingValue: 20.3, reviewCount: 39)), mainPhoto: nil, bestOffer: BestOfferDTO(name: "SushiOut", label: "50% Discount"))
+  }
+}

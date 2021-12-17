@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BE5B8E11276AAB9E0060C847"
+               BlueprintIdentifier = "BE5B8E44276AAF040060C847"
                BuildableName = "MiniforkTests.xctest"
                BlueprintName = "MiniforkTests"
                ReferencedContainer = "container:Minifork.xcodeproj">

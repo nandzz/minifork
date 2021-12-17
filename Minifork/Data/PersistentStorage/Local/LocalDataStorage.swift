@@ -17,7 +17,7 @@ enum CoreDataError: Error {
 
 final class LocalDataStorage {
 
-  static let shared = CoreDataStorage()
+  static let shared = LocalDataStorage()
 
   private init() {}
 

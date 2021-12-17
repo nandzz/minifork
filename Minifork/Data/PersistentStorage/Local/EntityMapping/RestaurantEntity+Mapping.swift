@@ -25,7 +25,7 @@ extension RestaurantEntity {
     }
 
     return .init(name: self.name ?? "",
-                 uuid: self.uuid?.uuidString ?? "",
+                 uuid: self.uuid ?? "",
                  servesCuisine: self.servesCuisine ?? "",
                  priceRange: self.priceRange,
                  currenciesAccepted: self.currenciesAccepted ?? "",
@@ -89,7 +89,7 @@ extension RestaurantDTO {
   func toEntity(in context: NSManagedObjectContext ) -> RestaurantEntity {
     let entity: RestaurantEntity = .init(context: context)
     entity.name = self.name
-    entity.uuid = UUID(uuidString: self.uuid)
+    entity.uuid = self.uuid
     entity.servesCuisine = self.servesCuisine
     entity.priceRange = self.priceRange
     entity.currenciesAccepted = self.currenciesAccepted

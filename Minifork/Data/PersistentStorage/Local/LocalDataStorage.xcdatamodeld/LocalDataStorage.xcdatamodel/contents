@@ -5,12 +5,12 @@
         <attribute name="locality" optional="YES" attributeType="String"/>
         <attribute name="postalCode" optional="YES" attributeType="String"/>
         <attribute name="street" optional="YES" attributeType="String"/>
-        <relationship name="adress" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="address" inverseEntity="RestaurantEntity"/>
+        <relationship name="adress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="address" inverseEntity="RestaurantEntity"/>
     </entity>
     <entity name="BestOfferEntity" representedClassName="BestOfferEntity" syncable="YES" codeGenerationType="class">
         <attribute name="label" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="bestOffer" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="bestOffer" inverseEntity="RestaurantEntity"/>
+        <relationship name="bestOffer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="bestOffer" inverseEntity="RestaurantEntity"/>
     </entity>
     <entity name="PictureEntity" representedClassName="PictureEntity" syncable="YES" codeGenerationType="class">
         <attribute name="big" optional="YES" attributeType="String"/>
@@ -21,23 +21,23 @@
     <entity name="RatingEntity" representedClassName="RatingEntity" syncable="YES" codeGenerationType="class">
         <attribute name="ratingValue" optional="YES" attributeType="Double" usesScalarValueType="YES"/>
         <attribute name="reviewCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="thefork" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="thefork" inverseEntity="RatingsEntity"/>
-        <relationship name="tripadvisor" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="tripadvisor" inverseEntity="RatingsEntity"/>
+        <relationship name="thefork" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="thefork" inverseEntity="RatingsEntity"/>
+        <relationship name="tripadvisor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="tripadvisor" inverseEntity="RatingsEntity"/>
     </entity>
     <entity name="RatingsEntity" representedClassName="RatingsEntity" syncable="YES" codeGenerationType="class">
-        <relationship name="aggregateRatings" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="aggregateRatings" inverseEntity="RestaurantEntity"/>
-        <relationship name="thefork" maxCount="1" deletionRule="Deny" destinationEntity="RatingEntity" inverseName="thefork" inverseEntity="RatingEntity"/>
-        <relationship name="tripadvisor" maxCount="1" deletionRule="Deny" destinationEntity="RatingEntity" inverseName="tripadvisor" inverseEntity="RatingEntity"/>
+        <relationship name="aggregateRatings" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RestaurantEntity" inverseName="aggregateRatings" inverseEntity="RestaurantEntity"/>
+        <relationship name="thefork" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="RatingEntity" inverseName="thefork" inverseEntity="RatingEntity"/>
+        <relationship name="tripadvisor" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="RatingEntity" inverseName="tripadvisor" inverseEntity="RatingEntity"/>
     </entity>
     <entity name="RestaurantEntity" representedClassName="RestaurantEntity" syncable="YES" codeGenerationType="class">
         <attribute name="currenciesAccepted" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="priceRange" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="servesCuisine" optional="YES" attributeType="String"/>
-        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="address" maxCount="1" deletionRule="Nullify" destinationEntity="AddressEntity" inverseName="adress" inverseEntity="AddressEntity"/>
-        <relationship name="aggregateRatings" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="aggregateRatings" inverseEntity="RatingsEntity"/>
-        <relationship name="bestOffer" maxCount="1" deletionRule="Nullify" destinationEntity="BestOfferEntity" inverseName="bestOffer" inverseEntity="BestOfferEntity"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddressEntity" inverseName="adress" inverseEntity="AddressEntity"/>
+        <relationship name="aggregateRatings" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RatingsEntity" inverseName="aggregateRatings" inverseEntity="RatingsEntity"/>
+        <relationship name="bestOffer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BestOfferEntity" inverseName="bestOffer" inverseEntity="BestOfferEntity"/>
         <relationship name="mainPhoto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PictureEntity" inverseName="mainPhoto" inverseEntity="PictureEntity"/>
     </entity>
     <elements>

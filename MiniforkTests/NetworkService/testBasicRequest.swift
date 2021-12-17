@@ -7,6 +7,8 @@
 
 import XCTest
 import Minifork
+@testable import Minifork
+
 
 class testBasicRequest: XCTestCase {
 
