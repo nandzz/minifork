@@ -87,6 +87,7 @@ extension DefaultStorageRestaurantFavourite: RestaurantPersitenceStorage {
     localStorage.performBackgroundTask { context in
       do {
         _ = restautant.toEntity(in: context)
+        print("Saving Record to DB")
         try context.save()
         completion(.success(restautant))
       } catch (let error) {
