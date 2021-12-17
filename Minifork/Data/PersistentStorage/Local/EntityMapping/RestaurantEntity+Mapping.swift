@@ -82,9 +82,6 @@ extension RatingsEntity {
   }
 }
 
-
-
-
 extension RestaurantDTO {
   func toEntity(in context: NSManagedObjectContext ) -> RestaurantEntity {
     let entity: RestaurantEntity = .init(context: context)

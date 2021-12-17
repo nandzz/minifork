@@ -24,4 +24,7 @@ class DefaultRespositoryFavourite: RepositoryFavouriteRestaurant {
     fatalError()
   }
 
+  func removeRestaurantFromFavourite(uuid: String, completion: @escaping RepositoryCompletionResponse<Void>) {
+
+  }
 }

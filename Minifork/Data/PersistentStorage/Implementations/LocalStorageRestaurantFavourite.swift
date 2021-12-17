@@ -15,11 +15,6 @@ class DefaultStorageRestaurantFavourite {
   init(localStorage: LocalDataStorage = LocalDataStorage.shared) {
     self.localStorage = localStorage
   }
-
-  func getRestaurantByUUID(uuid: String) {
-
-  }
-
 }
 
 extension DefaultStorageRestaurantFavourite: RestaurantPersitenceStorage {
