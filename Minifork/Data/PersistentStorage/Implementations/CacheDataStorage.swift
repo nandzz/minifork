@@ -77,11 +77,7 @@ class DefaultCacheStorage: CacheDataStorage {
   }
 
   func retrieve(key: DefaultCacheKey) -> DefaultCacheItem? {
-    guard let obj = self.cache.object(forKey: key) else {
-      assertionFailure()
-      return nil
-    }
-    return obj
+    return self.cache.object(forKey: key)
   }
 }
 

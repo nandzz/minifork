@@ -10,32 +10,49 @@ import XCTest
 
 class testCacheStorage: XCTestCase {
 
-    var sutcache: DefaultCacheStorage!
-    var sutobj: DefaultCacheItem!
-    var sutkey: DefaultCacheKey!
+  var sutcache: DefaultCacheStorage!
+  var sutobj: DefaultCacheItem!
+  var sutkey: DefaultCacheKey!
 
-    override func setUpWithError() throws {
-      self.sutcache = DefaultCacheStorage(cache: NSCache<DefaultCacheKey, DefaultCacheItem>())
-      self.sutobj = DefaultCacheItem(data: Data(), name: "TestCash", uuid: "testuuid")
-      self.sutkey = DefaultCacheKey(uuid: UUID().uuidString)
-    }
+  override func setUpWithError() throws {
+    self.sutcache = DefaultCacheStorage(cache: NSCache<DefaultCacheKey, DefaultCacheItem>())
+    self.sutobj = DefaultCacheItem(data: Data(), name: "TestCash", uuid: "testuuid")
+    self.sutkey = DefaultCacheKey(uuid: UUID().uuidString)
+  }
 
-    override func tearDownWithError() throws {
-        sutcache = nil
-        sutobj = nil
-        sutkey = nil 
-    }
+  override func tearDownWithError() throws {
+    sutcache = nil
+    sutobj = nil
+    sutkey = nil
+  }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+  func testCacheInsertion() throws {
+    sutcache.save(key: sutkey, item: sutobj)
+  }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+  func testCacheDeletion () throws {
+    sutcache.save(key: sutkey, item: sutobj)
+    sutcache.delete(key: sutkey)
+    let result = sutcache.retrieve(key: sutkey)
+    XCTAssert(result == nil)
+  }
+
+  func testCacheRetrieve() throws {
+    sutcache.save(key: sutkey, item: sutobj)
+    let result = sutcache.retrieve(key: sutkey)
+    XCTAssert(result != nil)
+    print(result?.name as Any)
+    XCTAssert(result?.data != nil)
+    XCTAssert(result?.name != nil)
+  }
+
+  func testPerformanceExample() throws {
+    // This is an example of a performance test case.
+    self.measure {
+      sutcache.save(key: sutkey, item: sutobj)
+      sutcache.delete(key: sutkey)
+      // Funny
     }
+  }
 
 }
