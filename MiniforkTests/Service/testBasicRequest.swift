@@ -26,13 +26,15 @@ class testBasicRequest: XCTestCase {
     let configuration = DefaultNetworkConfiguration(baseURL: .url(scheme: "https", host: "alanflament.github.io"))
     let request = DefaultNetworkRequest(endPoint: endPoint, body: testObj, header: ["Content-Language": "en"]
                                                                                )
-    let networkRequest = try request.createRequest(with: configuration)
+    let networkRequest = try? request.createRequest(with: configuration)
 
-    XCTAssert(((networkRequest.allHTTPHeaderFields?.contains(where: {
+    XCTAssert((networkRequest != nil))
+
+    XCTAssert(((networkRequest?.allHTTPHeaderFields?.contains(where: {
       $0.key == "Content-Language"
     })) != nil))
 
-    XCTAssert((networkRequest.httpBody != nil))
+    XCTAssert((networkRequest?.httpBody != nil))
 
   }
 
@@ -53,7 +55,7 @@ class testBasicRequest: XCTestCase {
       case .success(_):
         expectation.fulfill()
       case .failure(_):
-        assertionFailure()
+        XCTFail()
         expectation.fulfill()
       }
     }

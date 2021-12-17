@@ -36,7 +36,7 @@ public struct DefaultNetworkLog: NetworkLog {
                                 ✺ Request Error ✺
               """, terminator: "\n\n\n\n")
 
-        print("  \(error)")
+        print("\(error)")
 
         print("""
                 ✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺
@@ -52,7 +52,11 @@ public struct DefaultNetworkLog: NetworkLog {
                                 ✺ Request Reponse ✺
               """, terminator: "\n\n\n\n")
 
-    print(data?.prettyPrintedJSONString as Any)
+    if let json = data?.prettyPrintedJSONString {
+      print(json)
+    } else {
+      print(data as Any)
+    }
 
     print("""
                 ✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺✺

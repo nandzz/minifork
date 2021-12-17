@@ -8,7 +8,6 @@
 import Foundation
 
 
-
 final class UserCaseGetFavouriteRestaurantList: UserCase {
 
   typealias ResultValue = (Result<RestaurantList, Error>)

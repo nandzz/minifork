@@ -9,13 +9,12 @@ import Foundation
 
 
 protocol CacheItem: Hashable {
-  var identifier: String { get }
+  var identifier: UUID { get }
   var data: Data { get }
-  var name: String { get }
 }
 
 protocol CacheKey: Hashable {
-  var uuid: String { get }
+  var url: String { get }
 }
 
 protocol CacheDataStorage {

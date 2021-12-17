@@ -10,7 +10,7 @@ import Foundation
 
 protocol RepositoryFavouriteRestaurant {
 
-  var cache: Any { get }
+  var storage: DefaultStorageRestaurantFavourite { get }
 
   func saveFavourite(restaurant: RestaurantDTO, completion: @escaping RepositoryCompletionResponse<Restaurant>)
   func restoreListOfFavourite( completion: @escaping RepositoryCompletionResponse<RestaurantList>)

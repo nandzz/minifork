@@ -11,5 +11,6 @@ import Foundation
 protocol RepositoryRestaurantList {
 
   var service: RestaurantService { get }
+  
   func getRestaurantList(completion: @escaping RepositoryCompletionResponse<RestaurantListDTO>)
 }

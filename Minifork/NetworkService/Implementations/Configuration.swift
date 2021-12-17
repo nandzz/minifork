@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct DefaultNetworkConfiguration: NetworkConfiguration {
+public class DefaultNetworkConfiguration: NetworkConfiguration {
   public var baseURL: NetworkBaseURL
 
   public init (baseURL: NetworkBaseURL) {

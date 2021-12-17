@@ -25,7 +25,7 @@ public class DefaultNetworkCore: NetworkService {
     self.configuration = configuration
   }
 
-  public func send(request: NetworkRequest, completion: @escaping ServiceCompletion) {
+  public func send(request: NetworkRequest, completion: @escaping ServiceCompletionOptional) {
 
     // Explicit because or the request exists or the function does not continue
     // Create request does not return optional

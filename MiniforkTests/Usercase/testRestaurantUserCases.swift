@@ -22,10 +22,10 @@ class testRestaurantUserCases: XCTestCase {
       UserCaseRestaurantGetList(repository: repository) { result in
         switch result {
         case .success(let list):
-          assert(!list.list.isEmpty)
+          XCTAssert(!list.list.isEmpty)
           expectation.fulfill()
         case .failure(_):
-          assertionFailure()
+          XCTFail()
           expectation.fulfill()
         }
       }.start()

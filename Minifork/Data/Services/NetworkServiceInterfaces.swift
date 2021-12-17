@@ -13,7 +13,7 @@ public protocol NetworkService {
     var errorResolver: NetworkError { get }
     var configuration: NetworkConfiguration { get }
 
-    func send(request: NetworkRequest, completion: @escaping ServiceCompletion)
+    func send(request: NetworkRequest, completion: @escaping ServiceCompletionOptional)
 }
 
 public protocol NetworkSession {

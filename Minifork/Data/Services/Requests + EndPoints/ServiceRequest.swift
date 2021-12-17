@@ -14,6 +14,10 @@ struct ServiceRequests {
   static func restaurantList (endPoint: NetworkEndPoint) -> NetworkRequest {
     return DefaultServiceRequest(endPoint: endPoint, body: nil, header: [:])
   }
+
+  static func restaurantPicture(endPoint: NetworkEndPoint) ->  NetworkRequest {
+    return DefaultServiceRequest(endPoint: endPoint, body: nil, header: [:])
+  }
 }
 
 // Boundary

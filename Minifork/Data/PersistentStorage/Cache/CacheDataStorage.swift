@@ -10,33 +10,29 @@ import Foundation
 
 class DefaultCacheKey: CacheKey {
 
-  var uuid: String
+  var url: String
 
-  init(uuid: String) {
-    self.uuid = uuid
+  init(url: String) {
+    self.url = url
   }
 
   static func == (lhs: DefaultCacheKey, rhs: DefaultCacheKey) -> Bool {
-    return lhs.uuid == rhs.uuid
+    return lhs.url == rhs.url
   }
 
   func hash(into hasher: inout Hasher) {
-    hasher.combine(uuid)
+    hasher.combine(url)
   }
-
 }
 
 class DefaultCacheItem: CacheItem {
 
-  var identifier: String
+  var identifier: UUID = UUID()
   var data: Data
-  var name: String
 
-
-  init(data: Data, name: String, uuid: String) {
-    self.identifier = uuid
+  init(data: Data) {
+    self.identifier = UUID()
     self.data = data
-    self.name = name
   }
 
   func hash(into hasher: inout Hasher) {
@@ -61,6 +57,7 @@ class DefaultCacheStorage: CacheDataStorage {
 
   @discardableResult
   func save(key: DefaultCacheKey, item: DefaultCacheItem) -> Bool {
+    print("Saving in Cache")
     self.cache.setObject(item, forKey: key)
     return true
   }
@@ -68,6 +65,7 @@ class DefaultCacheStorage: CacheDataStorage {
   @discardableResult
   func delete(key: DefaultCacheKey) -> Bool {
     if (self.cache.object(forKey: key) != nil) {
+      print("Deleting from Cache")
       self.cache.removeObject(forKey: key)
       return true
     } else {
@@ -77,6 +75,12 @@ class DefaultCacheStorage: CacheDataStorage {
   }
 
   func retrieve(key: DefaultCacheKey) -> DefaultCacheItem? {
+    print("Retrieving from Cache")
+    if let all = self.cache.value(forKey: "allObjects") as? NSArray {
+      for object in all {
+        print("object is \(object)")
+      }
+    }
     return self.cache.object(forKey: key)
   }
 }

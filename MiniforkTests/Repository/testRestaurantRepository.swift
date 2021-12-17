@@ -13,9 +13,7 @@ class testRestaurantRepository: XCTestCase {
 
     func testRestaurantRepositoryGetList() throws {
 
-      let configurations = DefaultNetworkConfiguration(baseURL: .url(scheme: "https", host: "alanflament.github.io"))
-      let service = DefaultService(configuration: configurations)
-      let repository = DefaultRepositoryRestaurantList(service: service)
+      let repository = RepositoryFactory().makeRestaurantListRepository()
 
       let expectation = XCTestExpectation(description: "repository-call-api-restaurant-list")
 
@@ -26,7 +24,7 @@ class testRestaurantRepository: XCTestCase {
           expectation.fulfill()
         case .failure(let error):
           print(error)
-          assertionFailure()
+          XCTFail()
           expectation.fulfill()
         }
       }
