@@ -36,15 +36,4 @@ class DefaultRepositoryRestaurantList: RepositoryRestaurantList {
       }
     }
   }
-
-  func saveFavouriteRestaurant(restaurant: RestaurantDTO) {
-    fatalError()
-  }
-
-  func getFavouriteRestaurantList() {
-    fatalError()
-  }
-
-
-
 }

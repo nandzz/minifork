@@ -22,4 +22,10 @@ struct RepositoryFactory {
     return repository
   }
 
+  func makeRestaurantFavouriteRepository() -> RepositoryFavouriteRestaurant {
+    let defaultStorage = DefaultStorageRestaurantFavourite()
+    let repository = DefaultRespositoryFavourite(storage: defaultStorage)
+    return repository
+  }
+
 }

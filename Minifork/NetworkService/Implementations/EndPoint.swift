@@ -12,7 +12,9 @@ public class DefaultNetworkEndPoint: NetworkEndPoint {
   public var method: HttpMethods
   public var queries: [URLQueryItem]
 
-  public init(path: String, method: HttpMethods, queries: [URLQueryItem]) {
+  public init(path: String,
+              method: HttpMethods,
+              queries: [URLQueryItem]) {
     self.queries = queries
     self.path = path
     self.method = method

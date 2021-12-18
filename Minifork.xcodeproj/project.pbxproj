@@ -28,7 +28,6 @@
 		BEDB9796276B60CD0014A5FA /* RestaurantRepositoryListInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9795276B60CD0014A5FA /* RestaurantRepositoryListInterface.swift */; };
 		BEDB9799276B771B0014A5FA /* RepositoryRestaurantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9798276B771B0014A5FA /* RepositoryRestaurantList.swift */; };
 		BEDB979C276B77E30014A5FA /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB979B276B77E30014A5FA /* Decoder.swift */; };
-		BEDB979E276B7C5F0014A5FA /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB979D276B7C5F0014A5FA /* Encoder.swift */; };
 		BEDB97A3276B81260014A5FA /* testRestaurantRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97A2276B81260014A5FA /* testRestaurantRepository.swift */; };
 		BEDB97AC276B81810014A5FA /* testBasicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9780276B44B60014A5FA /* testBasicRequest.swift */; };
 		BEDB97CA276B8A960014A5FA /* Restaurant-getlist-usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB97C9276B8A960014A5FA /* Restaurant-getlist-usercase.swift */; };
@@ -51,12 +50,18 @@
 		BEDB980B276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980A276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift */; };
 		BEDB980D276CC83F0014A5FA /* PictureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980C276CC83F0014A5FA /* PictureRepository.swift */; };
 		BEDB9810276CD0840014A5FA /* RepositoryPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980F276CD0840014A5FA /* RepositoryPicture.swift */; };
-		BEDB9812276CD4CC0014A5FA /* testPictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9811276CD4CC0014A5FA /* testPictureService.swift */; };
 		BEDB9816276CE0000014A5FA /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9815276CE0000014A5FA /* RepositoryFactory.swift */; };
 		BEDB981A276CE2CB0014A5FA /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9819276CE2CB0014A5FA /* ViewModelFactory.swift */; };
 		BEDB981C276CE2EB0014A5FA /* UsecaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB981B276CE2EB0014A5FA /* UsecaseFactory.swift */; };
 		BEDB981F276CE5700014A5FA /* ServicesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB981E276CE5700014A5FA /* ServicesFactory.swift */; };
 		BEDB9823276CED490014A5FA /* testRestaurantPictureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9822276CED490014A5FA /* testRestaurantPictureRepository.swift */; };
+		BEDB9827276D0B9A0014A5FA /* testRestaurantFavouriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9826276D0B9A0014A5FA /* testRestaurantFavouriteRepository.swift */; };
+		BEDB9829276E41320014A5FA /* testRestaurantFavouriteUsercases.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9828276E41320014A5FA /* testRestaurantFavouriteUsercases.swift */; };
+		BEDB982B276E448B0014A5FA /* testRestaurantPictureUsercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB982A276E448B0014A5FA /* testRestaurantPictureUsercase.swift */; };
+		BEDB982D276E45350014A5FA /* Restaurant-removeFav-usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB982C276E45350014A5FA /* Restaurant-removeFav-usercase.swift */; };
+		BEDB9833276E58700014A5FA /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9832276E58700014A5FA /* RestaurantListViewController.swift */; };
+		BEDB9835276E58900014A5FA /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9834276E58900014A5FA /* RestaurantCell.swift */; };
+		BEDB9838276E593B0014A5FA /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = BEDB9837276E593B0014A5FA /* PinLayout */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +100,6 @@
 		BEDB9795276B60CD0014A5FA /* RestaurantRepositoryListInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantRepositoryListInterface.swift; sourceTree = "<group>"; };
 		BEDB9798276B771B0014A5FA /* RepositoryRestaurantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRestaurantList.swift; sourceTree = "<group>"; };
 		BEDB979B276B77E30014A5FA /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		BEDB979D276B7C5F0014A5FA /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
 		BEDB97A2276B81260014A5FA /* testRestaurantRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRestaurantRepository.swift; sourceTree = "<group>"; };
 		BEDB97C9276B8A960014A5FA /* Restaurant-getlist-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant-getlist-usercase.swift"; sourceTree = "<group>"; };
 		BEDB97CB276B8B270014A5FA /* Restaurant-saveFav-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant-saveFav-usercase.swift"; sourceTree = "<group>"; };
@@ -116,12 +120,17 @@
 		BEDB980A276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picture-getRestaurantImage-usercase.swift"; sourceTree = "<group>"; };
 		BEDB980C276CC83F0014A5FA /* PictureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRepository.swift; sourceTree = "<group>"; };
 		BEDB980F276CD0840014A5FA /* RepositoryPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPicture.swift; sourceTree = "<group>"; };
-		BEDB9811276CD4CC0014A5FA /* testPictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPictureService.swift; sourceTree = "<group>"; };
 		BEDB9815276CE0000014A5FA /* RepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
 		BEDB9819276CE2CB0014A5FA /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		BEDB981B276CE2EB0014A5FA /* UsecaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseFactory.swift; sourceTree = "<group>"; };
 		BEDB981E276CE5700014A5FA /* ServicesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesFactory.swift; sourceTree = "<group>"; };
 		BEDB9822276CED490014A5FA /* testRestaurantPictureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRestaurantPictureRepository.swift; sourceTree = "<group>"; };
+		BEDB9826276D0B9A0014A5FA /* testRestaurantFavouriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRestaurantFavouriteRepository.swift; sourceTree = "<group>"; };
+		BEDB9828276E41320014A5FA /* testRestaurantFavouriteUsercases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRestaurantFavouriteUsercases.swift; sourceTree = "<group>"; };
+		BEDB982A276E448B0014A5FA /* testRestaurantPictureUsercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRestaurantPictureUsercase.swift; sourceTree = "<group>"; };
+		BEDB982C276E45350014A5FA /* Restaurant-removeFav-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant-removeFav-usercase.swift"; sourceTree = "<group>"; };
+		BEDB9832276E58700014A5FA /* RestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
+		BEDB9834276E58900014A5FA /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDB9838276E593B0014A5FA /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +185,7 @@
 		BE5B8DF1276AA5FE0060C847 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB982E276E57010014A5FA /* Scenes */,
 				BEDB9817276CE0090014A5FA /* Factories */,
 				BE5B8DEB276AA0750060C847 /* Info.plist */,
 				BE5B8DE6276AA0750060C847 /* Assets.xcassets */,
@@ -225,7 +236,6 @@
 				BE5B8DF7276AA6740060C847 /* Alias.swift */,
 				BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */,
 				BEDB979B276B77E30014A5FA /* Decoder.swift */,
-				BEDB979D276B7C5F0014A5FA /* Encoder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -267,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				BEDB9780276B44B60014A5FA /* testBasicRequest.swift */,
-				BEDB9811276CD4CC0014A5FA /* testPictureService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 			children = (
 				BEDB97A2276B81260014A5FA /* testRestaurantRepository.swift */,
 				BEDB9822276CED490014A5FA /* testRestaurantPictureRepository.swift */,
+				BEDB9826276D0B9A0014A5FA /* testRestaurantFavouriteRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -369,6 +379,7 @@
 				BEDB97C9276B8A960014A5FA /* Restaurant-getlist-usercase.swift */,
 				BEDB97CB276B8B270014A5FA /* Restaurant-saveFav-usercase.swift */,
 				BEDB97CD276B8B380014A5FA /* Restaurant-getFav-usercase.swift */,
+				BEDB982C276E45350014A5FA /* Restaurant-removeFav-usercase.swift */,
 				BEDB980A276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift */,
 			);
 			path = Implementations;
@@ -378,6 +389,8 @@
 			isa = PBXGroup;
 			children = (
 				BEDB97D6276BA0040014A5FA /* testRestaurantUserCases.swift */,
+				BEDB9828276E41320014A5FA /* testRestaurantFavouriteUsercases.swift */,
+				BEDB982A276E448B0014A5FA /* testRestaurantPictureUsercase.swift */,
 			);
 			path = Usercase;
 			sourceTree = "<group>";
@@ -448,6 +461,39 @@
 			path = Factories;
 			sourceTree = "<group>";
 		};
+		BEDB982E276E57010014A5FA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB982F276E57720014A5FA /* RestaurantList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		BEDB982F276E57720014A5FA /* RestaurantList */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB9831276E57840014A5FA /* ViewModels */,
+				BEDB9830276E57800014A5FA /* View+Controllers */,
+			);
+			path = RestaurantList;
+			sourceTree = "<group>";
+		};
+		BEDB9830276E57800014A5FA /* View+Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB9832276E58700014A5FA /* RestaurantListViewController.swift */,
+				BEDB9834276E58900014A5FA /* RestaurantCell.swift */,
+			);
+			path = "View+Controllers";
+			sourceTree = "<group>";
+		};
+		BEDB9831276E57840014A5FA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,6 +510,9 @@
 			dependencies = (
 			);
 			name = Minifork;
+			packageProductDependencies = (
+				BEDB9837276E593B0014A5FA /* PinLayout */,
+			);
 			productName = Minifork;
 			productReference = BE5B8DDA276AA0710060C847 /* Minifork.app */;
 			productType = "com.apple.product-type.application";
@@ -514,6 +563,9 @@
 				Base,
 			);
 			mainGroup = BE5B8DD1276AA0700060C847;
+			packageReferences = (
+				BEDB9836276E593B0014A5FA /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = BE5B8DDB276AA0710060C847 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -554,6 +606,7 @@
 				BEDB9799276B771B0014A5FA /* RepositoryRestaurantList.swift in Sources */,
 				BEDB980B276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift in Sources */,
 				BEDB97F5276BFF340014A5FA /* LocalStorageRestaurantFavourite.swift in Sources */,
+				BEDB9835276E58900014A5FA /* RestaurantCell.swift in Sources */,
 				BE5B8E01276AA6A60060C847 /* Request.swift in Sources */,
 				BE5B8DFB276AA6810060C847 /* NetworkExtensions.swift in Sources */,
 				BEDB9796276B60CD0014A5FA /* RestaurantRepositoryListInterface.swift in Sources */,
@@ -563,12 +616,13 @@
 				BEDB97EE276BC0010014A5FA /* LocalDataStorage.xcdatamodeld in Sources */,
 				BEDB978E276B593B0014A5FA /* ServiceRequest.swift in Sources */,
 				BEDB9789276B54160014A5FA /* ServiceBoundaries.swift in Sources */,
+				BEDB982D276E45350014A5FA /* Restaurant-removeFav-usercase.swift in Sources */,
 				BE5B8DFF276AA69D0060C847 /* Log.swift in Sources */,
 				BEDB97F1276BE8220014A5FA /* RestaurantEntity+Mapping.swift in Sources */,
 				BEDB980D276CC83F0014A5FA /* PictureRepository.swift in Sources */,
 				BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */,
 				BE5B8DFD276AA6960060C847 /* Core.swift in Sources */,
-				BEDB979E276B7C5F0014A5FA /* Encoder.swift in Sources */,
+				BEDB9833276E58700014A5FA /* RestaurantListViewController.swift in Sources */,
 				BEDB97E4276BADD20014A5FA /* PersistenceStorageInterface.swift in Sources */,
 				BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */,
 				BEDB97CE276B8B380014A5FA /* Restaurant-getFav-usercase.swift in Sources */,
@@ -595,14 +649,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEDB982B276E448B0014A5FA /* testRestaurantPictureUsercase.swift in Sources */,
 				BEDB9806276CC09E0014A5FA /* testCacheStorage.swift in Sources */,
 				BEDB97AC276B81810014A5FA /* testBasicRequest.swift in Sources */,
 				BEDB97D7276BA0040014A5FA /* testRestaurantUserCases.swift in Sources */,
 				BEDB97FC276C07310014A5FA /* testLocalStorageRestaurant.swift in Sources */,
 				BEDB97F6276C02190014A5FA /* LocalDataStorage.xcdatamodeld in Sources */,
 				BEDB9823276CED490014A5FA /* testRestaurantPictureRepository.swift in Sources */,
-				BEDB9812276CD4CC0014A5FA /* testPictureService.swift in Sources */,
+				BEDB9827276D0B9A0014A5FA /* testRestaurantFavouriteRepository.swift in Sources */,
 				BEDB97A3276B81260014A5FA /* testRestaurantRepository.swift in Sources */,
+				BEDB9829276E41320014A5FA /* testRestaurantFavouriteUsercases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,6 +935,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BEDB9836276E593B0014A5FA /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BEDB9837276E593B0014A5FA /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BEDB9836276E593B0014A5FA /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BEDB97EC276BC0010014A5FA /* LocalDataStorage.xcdatamodeld */ = {

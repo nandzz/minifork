@@ -29,8 +29,8 @@ extension DefaultStorageRestaurantFavourite: RestaurantPersitenceStorage {
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", uuid)
         let objects = try context.fetch(fetchRequest)
 
+        // Nested objects
         for obj in objects {
-
           if let address = obj.address {
             context.delete(address)
           }

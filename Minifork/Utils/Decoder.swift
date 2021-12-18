@@ -17,7 +17,6 @@ struct DefaultDecoder<T: Decodable> {
     } catch( let error ) {
 
       if let decodingError = error as? DecodingError {
-        // Source [Code below] [https://stackoverflow.com/questions/52539444/printing-decodingerror-details-on-decode-failed-in-swift]
         switch decodingError {
         case .typeMismatch(let key, let value):
           print("error \(key), value \(value) and ERROR: \(error.localizedDescription)")

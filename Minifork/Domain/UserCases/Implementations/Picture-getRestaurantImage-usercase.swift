@@ -8,16 +8,24 @@
 import Foundation
 
 
-final class GetRestaurantPicture: UserCase {
+final class UsercaseGetPicture: UserCase {
 
+  typealias ResultValue = (Result<Data, Error>)
 
+  private var repository: RepositoryPicture
+  private var completion: (ResultValue) -> Void
+  private var key: DefaultCacheKey
 
-  typealias ResultValue = (Result<DefaultCacheItem, Error>) -> Void
+  init(repository: RepositoryPicture,
+       key: DefaultCacheKey,
+       completion: @escaping (ResultValue) -> Void) {
 
-
-  func start() {
-    
+  self.repository = repository
+  self.completion = completion
+  self.key = key
   }
 
-
+  func start() {
+    repository.getPicture(key: key, fromService: completion, fromCache: completion)
+  }
 }

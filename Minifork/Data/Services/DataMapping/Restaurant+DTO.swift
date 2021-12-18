@@ -24,6 +24,11 @@ struct RestaurantDTO: Decodable {
   let mainPhoto: PictureDTO?
   let bestOffer: BestOfferDTO
 
+  var key: DefaultCacheKey? {
+    guard let photos = mainPhoto else { return nil}
+    return DefaultCacheKey(url: photos.medium)
+  }
+
 
   struct AddressDTO: Decodable {
     let street: String

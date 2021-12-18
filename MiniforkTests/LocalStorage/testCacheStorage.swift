@@ -40,7 +40,7 @@ class testCacheStorage: XCTestCase {
   func testCacheRetrieve() throws {
     sutcache.save(key: sutkey, item: sutobj)
     let result = sutcache.retrieve(key: sutkey)
-    print(result?.data)
+    print(result?.data as Any)
     XCTAssert(result != nil)
   }
 

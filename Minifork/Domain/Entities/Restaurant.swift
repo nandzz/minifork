@@ -112,3 +112,9 @@ extension Restaurant.Ratings {
     return .init(thefork: self.thefork.toDTO(), tripadvisor: self.tripadvisor.toDTO())
   }
 }
+
+extension Restaurant {
+  static func mock(uuid: String) -> Restaurant {
+    return Restaurant(name: "SushiKing", uuid: uuid, servesCuisine: "Cinese", priceRange: 23, currenciesAccepted: "EUA", address: Address(street: "Lucio Dalla", postalCode: "2003", locality: "VI", country: "Italia"), aggregateRatings: Ratings(thefork: Rating(ratingValue: 20.0, reviewCount: 4), tripadvisor: Rating(ratingValue: 20.3, reviewCount: 39)), mainPhoto: nil, bestOffer: BestOffer(name: "SushiOut", label: "50% Discount"))
+  }
+}

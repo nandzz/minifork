@@ -8,7 +8,7 @@
 import Foundation
 
 
-class DefaultCacheKey: CacheKey {
+class DefaultCacheKey: CacheKey, Decodable {
 
   var url: String
 

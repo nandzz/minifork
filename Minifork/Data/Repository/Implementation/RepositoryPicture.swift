@@ -17,16 +17,15 @@ class DefaultRepositoryPicture: RepositoryPicture {
   init(_ cache: DefaultCacheStorage) {
     self.cache = cache
   }
-  
-  
+
   func getPicture(key: DefaultCacheKey, fromService: @escaping RepositoryCompletionResponse<Data>, fromCache: @escaping RepositoryCompletionResponse<Data>) {
 
     //First check in the cache
-    DispatchQueue.main.async {
+      print(key.hashValue)
       if let cachedData = self.cache.retrieve(key: key) {
+        print("Object \(cachedData) Retrieved from cache")
         fromCache(.success(cachedData.data))
         return
-      }
     }
     // Here the service needs to change for each request
     // hence, the url scheme and host can be different for any request

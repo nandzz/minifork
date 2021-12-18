@@ -44,18 +44,18 @@ class testRestaurantPictureRepository: XCTestCase {
 
     repository.getPicture(key: self.key) { result in
       switch result {
-        case .success(_):
+      case .success(_):
         repository.getPicture(key: self.key) { result in
           XCTFail()
           expectation.fulfill()
         } fromCache: { result in
           expectation.fulfill()
         }
-        case .failure(let error):
-          print(error)
-          expectation.fulfill()
-          assertionFailure()
-        }
+      case .failure(let error):
+        print(error)
+        expectation.fulfill()
+        assertionFailure()
+      }
     } fromCache: { result in
       expectation.fulfill()
       XCTFail()

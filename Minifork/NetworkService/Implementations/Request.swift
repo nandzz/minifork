@@ -15,7 +15,9 @@ class DefaultNetworkRequest: NetworkRequest {
   public var header: [String : String]
 
 
-  public init(endPoint: NetworkEndPoint, body: Encodable? = nil, header: [String:String]) {
+  public init(endPoint: NetworkEndPoint,
+              body: Encodable? = nil,
+              header: [String:String]) {
     self.endPoint = endPoint
     self.body = body
     self.header = header
