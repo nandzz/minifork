@@ -62,6 +62,10 @@
 		BEDB9833276E58700014A5FA /* RestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9832276E58700014A5FA /* RestaurantListViewController.swift */; };
 		BEDB9835276E58900014A5FA /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9834276E58900014A5FA /* RestaurantCell.swift */; };
 		BEDB9838276E593B0014A5FA /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = BEDB9837276E593B0014A5FA /* PinLayout */; };
+		BEDB983A276E5C030014A5FA /* CoordinatosFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9839276E5C030014A5FA /* CoordinatosFactory.swift */; };
+		BEDB983C276E5CA20014A5FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB983B276E5CA20014A5FA /* Coordinator.swift */; };
+		BEDB983E276E5CAA0014A5FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB983D276E5CAA0014A5FA /* Router.swift */; };
+		BEDB9841276E5D110014A5FA /* RestaurantListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9840276E5D110014A5FA /* RestaurantListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +135,10 @@
 		BEDB982C276E45350014A5FA /* Restaurant-removeFav-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant-removeFav-usercase.swift"; sourceTree = "<group>"; };
 		BEDB9832276E58700014A5FA /* RestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewController.swift; sourceTree = "<group>"; };
 		BEDB9834276E58900014A5FA /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
+		BEDB9839276E5C030014A5FA /* CoordinatosFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatosFactory.swift; sourceTree = "<group>"; };
+		BEDB983B276E5CA20014A5FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BEDB983D276E5CAA0014A5FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		BEDB9840276E5D110014A5FA /* RestaurantListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +244,8 @@
 				BE5B8DF7276AA6740060C847 /* Alias.swift */,
 				BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */,
 				BEDB979B276B77E30014A5FA /* Decoder.swift */,
+				BEDB983B276E5CA20014A5FA /* Coordinator.swift */,
+				BEDB983D276E5CAA0014A5FA /* Router.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -457,6 +467,7 @@
 				BEDB9819276CE2CB0014A5FA /* ViewModelFactory.swift */,
 				BEDB981B276CE2EB0014A5FA /* UsecaseFactory.swift */,
 				BEDB981E276CE5700014A5FA /* ServicesFactory.swift */,
+				BEDB9839276E5C030014A5FA /* CoordinatosFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -472,6 +483,7 @@
 		BEDB982F276E57720014A5FA /* RestaurantList */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB9840276E5D110014A5FA /* RestaurantListCoordinator.swift */,
 				BEDB9831276E57840014A5FA /* ViewModels */,
 				BEDB9830276E57800014A5FA /* View+Controllers */,
 			);
@@ -621,13 +633,16 @@
 				BEDB97F1276BE8220014A5FA /* RestaurantEntity+Mapping.swift in Sources */,
 				BEDB980D276CC83F0014A5FA /* PictureRepository.swift in Sources */,
 				BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */,
+				BEDB9841276E5D110014A5FA /* RestaurantListCoordinator.swift in Sources */,
 				BE5B8DFD276AA6960060C847 /* Core.swift in Sources */,
+				BEDB983E276E5CAA0014A5FA /* Router.swift in Sources */,
 				BEDB9833276E58700014A5FA /* RestaurantListViewController.swift in Sources */,
 				BEDB97E4276BADD20014A5FA /* PersistenceStorageInterface.swift in Sources */,
 				BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */,
 				BEDB97CE276B8B380014A5FA /* Restaurant-getFav-usercase.swift in Sources */,
 				BEDB9804276CAFE30014A5FA /* CacheDataStorage.swift in Sources */,
 				BEDB97CC276B8B270014A5FA /* Restaurant-saveFav-usercase.swift in Sources */,
+				BEDB983C276E5CA20014A5FA /* Coordinator.swift in Sources */,
 				BEDB9816276CE0000014A5FA /* RepositoryFactory.swift in Sources */,
 				BEDB981A276CE2CB0014A5FA /* ViewModelFactory.swift in Sources */,
 				BEDB9791276B598D0014A5FA /* ServiceEndPoint.swift in Sources */,
@@ -640,6 +655,7 @@
 				BEDB97DD276BA4130014A5FA /* RestaurantRepositoryFavouriteInterface.swift in Sources */,
 				BEDB981F276CE5700014A5FA /* ServicesFactory.swift in Sources */,
 				BEDB97CA276B8A960014A5FA /* Restaurant-getlist-usercase.swift in Sources */,
+				BEDB983A276E5C030014A5FA /* CoordinatosFactory.swift in Sources */,
 				BE5B8E0C276AAA9F0060C847 /* Configuration.swift in Sources */,
 				BEDB979C276B77E30014A5FA /* Decoder.swift in Sources */,
 			);
