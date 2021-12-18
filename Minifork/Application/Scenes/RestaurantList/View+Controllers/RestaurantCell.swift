@@ -164,15 +164,22 @@ class RestaurantViewCell: UITableViewCell {
     return view
   }()
 
-  lazy var favIcon: UIImageView = {
-    let view = UIImageView()
-    view.image = UIImage(named: "empty-heart")
-    return view
+  lazy var favIcon: UIButton = {
+    let button = UIButton()
+    button.setBackgroundImage(UIImage(named: "empty-heart"), for: .normal)
+    button.setBackgroundImage(UIImage(named: "filled-heart"), for: .selected)
+    button.addTarget(self, action: #selector(onTouchFavourite(send:)), for: .touchUpInside)
+    return button
   }()
+
+
+  let loading = UIActivityIndicatorView()
+  var isFavourite = false
+
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    configure()
+    compose()
   }
 
   required init?(coder: NSCoder) {
@@ -180,10 +187,11 @@ class RestaurantViewCell: UITableViewCell {
   }
 
 
-  func configure() {
+  func compose() {
     contentView.addSubview(background)
     background.addSubview(backgroundPicture)
     backgroundPicture.addSubview(overlay)
+    background.addSubview(loading)
     background.addSubview(tripAdviserIcon)
     background.addSubview(tripReview)
     background.addSubview(theForkIcon)
@@ -193,26 +201,22 @@ class RestaurantViewCell: UITableViewCell {
     background.addSubview(bannerOne)
     background.addSubview(bannerTwo)
     background.addSubview(footer)
-
     overlay.addSubview(restaurantName)
     overlay.addSubview(restaurantCousine)
     overlay.addSubview(cousineIcon)
-
     bannerOne.addSubview(locationIcon)
     bannerOne.addSubview(addressStreet)
     bannerOne.addSubview(addressCityCountry)
     bannerOne.addSubview(shareIcon)
     bannerOne.addSubview(favIcon)
-
     bannerTwo.addSubview(offerLabel)
 
-
     self.backgroundColor = .clear
-    // TEST
+    self.selectionStyle = .none
+    self.loading.color = .white
 
     restaurantName.text = "Babobba aksd kamksdm amksldmaks"
     restaurantCousine.text = "French"
-
     tripReview.text = "2.3"
     theForkReview.text = "44.3"
     priceRange.text = "0-22€"
@@ -221,20 +225,40 @@ class RestaurantViewCell: UITableViewCell {
     offerLabel.text = "50% sconto alla casssa , sticazzi toma toma toma toma"
   }
 
-  func bind(viewModel: Any) {
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    loading.startAnimating()
+    isFavourite = false
+  }
 
+  func addLoadingAnimation () {
+    loading.startAnimating()
+  }
+
+  func removeLoadingAnimation () {
+    loading.stopAnimating()
+  }
+
+
+  func bind() {
+
+  }
+
+  @objc func onTouchFavourite(send: UIButton) {
+      print("Something happening")
+      favIcon.isSelected = true
   }
 
   override func sizeThatFits(_ size: CGSize) -> CGSize {
     pin.width(size.width)
     layoutIfNeeded()
-
     let limit = contentView.frame.maxY
     return CGSize(width: frame.width, height: limit)
   }
 
+  // I choose pin layout to 
+
   override func layoutSubviews() {
-    super.layoutSubviews()
 
     background.pin.horizontally(20)
     backgroundPicture.pin.horizontally()
@@ -259,7 +283,6 @@ class RestaurantViewCell: UITableViewCell {
 
     overlay.pin.wrapContent(.vertically, padding: 10)
     backgroundPicture.pin.wrapContent(.vertically, padding: 25)
-
 
     tripAdviserIcon.pin
       .below(of: backgroundPicture)
@@ -361,6 +384,12 @@ class RestaurantViewCell: UITableViewCell {
     self.background.pin.wrapContent(.vertically)
     self.contentView.pin.wrapContent(.vertically, padding: 10)
 
+    loading.pin
+      .width(30)
+      .height(30)
+      .right(10)
+      .above(of: priceRangeIcon)
+      .marginBottom(20)
   }
 
 

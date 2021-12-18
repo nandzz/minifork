@@ -18,6 +18,7 @@ class RestaurantListViewController: UIViewController {
     tableView.backgroundColor = .white
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.allowsSelection = false
     tableView.register(RestaurantViewCell.self, forCellReuseIdentifier: RestaurantViewCell.identifier)
     return tableView
   }()
@@ -33,7 +34,6 @@ class RestaurantListViewController: UIViewController {
   }
 
   override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
     tableView.pin
       .top(view.pin.safeArea.top)
       .bottom()
@@ -44,12 +44,14 @@ class RestaurantListViewController: UIViewController {
 
 extension RestaurantListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return 10
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      let cell = tableView.dequeueReusableCell(withIdentifier: RestaurantViewCell.identifier,
                                                    for: indexPath)
+
+    cell.prepareForReuse()
 
     return cell
   }
