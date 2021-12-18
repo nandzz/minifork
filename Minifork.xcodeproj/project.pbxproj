@@ -66,6 +66,8 @@
 		BEDB983C276E5CA20014A5FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB983B276E5CA20014A5FA /* Coordinator.swift */; };
 		BEDB983E276E5CAA0014A5FA /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB983D276E5CAA0014A5FA /* Router.swift */; };
 		BEDB9841276E5D110014A5FA /* RestaurantListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9840276E5D110014A5FA /* RestaurantListCoordinator.swift */; };
+		BEDB9845276E82350014A5FA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9844276E82350014A5FA /* Fonts.swift */; };
+		BEDB9847276E82450014A5FA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9846276E82450014A5FA /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,8 @@
 		BEDB983B276E5CA20014A5FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BEDB983D276E5CAA0014A5FA /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BEDB9840276E5D110014A5FA /* RestaurantListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListCoordinator.swift; sourceTree = "<group>"; };
+		BEDB9844276E82350014A5FA /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		BEDB9846276E82450014A5FA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,7 @@
 		BE5B8DF1276AA5FE0060C847 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BEDB9842276E820E0014A5FA /* Style */,
 				BEDB982E276E57010014A5FA /* Scenes */,
 				BEDB9817276CE0090014A5FA /* Factories */,
 				BE5B8DEB276AA0750060C847 /* Info.plist */,
@@ -506,6 +511,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		BEDB9842276E820E0014A5FA /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				BEDB9844276E82350014A5FA /* Fonts.swift */,
+				BEDB9846276E82450014A5FA /* Color.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -617,6 +631,7 @@
 				BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */,
 				BEDB9799276B771B0014A5FA /* RepositoryRestaurantList.swift in Sources */,
 				BEDB980B276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift in Sources */,
+				BEDB9847276E82450014A5FA /* Color.swift in Sources */,
 				BEDB97F5276BFF340014A5FA /* LocalStorageRestaurantFavourite.swift in Sources */,
 				BEDB9835276E58900014A5FA /* RestaurantCell.swift in Sources */,
 				BE5B8E01276AA6A60060C847 /* Request.swift in Sources */,
@@ -640,6 +655,7 @@
 				BEDB97E4276BADD20014A5FA /* PersistenceStorageInterface.swift in Sources */,
 				BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */,
 				BEDB97CE276B8B380014A5FA /* Restaurant-getFav-usercase.swift in Sources */,
+				BEDB9845276E82350014A5FA /* Fonts.swift in Sources */,
 				BEDB9804276CAFE30014A5FA /* CacheDataStorage.swift in Sources */,
 				BEDB97CC276B8B270014A5FA /* Restaurant-saveFav-usercase.swift in Sources */,
 				BEDB983C276E5CA20014A5FA /* Coordinator.swift in Sources */,

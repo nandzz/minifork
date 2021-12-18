@@ -17,40 +17,49 @@ class RestaurantViewCell: UITableViewCell {
   // MARK: VIEWS
   lazy var background: UIView = {
     let view = UIView()
-    view.backgroundColor = .red
+    view.backgroundColor = AppColor.gray
     view.layer.cornerRadius = 20
+    view.clipsToBounds = true
     return view
   }()
 
   lazy var backgroundPicture: UIImageView = {
     let view = UIImageView()
-    view.backgroundColor = .brown
+    view.backgroundColor = AppColor.blackgray
     return view
   }()
 
   lazy var overlay: UIView = {
     let view = UIView()
-    view.backgroundColor = .white
+    view.backgroundColor = AppColor.white
     view.layer.opacity = 0.7
+    view.layer.cornerRadius = 20
     return view
   }()
 
   lazy var bannerOne: UIView = {
     let view = UIView()
-    view.backgroundColor = .brown
+    view.backgroundColor = AppColor.blackgray
     return view
   }()
 
   lazy var bannerTwo: UIView = {
     let view = UIView()
-    view.backgroundColor = .blue
+    view.backgroundColor = AppColor.promo
+    return view
+  }()
+
+  lazy var footer: UIView = {
+    let view = UIView()
+    view.backgroundColor = .clear
     return view
   }()
 
   // MARK: LABELS
   lazy var restaurantName: UILabel = {
     let label = UILabel()
-    label.textColor = .red
+    label.font = Font.get(trait: .Regular, size: 22)
+    label.textColor = AppColor.black
     label.lineBreakMode = .byClipping
     label.numberOfLines = 0
     label.textAlignment = .center
@@ -59,7 +68,8 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var restaurantCousine: UILabel = {
     let label = UILabel()
-    label.textColor = .blue
+    label.font = Font.get(trait: .Bold, size: 14)
+    label.textColor = AppColor.black
     label.numberOfLines = 1
     label.lineBreakMode = .byClipping
     return label
@@ -67,24 +77,29 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var tripReview: UILabel = {
     let label = UILabel()
-    label.textColor = .blue
+    label.font = Font.get(trait: .SemiBold, size: 14)
+    label.textColor = AppColor.black
     return label
   }()
 
   lazy var theForkReview: UILabel = {
     let label = UILabel()
-    label.textColor = .cyan
+    label.font = Font.get(trait: .SemiBold, size: 14)
+    label.textColor = AppColor.black
     return label
   }()
 
   lazy var priceRange: UILabel = {
     let label = UILabel()
-    label.textColor = .cyan
+    label.font = Font.get(trait: .SemiBold, size: 14)
+    label.textColor = AppColor.black
     return label
   }()
 
   lazy var addressStreet: UILabel = {
     let label = UILabel()
+    label.font = Font.get(trait: .Regular, size: 8)
+    label.textColor = AppColor.white
     label.lineBreakMode = .byClipping
     label.numberOfLines = 0
     label.textAlignment = .left
@@ -93,11 +108,21 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var addressCityCountry: UILabel = {
     let label = UILabel()
+    label.font = Font.get(trait: .Regular, size: 8)
+    label.textColor = AppColor.white
+    label.lineBreakMode = .byClipping
+    label.numberOfLines = 0
+    label.textAlignment = .left
     return label
   }()
 
   lazy var offerLabel: UILabel = {
     let label = UILabel()
+    label.font = Font.get(trait: .Bold, size: 16)
+    label.textColor = AppColor.black
+    label.lineBreakMode = .byClipping
+    label.numberOfLines = 0
+    label.textAlignment = .center
     return label
   }()
 
@@ -167,6 +192,7 @@ class RestaurantViewCell: UITableViewCell {
     background.addSubview(priceRange)
     background.addSubview(bannerOne)
     background.addSubview(bannerTwo)
+    background.addSubview(footer)
 
     overlay.addSubview(restaurantName)
     overlay.addSubview(restaurantCousine)
@@ -238,7 +264,7 @@ class RestaurantViewCell: UITableViewCell {
     tripAdviserIcon.pin
       .below(of: backgroundPicture)
       .width(30)
-      .height(15)
+      .height(20)
       .marginTop(10)
       .left(10)
 
@@ -251,8 +277,8 @@ class RestaurantViewCell: UITableViewCell {
     theForkIcon.pin
       .right(of: tripReview)
       .marginLeft(10)
-      .width(15)
-      .height(20)
+      .width(20)
+      .height(25)
       .vCenter(to: tripAdviserIcon.edge.vCenter)
 
     theForkReview.pin
@@ -269,18 +295,16 @@ class RestaurantViewCell: UITableViewCell {
     priceRangeIcon.pin
       .left(of: priceRange)
       .marginRight(9)
-      .width(20)
-      .height(15)
+      .width(30)
+      .height(20)
       .vCenter(to: tripAdviserIcon.edge.vCenter)
-
-
 
     bannerOne.pin.horizontally(20)
 
     locationIcon.pin
-      .height(30)
+      .height(25)
       .width(20)
-      .left()
+      .left(10)
 
     addressStreet.pin
       .right(40%)
@@ -289,9 +313,54 @@ class RestaurantViewCell: UITableViewCell {
       .sizeToFit(.width)
       .top(to: locationIcon.edge.top)
 
+    addressCityCountry.pin
+      .right(30%)
+      .sizeToFit(.width)
+      .below(of: addressStreet)
+      .marginTop(2)
+      .left(to: addressStreet.edge.left)
+
+    bannerOne.pin
+      .wrapContent(.vertically, padding: 10)
+      .below(of: backgroundPicture)
+      .marginTop(40)
+
+    favIcon.pin
+      .width(30)
+      .height(25)
+      .vCenter(to: locationIcon.edge.vCenter)
+      .right(10)
+
+    shareIcon.pin
+      .width(25)
+      .height(25)
+      .vCenter(to: locationIcon.edge.vCenter)
+      .left(of: favIcon)
+      .marginRight(10)
+
+    bannerOne.layer.cornerRadius = bannerOne.frame.height / 2
+
+    bannerTwo.pin.horizontally(20)
+
+    offerLabel.pin
+      .horizontally(10)
+      .sizeToFit(.width)
+
+    bannerTwo.pin
+      .wrapContent(.vertically, padding: 10)
+      .below(of: bannerOne)
+      .marginTop(10)
+
+    bannerTwo.layer.cornerRadius = 25
+
+    footer.pin
+      .below(of: bannerTwo)
+      .height(10)
+      .horizontally()
 
     self.background.pin.wrapContent(.vertically)
     self.contentView.pin.wrapContent(.vertically, padding: 10)
+
   }
 
 
