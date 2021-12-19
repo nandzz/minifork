@@ -26,6 +26,7 @@ class RestaurantViewCell: UITableViewCell {
   lazy var backgroundPicture: UIImageView = {
     let view = UIImageView()
     view.backgroundColor = AppColor.blackgray
+    view.image = UIImage(named: "fototest")
     return view
   }()
 
@@ -33,6 +34,7 @@ class RestaurantViewCell: UITableViewCell {
     let view = UIView()
     view.backgroundColor = AppColor.white
     view.layer.opacity = 0.7
+    view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     view.layer.cornerRadius = 20
     return view
   }()
@@ -190,7 +192,7 @@ class RestaurantViewCell: UITableViewCell {
   func compose() {
     contentView.addSubview(background)
     background.addSubview(backgroundPicture)
-    backgroundPicture.addSubview(overlay)
+    background.addSubview(overlay)
     background.addSubview(loading)
     background.addSubview(tripAdviserIcon)
     background.addSubview(tripReview)
@@ -211,7 +213,7 @@ class RestaurantViewCell: UITableViewCell {
     bannerOne.addSubview(favIcon)
     bannerTwo.addSubview(offerLabel)
 
-    self.backgroundColor = .clear
+    self.backgroundColor = AppColor.gray
     self.selectionStyle = .none
     self.loading.color = .white
 
@@ -262,7 +264,7 @@ class RestaurantViewCell: UITableViewCell {
 
     background.pin.horizontally(20)
     backgroundPicture.pin.horizontally()
-    overlay.pin.horizontally(40)
+    overlay.pin.horizontally(0)
 
     restaurantName.pin.horizontally(20)
     restaurantName.pin.sizeToFit(.width)
@@ -280,9 +282,11 @@ class RestaurantViewCell: UITableViewCell {
       .height(20)
       .vCenter(to: restaurantCousine.edge.vCenter)
 
-
     overlay.pin.wrapContent(.vertically, padding: 10)
-    backgroundPicture.pin.wrapContent(.vertically, padding: 25)
+
+    backgroundPicture.pin
+      .height(100)
+      .below(of: overlay)
 
     tripAdviserIcon.pin
       .below(of: backgroundPicture)

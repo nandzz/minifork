@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import Minifork
-
+@testable import RxSwift
 
 class testRestaurantUserCases: XCTestCase {
 
@@ -18,17 +18,21 @@ class testRestaurantUserCases: XCTestCase {
       let service = DefaultService(configuration: configurations)
       let repository = DefaultRepositoryRestaurantList(service: service)
       let expectation = XCTestExpectation(description: "repository-call-api-restaurant-list")
-      
-      UserCaseRestaurantGetList(repository: repository) { result in
-        switch result {
-        case .success(let list):
-          XCTAssert(!list.list.isEmpty)
-          expectation.fulfill()
-        case .failure(_):
-          XCTFail()
-          expectation.fulfill()
-        }
-      }.start()
+      let disposeBag = DisposeBag()
+      let observable = UserCaseRestaurantGetList(repository: repository).start()
+
+      observable.subscribe { restaurant in
+        print(restaurant)
+      } onError: { error in
+        XCTFail()
+        expectation.fulfill()
+      } onCompleted: {
+        expectation.fulfill()
+        print("completed")
+      } onDisposed: {
+        print("Disposed")
+      }.disposed(by: disposeBag)
+
 
       wait(for: [expectation], timeout: 10.0)
 

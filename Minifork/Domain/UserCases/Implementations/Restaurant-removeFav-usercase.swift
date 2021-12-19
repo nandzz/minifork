@@ -6,26 +6,35 @@
 //
 
 import Foundation
+import RxSwift
 
 
 final class UserCaseRemoveFavouriteRestaurant: UserCase {
 
-  typealias ResultValue = (Result<Void, Error>)
+  typealias observed = Void
 
   private var repository: RepositoryFavouriteRestaurant
-  private var completion: (ResultValue) -> Void
   private var restaurant: Restaurant
 
   init(repository: RepositoryFavouriteRestaurant,
-       restaurant: Restaurant,
-       completion: @escaping (ResultValue) -> Void) {
-
-  self.repository = repository
-  self.completion = completion
-  self.restaurant = restaurant
+       restaurant: Restaurant) {
+    self.repository = repository
+    self.restaurant = restaurant
   }
 
-  func start() {
-    repository.removeRestaurantFromFavourite(uuid: restaurant.uuid, completion: completion)
+
+  func start() -> Observable<Void> {
+    return Observable.create { observe in
+      self.repository.removeRestaurantFromFavourite(uuid: self.restaurant.uuid) { result in
+        switch result {
+        case .success(_):
+          observe.onNext(())
+          observe.onCompleted()
+        case .failure(let error):
+          observe.onError(error)
+        }
+      }
+      return Disposables.create()
+    }
   }
 }

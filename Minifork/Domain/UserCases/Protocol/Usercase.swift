@@ -6,8 +6,9 @@
 //
 
 import Foundation
-
+import RxSwift
 
 protocol UserCase {
-  func start()
+  associatedtype observed
+  func start() -> Observable<observed>
 }

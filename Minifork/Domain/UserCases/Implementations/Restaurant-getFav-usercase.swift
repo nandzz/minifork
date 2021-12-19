@@ -6,28 +6,35 @@
 //
 
 import Foundation
+import RxSwift
 
 
 final class UserCaseGetFavouriteRestaurantList: UserCase {
-
-  typealias ResultValue = (Result<RestaurantList, Error>)
+  
+  typealias observed = RestaurantList
 
   private var repository: RepositoryFavouriteRestaurant
-  private var completion: (ResultValue) -> Void
   private var restaurant: Restaurant
 
 
   init(repository: RepositoryFavouriteRestaurant,
-       restaurant: Restaurant,
-       completion: @escaping (ResultValue) -> Void
-    ) {
+       restaurant: Restaurant) {
     self.repository = repository
     self.restaurant = restaurant
-    self.completion = completion
   }
 
-  func start() {
-    repository.restoreListOfFavourite(completion: completion)
+  func start() -> Observable<RestaurantList> {
+    return Observable.create { observe in
+      self.repository.restoreListOfFavourite { result in
+        switch result {
+        case .success(let list):
+          observe.onNext(list)
+          observe.onCompleted()
+        case .failure(let error):
+          observe.onError(error)
+        }
+      }
+      return Disposables.create()
+    }
   }
-
 }

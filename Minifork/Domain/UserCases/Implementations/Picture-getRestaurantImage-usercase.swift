@@ -6,26 +6,46 @@
 //
 
 import Foundation
+import RxSwift
 
 
 final class UsercaseGetPicture: UserCase {
 
-  typealias ResultValue = (Result<Data, Error>)
+
+
+  typealias observed = Data
 
   private var repository: RepositoryPicture
-  private var completion: (ResultValue) -> Void
   private var key: DefaultCacheKey
 
   init(repository: RepositoryPicture,
-       key: DefaultCacheKey,
-       completion: @escaping (ResultValue) -> Void) {
+       key: DefaultCacheKey) {
 
   self.repository = repository
-  self.completion = completion
   self.key = key
   }
 
-  func start() {
-    repository.getPicture(key: key, fromService: completion, fromCache: completion)
+
+  func start() -> Observable<Data> {
+    return Observable.create { observe in
+      self.repository.getPicture(key: self.key) { result in
+        switch result {
+        case .success(let data):
+          observe.onNext(data)
+          observe.onCompleted()
+        case .failure(let error):
+          observe.onError(error)
+        }
+      } fromCache: { result in
+        switch result {
+        case .success(let data):
+          observe.onNext(data)
+          observe.onCompleted()
+        case .failure(let error):
+          observe.onError(error)
+        }
+      }
+      return Disposables.create()
+    }
   }
 }

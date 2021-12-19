@@ -17,6 +17,8 @@ class RestaurantListViewController: UIViewController {
     tableView.estimatedRowHeight = UITableView.automaticDimension
     tableView.backgroundColor = .white
     tableView.delegate = self
+    tableView.separatorStyle = .none
+    tableView.backgroundColor = AppColor.gray
     tableView.dataSource = self
     tableView.allowsSelection = false
     tableView.register(RestaurantViewCell.self, forCellReuseIdentifier: RestaurantViewCell.identifier)
