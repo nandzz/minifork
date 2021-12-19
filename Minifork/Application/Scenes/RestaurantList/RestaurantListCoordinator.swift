@@ -23,6 +23,15 @@ class RestaurantListCoordinator: Coordinator {
 
   func start() {
     let controller = RestaurantListViewController()
+    controller.viewModel = ViewModelFactory().createRestaurantListViewModel()
+    controller.coordinator = self
     router.setRootViewController(controller, animated: true)
+  }
+
+  func presentShare (text: String) {
+    let textToShare = [ text ]
+    let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+    activityViewController.popoverPresentationController?.sourceView = rootViewController.view // so that iPads won't crash
+    rootViewController.present(activityViewController, animated: true, completion: nil)
   }
 }

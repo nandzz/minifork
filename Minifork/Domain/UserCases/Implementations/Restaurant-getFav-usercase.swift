@@ -14,14 +14,12 @@ final class UserCaseGetFavouriteRestaurantList: UserCase {
   typealias observed = RestaurantList
 
   private var repository: RepositoryFavouriteRestaurant
-  private var restaurant: Restaurant
 
-
-  init(repository: RepositoryFavouriteRestaurant,
-       restaurant: Restaurant) {
+  init(repository: RepositoryFavouriteRestaurant) {
     self.repository = repository
-    self.restaurant = restaurant
   }
+
+
 
   func start() -> Observable<RestaurantList> {
     return Observable.create { observe in

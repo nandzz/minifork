@@ -14,18 +14,23 @@ final class UserCaseRemoveFavouriteRestaurant: UserCase {
   typealias observed = Void
 
   private var repository: RepositoryFavouriteRestaurant
-  private var restaurant: Restaurant
+  private var restaurant: Restaurant?
 
-  init(repository: RepositoryFavouriteRestaurant,
-       restaurant: Restaurant) {
+  init(repository: RepositoryFavouriteRestaurant) {
     self.repository = repository
+  }
+
+  func setFavourite(restaurant: Restaurant) {
     self.restaurant = restaurant
   }
 
-
   func start() -> Observable<Void> {
     return Observable.create { observe in
-      self.repository.removeRestaurantFromFavourite(uuid: self.restaurant.uuid) { result in
+      guard let restaurant = self.restaurant else {
+        observe.onError(NetworkTypeError.ErrorDecoding)
+        return Disposables.create()
+      }
+      self.repository.removeRestaurantFromFavourite(uuid: restaurant.uuid) { result in
         switch result {
         case .success(_):
           observe.onNext(())

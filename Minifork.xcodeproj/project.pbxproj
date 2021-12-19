@@ -25,6 +25,8 @@
 		BEA46D0D276F46A500EDA312 /* RestaurantEntityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA46D0C276F46A500EDA312 /* RestaurantEntityViewModel.swift */; };
 		BEA46D10276F47FB00EDA312 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BEA46D0F276F47FB00EDA312 /* RxCocoa */; };
 		BEA46D12276F47FB00EDA312 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BEA46D11276F47FB00EDA312 /* RxSwift */; };
+		BEA46D14276F59B200EDA312 /* Restaurant-share-usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA46D13276F59B200EDA312 /* Restaurant-share-usercase.swift */; };
+		BEA46D16276F6B2E00EDA312 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA46D15276F6B2E00EDA312 /* Observable+Ext.swift */; };
 		BEDB9783276B52540014A5FA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9782276B52540014A5FA /* Restaurant.swift */; };
 		BEDB9789276B54160014A5FA /* ServiceBoundaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9788276B54160014A5FA /* ServiceBoundaries.swift */; };
 		BEDB978B276B542C0014A5FA /* Restaurant+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB978A276B542C0014A5FA /* Restaurant+DTO.swift */; };
@@ -52,7 +54,7 @@
 		BEDB9804276CAFE30014A5FA /* CacheDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9803276CAFE30014A5FA /* CacheDataStorage.swift */; };
 		BEDB9806276CC09E0014A5FA /* testCacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9805276CC09E0014A5FA /* testCacheStorage.swift */; };
 		BEDB9809276CC12C0014A5FA /* CacheStorageInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9808276CC12C0014A5FA /* CacheStorageInterfaces.swift */; };
-		BEDB980B276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980A276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift */; };
+		BEDB980B276CC61C0014A5FA /* Restaurant-getImage-usercase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980A276CC61C0014A5FA /* Restaurant-getImage-usercase.swift */; };
 		BEDB980D276CC83F0014A5FA /* PictureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980C276CC83F0014A5FA /* PictureRepository.swift */; };
 		BEDB9810276CD0840014A5FA /* RepositoryPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB980F276CD0840014A5FA /* RepositoryPicture.swift */; };
 		BEDB9816276CE0000014A5FA /* RepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDB9815276CE0000014A5FA /* RepositoryFactory.swift */; };
@@ -105,6 +107,8 @@
 		BEA46D07276F45CE00EDA312 /* RestaurantListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListViewModel.swift; sourceTree = "<group>"; };
 		BEA46D0A276F468000EDA312 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		BEA46D0C276F46A500EDA312 /* RestaurantEntityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantEntityViewModel.swift; sourceTree = "<group>"; };
+		BEA46D13276F59B200EDA312 /* Restaurant-share-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant-share-usercase.swift"; sourceTree = "<group>"; };
+		BEA46D15276F6B2E00EDA312 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
 		BEDB9780276B44B60014A5FA /* testBasicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testBasicRequest.swift; sourceTree = "<group>"; };
 		BEDB9782276B52540014A5FA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		BEDB9788276B54160014A5FA /* ServiceBoundaries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBoundaries.swift; sourceTree = "<group>"; };
@@ -131,7 +135,7 @@
 		BEDB9803276CAFE30014A5FA /* CacheDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheDataStorage.swift; sourceTree = "<group>"; };
 		BEDB9805276CC09E0014A5FA /* testCacheStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCacheStorage.swift; sourceTree = "<group>"; };
 		BEDB9808276CC12C0014A5FA /* CacheStorageInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheStorageInterfaces.swift; sourceTree = "<group>"; };
-		BEDB980A276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Picture-getRestaurantImage-usercase.swift"; sourceTree = "<group>"; };
+		BEDB980A276CC61C0014A5FA /* Restaurant-getImage-usercase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant-getImage-usercase.swift"; sourceTree = "<group>"; };
 		BEDB980C276CC83F0014A5FA /* PictureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRepository.swift; sourceTree = "<group>"; };
 		BEDB980F276CD0840014A5FA /* RepositoryPicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPicture.swift; sourceTree = "<group>"; };
 		BEDB9815276CE0000014A5FA /* RepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryFactory.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				BEDB979B276B77E30014A5FA /* Decoder.swift */,
 				BEDB983B276E5CA20014A5FA /* Coordinator.swift */,
 				BEDB983D276E5CAA0014A5FA /* Router.swift */,
+				BEA46D15276F6B2E00EDA312 /* Observable+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -414,7 +419,8 @@
 				BEDB97CB276B8B270014A5FA /* Restaurant-saveFav-usercase.swift */,
 				BEDB97CD276B8B380014A5FA /* Restaurant-getFav-usercase.swift */,
 				BEDB982C276E45350014A5FA /* Restaurant-removeFav-usercase.swift */,
-				BEDB980A276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift */,
+				BEA46D13276F59B200EDA312 /* Restaurant-share-usercase.swift */,
+				BEDB980A276CC61C0014A5FA /* Restaurant-getImage-usercase.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -654,7 +660,7 @@
 				BEDB978B276B542C0014A5FA /* Restaurant+DTO.swift in Sources */,
 				BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */,
 				BEDB9799276B771B0014A5FA /* RepositoryRestaurantList.swift in Sources */,
-				BEDB980B276CC61C0014A5FA /* Picture-getRestaurantImage-usercase.swift in Sources */,
+				BEDB980B276CC61C0014A5FA /* Restaurant-getImage-usercase.swift in Sources */,
 				BEDB9847276E82450014A5FA /* Color.swift in Sources */,
 				BEDB97F5276BFF340014A5FA /* LocalStorageRestaurantFavourite.swift in Sources */,
 				BEDB9835276E58900014A5FA /* RestaurantCell.swift in Sources */,
@@ -689,10 +695,12 @@
 				BEDB9816276CE0000014A5FA /* RepositoryFactory.swift in Sources */,
 				BEDB981A276CE2CB0014A5FA /* ViewModelFactory.swift in Sources */,
 				BEDB9791276B598D0014A5FA /* ServiceEndPoint.swift in Sources */,
+				BEA46D16276F6B2E00EDA312 /* Observable+Ext.swift in Sources */,
 				BEDB9783276B52540014A5FA /* Restaurant.swift in Sources */,
 				BEDB9809276CC12C0014A5FA /* CacheStorageInterfaces.swift in Sources */,
 				BE5B8E0A276AA90C0060C847 /* Error.swift in Sources */,
 				BE5B8DDE276AA0710060C847 /* AppDelegate.swift in Sources */,
+				BEA46D14276F59B200EDA312 /* Restaurant-share-usercase.swift in Sources */,
 				BEDB97DF276BA6330014A5FA /* RepositoryRestaurantFavourite.swift in Sources */,
 				BEDB97D1276B91250014A5FA /* Usercase.swift in Sources */,
 				BEDB97DD276BA4130014A5FA /* RestaurantRepositoryFavouriteInterface.swift in Sources */,

@@ -8,6 +8,7 @@
 import Foundation
 import PinLayout
 import UIKit
+import RxSwift
 
 
 class RestaurantViewCell: UITableViewCell {
@@ -100,7 +101,7 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var addressStreet: UILabel = {
     let label = UILabel()
-    label.font = Font.get(trait: .Regular, size: 8)
+    label.font = Font.get(trait: .Regular, size: 10)
     label.textColor = AppColor.white
     label.lineBreakMode = .byClipping
     label.numberOfLines = 0
@@ -110,7 +111,7 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var addressCityCountry: UILabel = {
     let label = UILabel()
-    label.font = Font.get(trait: .Regular, size: 8)
+    label.font = Font.get(trait: .Regular, size: 10)
     label.textColor = AppColor.white
     label.lineBreakMode = .byClipping
     label.numberOfLines = 0
@@ -160,23 +161,24 @@ class RestaurantViewCell: UITableViewCell {
     return view
   }()
 
-  lazy var shareIcon: UIImageView = {
-    let view = UIImageView()
-    view.image = UIImage(named: "share")
-    return view
+  lazy var shareIcon: UIButton = {
+    let button = UIButton()
+    button.setBackgroundImage(UIImage(named: "share"), for: .normal)
+    return button
   }()
 
   lazy var favIcon: UIButton = {
     let button = UIButton()
     button.setBackgroundImage(UIImage(named: "empty-heart"), for: .normal)
     button.setBackgroundImage(UIImage(named: "filled-heart"), for: .selected)
-    button.addTarget(self, action: #selector(onTouchFavourite(send:)), for: .touchUpInside)
     return button
   }()
 
 
   let loading = UIActivityIndicatorView()
   var isFavourite = false
+  var viewModel: RestaurantEntityViewModel!
+  var disposedBag = DisposeBag()
 
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -217,14 +219,14 @@ class RestaurantViewCell: UITableViewCell {
     self.selectionStyle = .none
     self.loading.color = .white
 
-    restaurantName.text = "Babobba aksd kamksdm amksldmaks"
-    restaurantCousine.text = "French"
-    tripReview.text = "2.3"
-    theForkReview.text = "44.3"
-    priceRange.text = "0-22€"
-    addressStreet.text = "3huiANSJKDNASJKDNJASKNDASDNSA"
-    addressCityCountry.text = "Salvador, Brasil"
-    offerLabel.text = "50% sconto alla casssa , sticazzi toma toma toma toma"
+//    restaurantName.text = "Babobba aksd kamksdm amksldmaks"
+//    restaurantCousine.text = "French"
+//    tripReview.text = "2.3"
+//    theForkReview.text = "44.3"
+//    priceRange.text = "0-22€"
+//    addressStreet.text = "3huiANSJKDNASJKDNJASKNDASDNSA"
+//    addressCityCountry.text = "Salvador, Brasil"
+//    offerLabel.text = "50% sconto alla casssa , sticazzi toma toma toma toma"
   }
 
   override func prepareForReuse() {
@@ -241,9 +243,24 @@ class RestaurantViewCell: UITableViewCell {
     loading.stopAnimating()
   }
 
+  func bind(viewModel: RestaurantEntityViewModel,
+            onShareTap: @escaping (String) -> Void) {
+    self.viewModel = viewModel
+    self.restaurantName.text = viewModel.restaurant.name
+    self.restaurantCousine.text = viewModel.restaurant.servesCuisine
+    self.tripReview.text = "\(viewModel.restaurant.aggregateRatings.tripadvisor.ratingValue)/5"
+    self.theForkReview.text = "\(viewModel.restaurant.aggregateRatings.thefork.ratingValue)/10"
+    self.priceRange.text = "0-\(viewModel.restaurant.priceRange)€"
+    self.addressStreet.text = viewModel.restaurant.address.street
+    self.addressCityCountry.text = "\(viewModel.restaurant.address.locality), \(viewModel.restaurant.address.country)"
+    self.offerLabel.text = viewModel.restaurant.bestOffer.name
 
-  func bind() {
+    let input = RestaurantEntityViewModel.Input(shareRestaurant: shareIcon.rx.tap.asDriver().map{ viewModel.restaurant })
+    let output = viewModel.transform(input: input)
 
+    output.shared.drive { promo in
+      onShareTap(promo)
+    }.disposed(by: disposedBag)
   }
 
   @objc func onTouchFavourite(send: UIButton) {
@@ -321,7 +338,7 @@ class RestaurantViewCell: UITableViewCell {
 
     priceRangeIcon.pin
       .left(of: priceRange)
-      .marginRight(9)
+      .marginRight(5)
       .width(30)
       .height(20)
       .vCenter(to: tripAdviserIcon.edge.vCenter)
@@ -378,7 +395,7 @@ class RestaurantViewCell: UITableViewCell {
       .below(of: bannerOne)
       .marginTop(10)
 
-    bannerTwo.layer.cornerRadius = 25
+    bannerTwo.layer.cornerRadius = bannerTwo.frame.height / 2
 
     footer.pin
       .below(of: bannerTwo)

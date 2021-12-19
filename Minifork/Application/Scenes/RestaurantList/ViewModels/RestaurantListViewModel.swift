@@ -8,63 +8,50 @@
 import Foundation
 import RxSwift
 import RxCocoa
-//
-//final class RestaurantListViewModel: ViewModelType {
-//
-//
-//  enum SortType {
-//    case byRate
-//    case byName
-//  }
-//
-//  struct Input {
-//    let start: Driver<Void>
+
+final class RestaurantListViewModel: ViewModelType {
+
+
+  enum SortType {
+    case byRate
+    case byName
+  }
+
+  struct Input {
+    let start: Driver<Void>
 //    let saveFavourite: Driver<Restaurant>
 //    let deleteFavourite: Driver<Restaurant>
 //    let share: Driver<Restaurant>
 //    let sort: Driver<SortType>
-//  }
-//
-//  struct Output {
-//    let list: Driver<RestaurantList>
+  }
+
+  struct Output {
+    let list: Driver<[RestaurantEntityViewModel]>
 //    let savedRestaurant: Driver<Restaurant>
 //    let deletedRestaurant: Driver<Restaurant>
 //    let sharedRestaurant: Driver<Restaurant>
-//  }
-//
-//  private let listUserCase: UserCaseRestaurantGetList
+  }
+
+  private let listUserCase: UserCaseRestaurantGetList
 //  private let saveUserCase: UserCaseSaveFavouriteRestaurant
 //  private let removeUserCase: UserCaseRemoveFavouriteRestaurant
-//
-//
-//  init(listUserCase: UserCaseRestaurantGetList,
-//       saveUserCase: UserCaseSaveFavouriteRestaurant,
-//       removeUserCase: UserCaseRemoveFavouriteRestaurant) {
-//    self.listUserCase = listUserCase
-//    self.saveUserCase = saveUserCase
-//    self.removeUserCase = removeUserCase
-//  }
-//
-//
-//  func transform(input: Input) -> Output {
-//
-////    let list = input.start.flatMapLatest {
-////      return listUserCase.start()
-////    }
-//
-//
-////    let listOutput = Observable<RestaurantList>.create { observe -> Disposable in
-////      listUserCase.completion = { result in
-////        switch result {
-////        case .
-////        }
-////
-////      }
-////    }
-//    
-//
-//
-//  }
-//
-//
-//}
+
+
+  init(listUserCase: UserCaseRestaurantGetList) {
+    self.listUserCase = listUserCase
+  }
+
+
+  func transform(input: Input) -> Output {
+
+    let list = input.start.flatMapLatest{
+      return self.listUserCase.start()
+        .asDriver(onErrorJustReturn: RestaurantList(list: []))
+        .map { $0.list.map { ViewModelFactory().CreateRestaurantEntityViewModel(restaurant: $0) }}
+    }
+
+    return Output(list: list)
+  }
+
+
+}
