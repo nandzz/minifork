@@ -14,26 +14,24 @@ final class RestaurantEntityViewModel: ViewModelType {
 
   struct Input {
     let shareRestaurant: Driver<Restaurant>
-    let saveFavourite: Driver<Restaurant>
-    let removeFavourite: Driver<Restaurant>
-//    let resolvePicture: Driver<Restaurant>
+    let favourite: Driver<Restaurant>
+    let resolvePicture: Driver<Restaurant>
   }
 
   struct Output {
     let shared: Driver<String>
-    let saved: Driver<Void>
-    let removed: Driver<Void>
-//    let picture: Driver<Data>
-//    let error: Driver<Error>
+    let changeRestaurantFavState: Driver<Bool>
+    let picture: Driver<Data>
   }
 
 
   var shareUseCase: UsercaseRestaurantShare
-  var saveFavourite: UserCaseSaveFavouriteRestaurant
-  var removeFavourite: UserCaseRemoveFavouriteRestaurant
-  var picture: UsercaseGetPicture
+  var saveFavouriteUsercase: UserCaseSaveFavouriteRestaurant
+  var removeFavouriteUsercase: UserCaseRemoveFavouriteRestaurant
+  var pictureUseCase: UsercaseGetPicture
   var restaurant: Restaurant
-  
+  /// Used to save the item in the the cache
+  private var restaurantKey: DefaultCacheKey
 
   init(share: UsercaseRestaurantShare,
        saveFavourite: UserCaseSaveFavouriteRestaurant,
@@ -41,10 +39,11 @@ final class RestaurantEntityViewModel: ViewModelType {
        picture: UsercaseGetPicture,
        restaurant: Restaurant) {
     self.shareUseCase = share
-    self.saveFavourite = saveFavourite
-    self.removeFavourite = removeFavourite
-    self.picture = picture
+    self.saveFavouriteUsercase = saveFavourite
+    self.removeFavouriteUsercase = removeFavourite
+    self.pictureUseCase = picture
     self.restaurant = restaurant
+    self.restaurantKey = DefaultCacheKey(url: restaurant.mainPhoto?.medium ?? "")
   }
 
 
@@ -52,20 +51,28 @@ final class RestaurantEntityViewModel: ViewModelType {
 
     let shared: Driver<String> = input.shareRestaurant.flatMapLatest { restaurant in
       self.shareUseCase.setRestaurant(restaurant)
-      return self.shareUseCase.start().asDriverOnErrorJustComplete()
+      return self.shareUseCase.start().asDriver(onErrorJustReturn: "")
     }
 
-    let save: Driver<Void> = input.saveFavourite.flatMapLatest { restaurant in
-      self.saveFavourite.setRestaurant(restaurant: restaurant)
-      return self.saveFavourite.start().asDriverOnErrorJustComplete()
+    let favourite: Driver<Bool> = input.favourite.flatMapLatest { restaurant in
+      if !restaurant.isFavourite {
+        self.saveFavouriteUsercase.setRestaurant(restaurant: self.restaurant)
+        return self.saveFavouriteUsercase.start().asDriver(onErrorJustReturn: ()).map{true}
+      } else {
+        self.removeFavouriteUsercase.setFavourite(restaurant: self.restaurant)
+        return self.removeFavouriteUsercase.start().asDriver(onErrorJustReturn: ()).map{false}
+      }
     }
 
-    let remove: Driver<Void> = input.removeFavourite.flatMapLatest { restaurant in
-      self.saveFavourite.setRestaurant(restaurant: restaurant)
-      return self.removeFavourite.
+    let picture: Driver<Data> = input.resolvePicture.flatMapLatest { restaurant in
+      self.pictureUseCase.setKey(key: self.restaurantKey)
+      return self.pictureUseCase.start().asDriver(onErrorJustReturn: Data())
     }
     
-    return Output(shared: shared)
+    return Output(
+      shared: shared,
+      changeRestaurantFavState: favourite,
+      picture: picture)
   }
 
 }

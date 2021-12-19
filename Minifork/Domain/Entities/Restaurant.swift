@@ -9,7 +9,7 @@ import Foundation
 
 
 struct RestaurantList {
-  let list: [Restaurant]
+  var list: [Restaurant]
 }
 
 struct Restaurant {
@@ -24,6 +24,44 @@ struct Restaurant {
   let mainPhoto: Picture?
   let bestOffer: BestOffer
 
+  var isFavourite: Bool = false
+
+
+  mutating func setFavourite(isFavourite: Bool) {
+    self.isFavourite = isFavourite
+  }
+
+  func getName() -> String {
+    return self.name
+  }
+
+  func getCousine()  -> String {
+    return self.servesCuisine
+  }
+
+  func getPriceRange() -> String {
+    return "0 - \(Int(priceRange))"
+  }
+
+  func getAddressStreet () -> String  {
+    return self.address.street
+  }
+
+  func getCityCountry () -> String {
+    return "\(address.locality), \(address.country)"
+  }
+
+  func getBestOffer () -> String {
+    return "\(bestOffer.name)"
+  }
+
+  func getTripAdRate() -> String {
+    return "\(aggregateRatings.tripadvisor.ratingValue)/5"
+  }
+
+  func getTheForkRate () -> String {
+    return "\(aggregateRatings.thefork.ratingValue)/10"
+  }
 
   struct Address {
     let street: String
@@ -52,6 +90,9 @@ struct Restaurant {
     let name: String
     let label: String
   }
+
+
+
 }
 
 extension RestaurantList {

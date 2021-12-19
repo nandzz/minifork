@@ -27,10 +27,11 @@ class testRestaurantFavouriteUsercases: XCTestCase {
   func testSavingFavouriteRestaurantUserCase() throws {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
     let expectation = XCTestExpectation(description: "save-restaurant-usercase-test")
+    let saveUsercase = UserCaseSaveFavouriteRestaurant(repository: repository)
+    saveUsercase.setRestaurant(restaurant: Restaurant.mock(uuid: UUID().uuidString))
+    let saveObserver = saveUsercase.start()
 
-    let observer = UserCaseSaveFavouriteRestaurant(repository: repository, restaurant: Restaurant.mock(uuid: UUID().uuidString)).start()
-
-    observer.subscribe { element in
+    saveObserver.subscribe { element in
       print(element)
     } onError: { error in
       print(error)
@@ -51,9 +52,12 @@ class testRestaurantFavouriteUsercases: XCTestCase {
     let expectation = XCTestExpectation(description: "get-restaurant-usercase-test")
     let restaurant = Restaurant.mock(uuid: "123")
 
+    let saveUsercase = UserCaseSaveFavouriteRestaurant(repository: repository)
+    let getObserver = UserCaseGetFavouriteRestaurantList(repository: repository)
+    saveUsercase.setRestaurant(restaurant: restaurant)
 
-    let saveObserve = UserCaseSaveFavouriteRestaurant(repository: repository, restaurant: restaurant).start()
-    let getObserve = UserCaseGetFavouriteRestaurantList(repository: repository, restaurant: restaurant).start()
+    let saveObserve = saveUsercase.start()
+    let getObserve = getObserver.start()
 
 
     saveObserve.subscribe { restaurant in
@@ -87,25 +91,32 @@ class testRestaurantFavouriteUsercases: XCTestCase {
     let expectation = XCTestExpectation(description: "remove-restaurant-usercase-test")
     let restaurant = Restaurant.mock(uuid: UUID().uuidString)
 
-    let saveObserve = UserCaseSaveFavouriteRestaurant(repository: repository, restaurant: restaurant).start()
-    let removeObserve = UserCaseRemoveFavouriteRestaurant(repository: repository, restaurant: restaurant).start()
-    let getObserve = UserCaseGetFavouriteRestaurantList(repository: repository, restaurant: restaurant).start()
+    let saveUserCase = UserCaseSaveFavouriteRestaurant(repository: repository)
+    let removeUserCase = UserCaseRemoveFavouriteRestaurant(repository: repository)
+    let getObserver = UserCaseGetFavouriteRestaurantList(repository: repository).start()
 
-    saveObserve.subscribe { restaurant in
+    saveUserCase.setRestaurant(restaurant: restaurant)
+    removeUserCase.setFavourite(restaurant: restaurant)
+
+    let saveObserver = saveUserCase.start()
+    let removeObserver = removeUserCase.start()
+
+
+    saveObserver.subscribe { restaurant in
       print(restaurant)
     } onError: { error in
       expectation.fulfill()
       XCTFail()
     } onCompleted: { [self] in
 
-      removeObserve.subscribe { _ in
+      removeObserver.subscribe { _ in
 
       } onError: { error in
         expectation.fulfill()
         XCTFail()
       } onCompleted: {
 
-        getObserve.subscribe { list in
+        getObserver.subscribe { list in
           XCTAssert(!list.list.contains(where: {$0.uuid == restaurant.uuid}))
           expectation.fulfill()
         } onError: { error in

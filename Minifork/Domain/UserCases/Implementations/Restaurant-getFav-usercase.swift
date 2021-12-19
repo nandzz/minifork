@@ -19,8 +19,6 @@ final class UserCaseGetFavouriteRestaurantList: UserCase {
     self.repository = repository
   }
 
-
-
   func start() -> Observable<RestaurantList> {
     return Observable.create { observe in
       self.repository.restoreListOfFavourite { result in

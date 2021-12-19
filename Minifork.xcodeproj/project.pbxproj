@@ -12,7 +12,7 @@
 		BE5B8DEA276AA0750060C847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5B8DE8276AA0750060C847 /* LaunchScreen.storyboard */; };
 		BE5B8DF8276AA6740060C847 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DF7276AA6740060C847 /* Alias.swift */; };
 		BE5B8DFB276AA6810060C847 /* NetworkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */; };
-		BE5B8DFD276AA6960060C847 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFC276AA6960060C847 /* Core.swift */; };
+		BE5B8DFD276AA6960060C847 /* ServiceCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFC276AA6960060C847 /* ServiceCore.swift */; };
 		BE5B8DFF276AA69D0060C847 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DFE276AA69D0060C847 /* Log.swift */; };
 		BE5B8E01276AA6A60060C847 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E00276AA6A60060C847 /* Request.swift */; };
 		BE5B8E03276AA6C10060C847 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8E02276AA6C10060C847 /* EndPoint.swift */; };
@@ -95,7 +95,7 @@
 		BE5B8DEB276AA0750060C847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE5B8DF7276AA6740060C847 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
 		BE5B8DFA276AA6810060C847 /* NetworkExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkExtensions.swift; sourceTree = "<group>"; };
-		BE5B8DFC276AA6960060C847 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		BE5B8DFC276AA6960060C847 /* ServiceCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCore.swift; sourceTree = "<group>"; };
 		BE5B8DFE276AA69D0060C847 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BE5B8E00276AA6A60060C847 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		BE5B8E02276AA6C10060C847 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -274,7 +274,7 @@
 		BE5B8E33276AAEC40060C847 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				BE5B8DFC276AA6960060C847 /* Core.swift */,
+				BE5B8DFC276AA6960060C847 /* ServiceCore.swift */,
 				BE5B8DFE276AA69D0060C847 /* Log.swift */,
 				BE5B8E00276AA6A60060C847 /* Request.swift */,
 				BE5B8E02276AA6C10060C847 /* EndPoint.swift */,
@@ -681,7 +681,7 @@
 				BEDB980D276CC83F0014A5FA /* PictureRepository.swift in Sources */,
 				BE5B8E06276AA6DB0060C847 /* Session.swift in Sources */,
 				BEDB9841276E5D110014A5FA /* RestaurantListCoordinator.swift in Sources */,
-				BE5B8DFD276AA6960060C847 /* Core.swift in Sources */,
+				BE5B8DFD276AA6960060C847 /* ServiceCore.swift in Sources */,
 				BEDB983E276E5CAA0014A5FA /* Router.swift in Sources */,
 				BEDB9833276E58700014A5FA /* RestaurantListViewController.swift in Sources */,
 				BEDB97E4276BADD20014A5FA /* PersistenceStorageInterface.swift in Sources */,
@@ -874,7 +874,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P9B4MUP9K5;
+				DEVELOPMENT_TEAM = X5K9BCDH9A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Minifork/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -903,7 +903,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P9B4MUP9K5;
+				DEVELOPMENT_TEAM = X5K9BCDH9A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Minifork/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

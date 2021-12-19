@@ -21,10 +21,8 @@ class RestaurantListViewController: UIViewController {
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = UITableView.automaticDimension
     tableView.backgroundColor = .white
-//    tableView.delegate = self
     tableView.separatorStyle = .none
     tableView.backgroundColor = AppColor.gray
-//    tableView.dataSource = self
     tableView.allowsSelection = false
     self.view.addSubview(tableView)
     tableView.register(RestaurantViewCell.self, forCellReuseIdentifier: RestaurantViewCell.identifier)
@@ -49,9 +47,10 @@ class RestaurantListViewController: UIViewController {
     let input = RestaurantListViewModel.Input(start: Driver.merge(viewWillAppear))
 
     let output = viewModel.transform(input: input)
-
-    output.list.drive(tableView.rx.items(cellIdentifier: RestaurantViewCell.identifier, cellType: RestaurantViewCell.self)) { [weak self] tv, viewModel, cell in
+    output.list.drive(tableView.rx.items(cellIdentifier: RestaurantViewCell.identifier,
+                                         cellType: RestaurantViewCell.self)) { [weak self] tv, viewModel, cell in
       guard let self = self else { return }
+      cell.prepareForReuse()
       cell.bind(viewModel: viewModel, onShareTap: self.coordinator.presentShare(text:))
     }.disposed(by: disposeBag)
   }

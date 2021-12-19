@@ -26,7 +26,9 @@ struct ViewModelFactory  {
 
   func createRestaurantListViewModel() -> RestaurantListViewModel {
     let repository = RepositoryFactory().makeRestaurantListRepository()
-    return RestaurantListViewModel(listUserCase: UserCaseRestaurantGetList(repository: repository))
+    let favRepository = RepositoryFactory().makeRestaurantFavouriteRepository()
+    return RestaurantListViewModel(listUserCase: UserCaseRestaurantGetList(repository: repository,
+                                                                           favouriteRepository: favRepository))
   }
   
 

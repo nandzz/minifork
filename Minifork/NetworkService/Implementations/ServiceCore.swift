@@ -57,9 +57,9 @@ public class DefaultNetworkCore: NetworkService {
       }
 
       self.logger.logReponse(data: data)
-      DispatchQueue.main.async {
+//      DispatchQueue.main.async {
         completion(.success(data))
-      }
+//      }
     }
   }
 }

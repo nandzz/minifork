@@ -16,10 +16,13 @@ class testRestaurantUserCases: XCTestCase {
 
       let configurations = DefaultNetworkConfiguration(baseURL: .url(scheme: "https", host: "alanflament.github.io"))
       let service = DefaultService(configuration: configurations)
-      let repository = DefaultRepositoryRestaurantList(service: service)
+      let repository = RepositoryFactory().makeRestaurantListRepository()
+      let favouriteRepository = RepositoryFactory().makeRestaurantFavouriteRepository()
+
       let expectation = XCTestExpectation(description: "repository-call-api-restaurant-list")
       let disposeBag = DisposeBag()
-      let observable = UserCaseRestaurantGetList(repository: repository).start()
+
+      let observable = UserCaseRestaurantGetList(repository: repository, favouriteRepository: favouriteRepository).start()
 
       observable.subscribe { restaurant in
         print(restaurant)

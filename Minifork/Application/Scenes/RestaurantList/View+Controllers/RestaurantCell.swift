@@ -9,7 +9,7 @@ import Foundation
 import PinLayout
 import UIKit
 import RxSwift
-
+import RxCocoa
 
 class RestaurantViewCell: UITableViewCell {
 
@@ -26,8 +26,8 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var backgroundPicture: UIImageView = {
     let view = UIImageView()
-    view.backgroundColor = AppColor.blackgray
-    view.image = UIImage(named: "fototest")
+    view.backgroundColor = AppColor.gray
+    view.contentMode = .scaleAspectFill
     return view
   }()
 
@@ -174,11 +174,17 @@ class RestaurantViewCell: UITableViewCell {
     return button
   }()
 
+  lazy var loading: UIActivityIndicatorView = {
+    let activity = UIActivityIndicatorView()
+    activity.color = AppColor.blackgray
+    return activity
+  }()
 
-  let loading = UIActivityIndicatorView()
-  var isFavourite = false
-  var viewModel: RestaurantEntityViewModel!
+
+
   var disposedBag = DisposeBag()
+  var viewModel: RestaurantEntityViewModel!
+  var loadPicture: PublishSubject<Void> = PublishSubject()
 
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -217,22 +223,13 @@ class RestaurantViewCell: UITableViewCell {
 
     self.backgroundColor = AppColor.gray
     self.selectionStyle = .none
-    self.loading.color = .white
 
-//    restaurantName.text = "Babobba aksd kamksdm amksldmaks"
-//    restaurantCousine.text = "French"
-//    tripReview.text = "2.3"
-//    theForkReview.text = "44.3"
-//    priceRange.text = "0-22€"
-//    addressStreet.text = "3huiANSJKDNASJKDNJASKNDASDNSA"
-//    addressCityCountry.text = "Salvador, Brasil"
-//    offerLabel.text = "50% sconto alla casssa , sticazzi toma toma toma toma"
   }
 
   override func prepareForReuse() {
     super.prepareForReuse()
-    loading.startAnimating()
-    isFavourite = false
+    disposedBag = DisposeBag()
+    addLoadingAnimation()
   }
 
   func addLoadingAnimation () {
@@ -245,27 +242,44 @@ class RestaurantViewCell: UITableViewCell {
 
   func bind(viewModel: RestaurantEntityViewModel,
             onShareTap: @escaping (String) -> Void) {
-    self.viewModel = viewModel
-    self.restaurantName.text = viewModel.restaurant.name
-    self.restaurantCousine.text = viewModel.restaurant.servesCuisine
-    self.tripReview.text = "\(viewModel.restaurant.aggregateRatings.tripadvisor.ratingValue)/5"
-    self.theForkReview.text = "\(viewModel.restaurant.aggregateRatings.thefork.ratingValue)/10"
-    self.priceRange.text = "0-\(viewModel.restaurant.priceRange)€"
-    self.addressStreet.text = viewModel.restaurant.address.street
-    self.addressCityCountry.text = "\(viewModel.restaurant.address.locality), \(viewModel.restaurant.address.country)"
-    self.offerLabel.text = viewModel.restaurant.bestOffer.name
 
-    let input = RestaurantEntityViewModel.Input(shareRestaurant: shareIcon.rx.tap.asDriver().map{ viewModel.restaurant })
+    self.viewModel = viewModel
+    self.restaurantName.text = viewModel.restaurant.getName()
+    self.restaurantCousine.text = viewModel.restaurant.getCousine()
+    self.tripReview.text = "\(viewModel.restaurant.getTripAdRate())"
+    self.theForkReview.text = "\(viewModel.restaurant.getTheForkRate())"
+    self.priceRange.text = "\(viewModel.restaurant.getPriceRange())"
+    self.addressStreet.text = viewModel.restaurant.getAddressStreet()
+    self.addressCityCountry.text = "\(viewModel.restaurant.getCityCountry())"
+    self.offerLabel.text = viewModel.restaurant.getBestOffer()
+    self.favIcon.isSelected = viewModel.restaurant.isFavourite
+
+    let favourite: Driver<Restaurant> = favIcon.rx.tap.asDriver().map{ viewModel.restaurant }
+    let picture: Driver<Restaurant> = loadPicture.asDriverOnErrorJustComplete().map{ viewModel.restaurant }
+
+    let input = RestaurantEntityViewModel.Input(
+      shareRestaurant: shareIcon.rx.tap.asDriver().map{ viewModel.restaurant },
+      favourite: favourite,
+      resolvePicture: picture)
+
     let output = viewModel.transform(input: input)
 
     output.shared.drive { promo in
       onShareTap(promo)
     }.disposed(by: disposedBag)
-  }
 
-  @objc func onTouchFavourite(send: UIButton) {
-      print("Something happening")
-      favIcon.isSelected = true
+    output.changeRestaurantFavState.drive { newState in
+      self.viewModel.restaurant.isFavourite = newState
+      self.favIcon.isSelected = viewModel.restaurant.isFavourite
+    }.disposed(by: disposedBag)
+
+    output.picture.drive { data in
+      self.backgroundPicture.image = UIImage(data: data)
+      self.removeLoadingAnimation()
+    }.disposed(by: disposedBag)
+
+    loadPicture.onNext(())
+
   }
 
   override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -275,7 +289,10 @@ class RestaurantViewCell: UITableViewCell {
     return CGSize(width: frame.width, height: limit)
   }
 
-  // I choose pin layout to 
+  /*
+   I chosen Pin Layout over Constraints
+   Because I beliave is cleaner and faster
+  */
 
   override func layoutSubviews() {
 
@@ -302,7 +319,7 @@ class RestaurantViewCell: UITableViewCell {
     overlay.pin.wrapContent(.vertically, padding: 10)
 
     backgroundPicture.pin
-      .height(100)
+      .height(270)
       .below(of: overlay)
 
     tripAdviserIcon.pin

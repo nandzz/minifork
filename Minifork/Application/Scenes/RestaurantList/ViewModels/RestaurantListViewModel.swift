@@ -19,28 +19,18 @@ final class RestaurantListViewModel: ViewModelType {
 
   struct Input {
     let start: Driver<Void>
-//    let saveFavourite: Driver<Restaurant>
-//    let deleteFavourite: Driver<Restaurant>
-//    let share: Driver<Restaurant>
-//    let sort: Driver<SortType>
+
   }
 
   struct Output {
     let list: Driver<[RestaurantEntityViewModel]>
-//    let savedRestaurant: Driver<Restaurant>
-//    let deletedRestaurant: Driver<Restaurant>
-//    let sharedRestaurant: Driver<Restaurant>
   }
 
   private let listUserCase: UserCaseRestaurantGetList
-//  private let saveUserCase: UserCaseSaveFavouriteRestaurant
-//  private let removeUserCase: UserCaseRemoveFavouriteRestaurant
-
 
   init(listUserCase: UserCaseRestaurantGetList) {
     self.listUserCase = listUserCase
   }
-
 
   func transform(input: Input) -> Output {
 
