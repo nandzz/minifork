@@ -12,36 +12,36 @@ import Foundation
 
 struct UserCaseFactory {
 
-  func makeGetListUserCase() -> UserCaseRestaurantGetList {
+  func makeGetListUserCase() -> UserCase {
     let repository = RepositoryFactory().makeRestaurantListRepository()
     let favoriteRepository = RepositoryFactory().makeRestaurantFavouriteRepository()
     return UserCaseRestaurantGetList(repository: repository, favouriteRepository: favoriteRepository)
   }
 
-  func makeSortUserCase () -> UserCaseSortRestaurant {
-    return UserCaseSortRestaurant()
+  func makeSortUserCase (_ type: UserCaseSortRestaurant.SortType, _ restaurants: [Restaurant]) -> UserCase {
+    return UserCaseSortRestaurant(type, restaurants)
   }
 
-  func makeSaveFavUserCase () -> UserCaseSaveFavouriteRestaurant {
+  func makeSaveFavUserCase (_ restaurant: Restaurant?) -> UserCase {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseSaveFavouriteRestaurant(repository: repository)
+    return UserCaseSaveFavouriteRestaurant(repository, restaurant)
   }
 
-  func makeRemoveFavUseCase () -> UserCaseRemoveFavouriteRestaurant  {
+  func makeRemoveFavUseCase (_ restaurant: Restaurant?) -> UserCase  {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseRemoveFavouriteRestaurant(repository: repository)
+    return UserCaseRemoveFavouriteRestaurant(repository, restaurant)
   }
 
-  func makeGetImageUserCase () -> UsercaseGetPicture {
+  func makeGetImageUserCase (_ restaurant: Restaurant) -> UserCase {
     let repository = RepositoryFactory().makePictureRepository()
-    return UsercaseGetPicture(repository: repository)
+    return UsercaseGetPicture(repository, restaurant)
   }
 
-  func makeShareUserCase () -> UsercaseRestaurantShare {
-    return UsercaseRestaurantShare()
+  func makeShareUserCase (_ restaurant: Restaurant?) -> UserCase {
+    return UsercaseRestaurantShare(restaurant)
   }
 
-  func makeGetFavListUserCase () -> UserCaseGetFavouriteRestaurantList {
+  func makeGetFavListUserCase () -> UserCase {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
     return UserCaseGetFavouriteRestaurantList(repository: repository)
   }

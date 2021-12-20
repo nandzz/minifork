@@ -11,6 +11,5 @@ import RxSwift
 
 
 protocol UserCase {
-  associatedtype observed
-  func start() -> Observable<observed>
+  func start() -> Observable<Any>
 }

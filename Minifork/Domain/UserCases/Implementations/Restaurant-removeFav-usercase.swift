@@ -16,18 +16,16 @@ final class UserCaseRemoveFavouriteRestaurant: UserCase {
   private var repository: RepositoryFavouriteRestaurant
   private var restaurant: Restaurant?
 
-  init(repository: RepositoryFavouriteRestaurant) {
+  init(_ repository: RepositoryFavouriteRestaurant,_ restaurant: Restaurant?) {
     self.repository = repository
-  }
-
-  func setFavourite(restaurant: Restaurant) {
     self.restaurant = restaurant
   }
 
-  func start() -> Observable<Void> {
+  /// Cast output type to `Void`
+  func start() -> Observable<Any> {
     return Observable.create { observe in
       guard let restaurant = self.restaurant else {
-        observe.onError(UsercaseErros.Generic)
+        observe.onError(UsercaseErros.ObjectNotPresent)
         return Disposables.create()
       }
       self.repository.removeRestaurantFromFavourite(uuid: restaurant.uuid) { result in

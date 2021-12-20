@@ -14,17 +14,15 @@ final class UsercaseRestaurantShare: UserCase {
   
   private var restaurant: Restaurant?
 
-  init() {}
-
-
-  func setRestaurant (_ restaurant: Restaurant) {
+  init (_ restaurant: Restaurant?) {
     self.restaurant = restaurant
   }
 
-  func start() -> Observable<String> {
+  /// Cast Type: `String`
+  func start() -> Observable<Any> {
     return Observable.create { observe in
       guard let item = self.restaurant else {
-        observe.onError(UsercaseErros.Generic)
+        observe.onError(UsercaseErros.ObjectNotPresent)
         return Disposables.create()
       }
       var msg = """

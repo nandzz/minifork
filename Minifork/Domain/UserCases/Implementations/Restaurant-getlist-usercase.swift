@@ -20,8 +20,9 @@ final class UserCaseRestaurantGetList: UserCase {
     self.repository = repository
     self.favouriteReposiroty = favouriteRepository
   }
-  
-  func start() -> Observable<RestaurantList> {
+
+  /// Cast the result value to RestaurantList
+  func start() -> Observable<Any> {
     return Observable.create { observe in
       self.repository.getRestaurantList { result in
         switch result {

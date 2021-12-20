@@ -185,7 +185,6 @@ class RestaurantViewCell: UITableViewCell {
   var viewModel: RestaurantEntityViewModel!
   var loadPicture: PublishSubject<Void> = PublishSubject()
 
-
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     compose()
@@ -301,7 +300,6 @@ class RestaurantViewCell: UITableViewCell {
     }.disposed(by: disposedBag)
 
     loadPicture.onNext(())
-
   }
 
   override func sizeThatFits(_ size: CGSize) -> CGSize {
@@ -322,6 +320,7 @@ class RestaurantViewCell: UITableViewCell {
    */
 
   override func layoutSubviews() {
+    super.layoutSubviews()
 
     background.pin
       .height(400)

@@ -15,15 +15,13 @@ final class UserCaseSaveFavouriteRestaurant: UserCase {
   private var repository: RepositoryFavouriteRestaurant
   private var restaurant: Restaurant?
 
-  init(repository: RepositoryFavouriteRestaurant) {
+  init(_ repository: RepositoryFavouriteRestaurant,_ restaurant: Restaurant?) {
     self.repository = repository
-  }
-
-  func setRestaurant(restaurant: Restaurant) {
     self.restaurant = restaurant
   }
-  
-  func start() -> Observable<Restaurant> {
+
+  /// Cast output type to `Restaurant`
+  func start() -> Observable<Any> {
     let dto = restaurant?.toDTO()
     return Observable.create { observe in
       guard let requestedData = dto else {

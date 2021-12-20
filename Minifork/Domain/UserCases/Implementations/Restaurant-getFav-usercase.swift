@@ -12,14 +12,15 @@ import RxSwift
 final class UserCaseGetFavouriteRestaurantList: UserCase {
   
   typealias observed = RestaurantList
-
+  
   private var repository: RepositoryFavouriteRestaurant
-
+  
   init(repository: RepositoryFavouriteRestaurant) {
     self.repository = repository
   }
-
-  func start() -> Observable<RestaurantList> {
+  
+  /// Cast Type: `RestaurantList`
+  func start() -> Observable<Any> {
     return Observable.create { observe in
       self.repository.restoreListOfFavourite { result in
         switch result {

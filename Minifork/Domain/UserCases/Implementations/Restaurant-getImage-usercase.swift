@@ -16,36 +16,36 @@ final class UsercaseGetPicture: UserCase {
   private var repository: RepositoryPicture
   private var restaurant: Restaurant?
 
-  init(repository: RepositoryPicture) {
+  init(_ repository: RepositoryPicture,_ restaurant: Restaurant) {
     self.repository = repository
-  }
-
-  func setRestaurant(restaurant: Restaurant) {
     self.restaurant = restaurant
   }
 
-  func start() -> Observable<Data> {
 
+  ///Cast type: Data()
+  func start() -> Observable<Any> {
     return Observable.create { observe in
       guard let restaurant = self.restaurant else {
-        observe.onError(UsercaseErros.Generic)
+        observe.onError(UsercaseErros.ObjectNotPresent)
         return Disposables.create()
       }
-      self.repository.getPicture(restaurant: restaurant.toDTO()) { result in
-        switch result {
-        case .success(let data):
-          observe.onNext(data)
-          observe.onCompleted()
-        case .failure(let error):
-          observe.onError(error)
-        }
-      } fromCache: { result in
-        switch result {
-        case .success(let data):
-          observe.onNext(data)
-          observe.onCompleted()
-        case .failure(let error):
-          observe.onError(error)
+      DispatchQueue.global(qos: .background).async {
+        self.repository.getPicture(restaurant: restaurant.toDTO()) { result in
+          switch result {
+          case .success(let data):
+            observe.onNext(data)
+            observe.onCompleted()
+          case .failure(let error):
+            observe.onError(error)
+          }
+        } fromCache: { result in
+          switch result {
+          case .success(let data):
+            observe.onNext(data)
+            observe.onCompleted()
+          case .failure(let error):
+            observe.onError(error)
+          }
         }
       }
       return Disposables.create()

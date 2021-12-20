@@ -10,4 +10,5 @@ import Foundation
 
 enum UsercaseErros: Error {
   case Generic
+  case ObjectNotPresent
 }

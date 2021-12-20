@@ -30,20 +30,20 @@ final class RestaurantListViewModel: ViewModelType {
     var favourite: Driver<[RestaurantEntityViewModel]>
   }
 
-  private let listUserCase: UserCaseRestaurantGetList
-  private let sortUserCase: UserCaseSortRestaurant
-  private let shareUseCase: UsercaseRestaurantShare
-  private let saveFavouriteUsercase: UserCaseSaveFavouriteRestaurant
-  private let removeFavouriteUserCase: UserCaseRemoveFavouriteRestaurant
+  private let listUserCase: UserCase
+  private var sortUserCase: UserCase
+  private var shareUseCase: UserCase
+  private var saveFavouriteUsercase: UserCase
+  private var removeFavouriteUserCase: UserCase
   private var disposableBag = DisposeBag()
   private var list: [Restaurant] = []
 
 
-  init(listUserCase: UserCaseRestaurantGetList,
-       sort: UserCaseSortRestaurant,
-       share: UsercaseRestaurantShare,
-       savFav: UserCaseSaveFavouriteRestaurant,
-       removFav: UserCaseRemoveFavouriteRestaurant) {
+  init(listUserCase: UserCase,
+       sort: UserCase,
+       share: UserCase,
+       savFav: UserCase,
+       removFav: UserCase) {
 
     self.listUserCase = listUserCase
     self.sortUserCase = sort
@@ -62,17 +62,25 @@ final class RestaurantListViewModel: ViewModelType {
     }.disposed(by: disposableBag)
 
     let started: Driver<[RestaurantEntityViewModel]> = input.start.flatMapLatest {
-      return self.listUserCase.start().map { list -> [RestaurantEntityViewModel] in
-        self.list = list.list
-        let model = list.list.map { ViewModelFactory().CreateRestaurantEntityViewModel(restaurant: $0)}
+      return self.listUserCase.start().map { objc -> [RestaurantEntityViewModel] in
+        guard let restaurant = objc as? RestaurantList else {
+          assertionFailure("Casting wrong type")
+          return []
+        }
+        self.list = restaurant.list
+        let model = restaurant.list.map { ViewModelFactory().CreateRestaurantEntityViewModel(restaurant: $0)}
         return model
       }.asDriverOnErrorJustComplete()
     }
 
     let sorted: Driver<[RestaurantEntityViewModel]> = input.sort.flatMapLatest { type in
-      self.sortUserCase.setType(type)
-      self.sortUserCase.setRestaurants(self.list)
-      return self.sortUserCase.start().map { restaurants -> [RestaurantEntityViewModel] in
+      // Adapt usercase
+      self.sortUserCase = UserCaseFactory().makeSortUserCase(type, self.list)
+      return self.sortUserCase.start().map { obj -> [RestaurantEntityViewModel] in
+        guard let restaurants = obj as? [Restaurant] else {
+          assertionFailure("Casting wrong type")
+          return []
+        }
         self.list = restaurants
         let models: [RestaurantEntityViewModel] = restaurants.map { restaurant in
           ViewModelFactory().CreateRestaurantEntityViewModel(restaurant: restaurant)
@@ -83,7 +91,7 @@ final class RestaurantListViewModel: ViewModelType {
 
     let fav: Driver<[RestaurantEntityViewModel]> = input.favourite.flatMapLatest { restaurant in
       if !restaurant.isFavourite {
-        self.saveFavouriteUsercase.setRestaurant(restaurant: restaurant)
+        self.saveFavouriteUsercase = UserCaseFactory().makeSaveFavUserCase(restaurant)
         return self.saveFavouriteUsercase.start().map { saved -> [RestaurantEntityViewModel] in
           let models: [RestaurantEntityViewModel] = self.list.map { toModel in
             if toModel.uuid == restaurant.uuid { toModel.isFavourite = true }
@@ -92,7 +100,7 @@ final class RestaurantListViewModel: ViewModelType {
           return models
         }.asDriverOnErrorJustComplete()
       } else {
-        self.removeFavouriteUserCase.setFavourite(restaurant: restaurant)
+        self.removeFavouriteUserCase = UserCaseFactory().makeRemoveFavUseCase(restaurant)
         return self.removeFavouriteUserCase.start().map { removed -> [RestaurantEntityViewModel] in
           let models: [RestaurantEntityViewModel] = self.list.map { toModel in
             if toModel.uuid == restaurant.uuid { toModel.isFavourite = false }
@@ -102,10 +110,18 @@ final class RestaurantListViewModel: ViewModelType {
         }.asDriverOnErrorJustComplete()
       }
     }
-
+    
     let shared: Driver<String> = input.share.flatMapLatest { restaurant in
-      self.shareUseCase.setRestaurant(restaurant)
-      return self.shareUseCase.start().asDriver(onErrorJustReturn: "")
+      self.shareUseCase = UserCaseFactory().makeShareUserCase(restaurant)
+      return self.shareUseCase.start()
+        .map {
+          guard let promo = $0 as? String else {
+            assertionFailure("Casting wrong type")
+            return ""
+          }
+          return promo
+        }
+        .asDriver(onErrorJustReturn: "")
     }
     return Output(started: started, sorted: sorted, share: shared, favourite: fav)
   }

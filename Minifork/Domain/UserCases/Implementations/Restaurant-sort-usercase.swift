@@ -22,15 +22,13 @@ final class UserCaseSortRestaurant: UserCase {
   private var restaurants: [Restaurant] = []
   private var type: SortType = .none
 
-  func setRestaurants (_ restaurants: [Restaurant]) {
+  init (_ type: SortType,_ restaurants: [Restaurant]) {
+    self.type = type
     self.restaurants = restaurants
   }
 
-  func setType (_ type: SortType) {
-    self.type = type
-  }
-
-  func start() -> Observable<[Restaurant]> {
+  ///Cast  output type: ` Array of Restaurant
+  func start() -> Observable<Any> {
     Observable.create { observe in
       switch self.type {
       case .byName:
