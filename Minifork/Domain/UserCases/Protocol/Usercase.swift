@@ -11,5 +11,6 @@ import RxSwift
 
 
 protocol UserCase {
+  /// Suggestions for changing any?
   func start() -> Observable<Any>
 }
