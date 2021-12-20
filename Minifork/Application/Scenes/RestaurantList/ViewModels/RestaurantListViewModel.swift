@@ -110,7 +110,7 @@ final class RestaurantListViewModel: ViewModelType {
         }.asDriverOnErrorJustComplete()
       }
     }
-    
+
     let shared: Driver<String> = input.share.flatMapLatest { restaurant in
       self.shareUseCase = UserCaseFactory().makeShareUserCase(restaurant)
       return self.shareUseCase.start()

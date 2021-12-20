@@ -15,7 +15,7 @@ final class UserCaseGetFavouriteRestaurantList: UserCase {
   
   private var repository: RepositoryFavouriteRestaurant
   
-  init(repository: RepositoryFavouriteRestaurant) {
+  init(_ repository: RepositoryFavouriteRestaurant) {
     self.repository = repository
   }
   

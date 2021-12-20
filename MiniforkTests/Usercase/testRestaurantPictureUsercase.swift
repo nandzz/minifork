@@ -16,8 +16,7 @@ class testRestaurantPictureUsercase: XCTestCase {
       let restaurant = Restaurant.mock(uuid: "Some")
       let expectation = XCTestExpectation(description: "test-getpicture-usercase")
       let disposeBag = DisposeBag()
-      let getUsercase =  UsercaseGetPicture(repository: repository)
-      getUsercase.setRestaurant(restaurant: restaurant)
+      let getUsercase =  UsercaseGetPicture(repository, restaurant)
       let observable = getUsercase.start()
 
       observable.subscribe { data in

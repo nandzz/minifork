@@ -43,7 +43,7 @@ struct UserCaseFactory {
 
   func makeGetFavListUserCase () -> UserCase {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseGetFavouriteRestaurantList(repository: repository)
+    return UserCaseGetFavouriteRestaurantList(repository)
   }
 
 }
