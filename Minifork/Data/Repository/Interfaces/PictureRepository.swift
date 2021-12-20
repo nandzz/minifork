@@ -12,6 +12,6 @@ protocol RepositoryPicture {
   var cache: DefaultCacheStorage { get }
   var service: PictureService? { get set }
 
-  func getPicture(key: DefaultCacheKey, fromService: @escaping RepositoryCompletionResponse<Data>, fromCache: @escaping RepositoryCompletionResponse<Data>)
+  func getPicture(restaurant: RestaurantDTO, fromService: @escaping RepositoryCompletionResponse<Data>, fromCache: @escaping RepositoryCompletionResponse<Data>)
 
 }

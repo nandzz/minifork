@@ -37,7 +37,7 @@ final class RestaurantListViewModel: ViewModelType {
   private let removeFavouriteUserCase: UserCaseRemoveFavouriteRestaurant
   private var disposableBag = DisposeBag()
   private var list: [Restaurant] = []
- 
+
 
   init(listUserCase: UserCaseRestaurantGetList,
        sort: UserCaseSortRestaurant,
@@ -81,12 +81,11 @@ final class RestaurantListViewModel: ViewModelType {
       }.asDriverOnErrorJustComplete()
     }
 
-
     let fav: Driver<[RestaurantEntityViewModel]> = input.favourite.flatMapLatest { restaurant in
       if !restaurant.isFavourite {
         self.saveFavouriteUsercase.setRestaurant(restaurant: restaurant)
         return self.saveFavouriteUsercase.start().map { saved -> [RestaurantEntityViewModel] in
-            let models: [RestaurantEntityViewModel] = self.list.map { toModel in
+          let models: [RestaurantEntityViewModel] = self.list.map { toModel in
             if toModel.uuid == restaurant.uuid { toModel.isFavourite = true }
             return ViewModelFactory().CreateRestaurantEntityViewModel(restaurant: toModel)
           }
@@ -95,7 +94,7 @@ final class RestaurantListViewModel: ViewModelType {
       } else {
         self.removeFavouriteUserCase.setFavourite(restaurant: restaurant)
         return self.removeFavouriteUserCase.start().map { removed -> [RestaurantEntityViewModel] in
-            let models: [RestaurantEntityViewModel] = self.list.map { toModel in
+          let models: [RestaurantEntityViewModel] = self.list.map { toModel in
             if toModel.uuid == restaurant.uuid { toModel.isFavourite = false }
             return ViewModelFactory().CreateRestaurantEntityViewModel(restaurant: toModel)
           }
@@ -108,7 +107,6 @@ final class RestaurantListViewModel: ViewModelType {
       self.shareUseCase.setRestaurant(restaurant)
       return self.shareUseCase.start().asDriver(onErrorJustReturn: "")
     }
-
     return Output(started: started, sorted: sorted, share: shared, favourite: fav)
   }
 

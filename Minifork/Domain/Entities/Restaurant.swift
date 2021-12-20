@@ -7,12 +7,6 @@
 
 import Foundation
 
-class RestaurantRefPro {
-
-  var isFavourite = false
-}
-
-
 struct RestaurantList {
   var list: [Restaurant]
 }
@@ -31,11 +25,6 @@ class Restaurant {
   var isFavourite: Bool = false
   var key: DefaultCacheKey
 
-  /// Property - Referenced
-  var ref: RestaurantRefPro = RestaurantRefPro()
-
-
-
   init(name: String,
        uuid: String,
        servesCuisine: String,
@@ -44,7 +33,8 @@ class Restaurant {
        address: Address,
        aggregateRatings: Ratings,
        mainPhoto: Picture?,
-       bestOffer: BestOffer) {
+       bestOffer: BestOffer,
+       key: DefaultCacheKey) {
     self.name = name
     self.uuid = uuid
     self.servesCuisine = servesCuisine
@@ -55,12 +45,7 @@ class Restaurant {
     self.mainPhoto = mainPhoto
     self.bestOffer = bestOffer
     self.isFavourite = false
-    self.key = DefaultCacheKey(url: mainPhoto?.medium ?? "")
-
-  }
-
-  func setFavourite(isFavourite: Bool) {
-    self.ref.isFavourite = isFavourite
+    self.key = key
   }
 
   func getName() -> String {
@@ -135,7 +120,7 @@ extension RestaurantList {
 
 extension Restaurant {
   func toDTO() -> RestaurantDTO {
-    return .init(name: self.name,
+    var obj =  RestaurantDTO(name: self.name,
                  uuid: self.uuid,
                  servesCuisine: self.servesCuisine,
                  priceRange: self.priceRange,
@@ -144,6 +129,8 @@ extension Restaurant {
                  aggregateRatings: self.aggregateRatings.toDTO(),
                  mainPhoto: self.mainPhoto?.toDTO(),
                  bestOffer: self.bestOffer.toDTO())
+    obj.key = self.key
+    return obj
   }
 }
 
@@ -188,6 +175,6 @@ extension Restaurant.Ratings {
 
 extension Restaurant {
   static func mock(uuid: String) -> Restaurant {
-    return Restaurant(name: "SushiKing", uuid: uuid, servesCuisine: "Cinese", priceRange: 23, currenciesAccepted: "EUA", address: Address(street: "Lucio Dalla", postalCode: "2003", locality: "VI", country: "Italia"), aggregateRatings: Ratings(thefork: Rating(ratingValue: 20.0, reviewCount: 4), tripadvisor: Rating(ratingValue: 20.3, reviewCount: 39)), mainPhoto: nil, bestOffer: BestOffer(name: "SushiOut", label: "50% Discount"))
+    return Restaurant(name: "SushiKing", uuid: uuid, servesCuisine: "Cinese", priceRange: 23, currenciesAccepted: "EUA", address: Address(street: "Lucio Dalla", postalCode: "2003", locality: "VI", country: "Italia"), aggregateRatings: Ratings(thefork: Rating(ratingValue: 20.0, reviewCount: 4), tripadvisor: Rating(ratingValue: 20.3, reviewCount: 39)), mainPhoto: Picture(small: "", medium: "https://res.cloudinary.com/tf-lab/image/upload/f_auto,q_auto,w_480,h_270/restaurant/3da6a3db-1080-4e1e-8438-1e82ca838100/ff083b11-2a3a-4b4c-8e92-21ef2afe712a.jpg", big: ""), bestOffer: BestOffer(name: "SushiOut", label: "50% Discount"), key: DefaultCacheKey(uuid: UUID()))
   }
 }

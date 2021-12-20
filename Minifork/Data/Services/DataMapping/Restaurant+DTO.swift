@@ -23,12 +23,12 @@ struct RestaurantDTO: Decodable {
   let aggregateRatings: RatingsDTO
   let mainPhoto: PictureDTO?
   let bestOffer: BestOfferDTO
+  var key: DefaultCacheKey = DefaultCacheKey(uuid: UUID())
 
-  var key: DefaultCacheKey? {
-    guard let photos = mainPhoto else { return nil}
-    return DefaultCacheKey(url: photos.medium)
-  }
-
+  /// Needed to used CodingKeys because the decoder is trying to decode `Key`
+  private enum CodingKeys: String, CodingKey {
+        case name, uuid, servesCuisine, priceRange, currenciesAccepted, address, aggregateRatings, mainPhoto, bestOffer
+    }
 
   struct AddressDTO: Decodable {
     let street: String
@@ -84,7 +84,8 @@ extension RestaurantDTO {
                  address: self.address.toDomain(),
                  aggregateRatings: self.aggregateRatings.toDomain(),
                  mainPhoto: self.mainPhoto?.toDomain(),
-                 bestOffer: self.bestOffer.toDomain())
+                 bestOffer: self.bestOffer.toDomain(),
+                 key: self.key)
   }
 }
 

@@ -8,21 +8,21 @@
 import Foundation
 
 
-class DefaultCacheKey: CacheKey, Decodable {
+class DefaultCacheKey: NSObject {
 
-  var url: String
+     let key: UUID
 
-  init(url: String) {
-    self.url = url
-  }
+     init(uuid: UUID) { self.key = uuid }
 
-  static func == (lhs: DefaultCacheKey, rhs: DefaultCacheKey) -> Bool {
-    return lhs.url == rhs.url
-  }
+     override var hash: Int { return key.hashValue }
 
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(url)
-  }
+     override func isEqual(_ object: Any?) -> Bool {
+         guard let value = object as? DefaultCacheKey else {
+             return false
+         }
+
+         return value.key == key
+     }
 }
 
 class DefaultCacheItem: CacheItem {
@@ -46,6 +46,7 @@ class DefaultCacheItem: CacheItem {
 }
 class DefaultCacheStorage: CacheDataStorage {
 
+  static var global =  NSCache<DefaultCacheKey, DefaultCacheItem>()
   typealias cacheItem = DefaultCacheItem
   typealias cacheKey = DefaultCacheKey
 
@@ -75,7 +76,6 @@ class DefaultCacheStorage: CacheDataStorage {
   }
 
   func retrieve(key: DefaultCacheKey) -> DefaultCacheItem? {
-    print("Retrieving from Cache")
     if let all = self.cache.value(forKey: "allObjects") as? NSArray {
       for object in all {
         print("object is \(object)")

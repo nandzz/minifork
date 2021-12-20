@@ -11,7 +11,7 @@ import Foundation
 struct RepositoryFactory {
 
   func makePictureRepository() -> RepositoryPicture {
-    let cache = DefaultCacheStorage(cache: NSCache<DefaultCacheKey, DefaultCacheItem>())
+    let cache = DefaultCacheStorage(cache: DefaultCacheStorage.global)
     let repository = DefaultRepositoryPicture(cache)
     return repository
   }

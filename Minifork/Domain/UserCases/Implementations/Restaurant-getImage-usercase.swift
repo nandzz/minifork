@@ -14,25 +14,24 @@ final class UsercaseGetPicture: UserCase {
   typealias observed = Data
 
   private var repository: RepositoryPicture
-  private var key: DefaultCacheKey?
+  private var restaurant: Restaurant?
 
   init(repository: RepositoryPicture) {
     self.repository = repository
   }
 
-  func setKey(key: DefaultCacheKey) {
-    self.key = key
+  func setRestaurant(restaurant: Restaurant) {
+    self.restaurant = restaurant
   }
 
-
   func start() -> Observable<Data> {
+
     return Observable.create { observe in
-      guard let key = self.key else {
+      guard let restaurant = self.restaurant else {
         observe.onError(UsercaseErros.Generic)
         return Disposables.create()
       }
-
-      self.repository.getPicture(key: key) { result in
+      self.repository.getPicture(restaurant: restaurant.toDTO()) { result in
         switch result {
         case .success(let data):
           observe.onNext(data)

@@ -226,6 +226,7 @@ class RestaurantViewCell: UITableViewCell {
 
   override func prepareForReuse() {
     super.prepareForReuse()
+    self.backgroundPicture.image = nil
     disposedBag = DisposeBag()
     addLoadingAnimation()
   }
@@ -267,10 +268,17 @@ class RestaurantViewCell: UITableViewCell {
     }.disposed(by: disposedBag)
 
     // Print let for debug purpose
-    favourite.drive { restaurant in
+    //FIXME: I think there is a better way to do that, I'm just out of deadline.
+    favourite.drive {  [weak self] restaurant in
       saveFavourite.onNext(restaurant)
+      if restaurant.isFavourite {
+        self?.favIcon.isSelected = false
+        self?.viewModel.restaurant.isFavourite = false
+      } else {
+        self?.favIcon.isSelected = true
+        self?.viewModel.restaurant.isFavourite = true
+      }
     } onCompleted: {
-      print("Completed Sharing")
     } onDisposed: {
       print("Disposed")
     }.disposed(by: disposedBag)
@@ -281,13 +289,15 @@ class RestaurantViewCell: UITableViewCell {
     let output = viewModel.transform(input: input)
 
     output.picture.drive { [weak self] data in
-      if data.isEmpty {
+      DispatchQueue.main.async {
+        if data.isEmpty {
+          self?.removeLoadingAnimation()
+          self?.backgroundPicture.image = UIImage(named: "imageplaceholder")
+          return
+        }
+        self?.backgroundPicture.image = UIImage(data: data)
         self?.removeLoadingAnimation()
-        self?.backgroundPicture.image = UIImage(named: "imageplaceholder")
-        return
       }
-      self?.backgroundPicture.image = UIImage(data: data)
-      self?.removeLoadingAnimation()
     }.disposed(by: disposedBag)
 
     loadPicture.onNext(())
@@ -309,7 +319,7 @@ class RestaurantViewCell: UITableViewCell {
   /*
    I chosen Pin Layout over Constraints
    Because I beliave is cleaner and faster
-  */
+   */
 
   override func layoutSubviews() {
 

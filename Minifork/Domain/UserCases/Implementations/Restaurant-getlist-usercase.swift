@@ -20,8 +20,7 @@ final class UserCaseRestaurantGetList: UserCase {
     self.repository = repository
     self.favouriteReposiroty = favouriteRepository
   }
-
-
+  
   func start() -> Observable<RestaurantList> {
     return Observable.create { observe in
       self.repository.getRestaurantList { result in
@@ -42,9 +41,8 @@ final class UserCaseRestaurantGetList: UserCase {
               }
               observe.onNext(RestaurantList(list: newlist))
               observe.onCompleted()
-
             case .failure(_):
-              // If error happens still return the list
+              // If error happens still return the list without favourite
               observe.onNext(serviceList.toDomain())
               observe.onCompleted()
             }

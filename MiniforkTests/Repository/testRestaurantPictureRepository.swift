@@ -10,17 +10,17 @@ import XCTest
 
 class testRestaurantPictureRepository: XCTestCase {
 
-  var key: DefaultCacheKey!
+  var restaurant: RestaurantDTO!
 
   override func setUpWithError() throws {
-    self.key = DefaultCacheKey(url: "https://res.cloudinary.com/tf-lab/image/upload/f_auto,q_auto,w_480,h_270/restaurant/b1d8f006-2477-4715-b937-2c34d616dccb/68e364a6-e903-4fb1-9e1e-d91d97457266.jpg")
+    self.restaurant = RestaurantDTO.mockWithPictureURL(uuid: "123", url: "https://res.cloudinary.com/tf-lab/image/upload/f_auto,q_auto,w_480,h_270/restaurant/3da6a3db-1080-4e1e-8438-1e82ca838100/ff083b11-2a3a-4b4c-8e92-21ef2afe712a.jpg")
   }
 
   func testBasicPictureRequest() throws {
     let repository = RepositoryFactory().makePictureRepository()
     let expectation = XCTestExpectation(description: "repository-getImage-test")
 
-    repository.getPicture(key: key) { result in
+    repository.getPicture(restaurant: restaurant) { result in
       switch result {
       case .success(let data):
         print(data)
@@ -42,10 +42,10 @@ class testRestaurantPictureRepository: XCTestCase {
     let repository = RepositoryFactory().makePictureRepository()
     let expectation = XCTestExpectation(description: "repository-request-savecache-test")
 
-    repository.getPicture(key: self.key) { result in
+    repository.getPicture(restaurant: self.restaurant) { result in
       switch result {
       case .success(_):
-        repository.getPicture(key: self.key) { result in
+        repository.getPicture(restaurant: self.restaurant) { result in
           XCTFail()
           expectation.fulfill()
         } fromCache: { result in

@@ -14,7 +14,7 @@ protocol CacheItem: Hashable {
 }
 
 protocol CacheKey: Hashable {
-  var url: String { get }
+  var uuid: UUID { get }
 }
 
 protocol CacheDataStorage {

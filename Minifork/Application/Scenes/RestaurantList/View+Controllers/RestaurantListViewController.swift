@@ -38,13 +38,14 @@ class RestaurantListViewController: UIViewController {
 
   lazy var segmentControl: UISegmentedControl = {
     let segment = UISegmentedControl(items: ["by Name", "by Rate"])
+    segment.backgroundColor = AppColor.blackgray
     header.addSubview(segment)
     return segment
   }()
 
   var viewModel: RestaurantListViewModel!
   let dataSource = BehaviorRelay(value: [RestaurantEntityViewModel]())
-
+  var animateInReload = true
   weak var coordinator: RestaurantListCoordinator!
 
   override func viewDidLoad() {
@@ -58,7 +59,6 @@ class RestaurantListViewController: UIViewController {
 
   func bindViewModel() {
     assert(viewModel != nil)
-
 
     //MARK: INPUTS
     let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
@@ -85,8 +85,6 @@ class RestaurantListViewController: UIViewController {
       share: share.asDriverOnErrorJustComplete(),
       favourite: saveFavourite.asDriverOnErrorJustComplete())
 
-
-
     //MARK: OUTPUTS
     let output = viewModel.transform(input: input)
 
@@ -102,9 +100,8 @@ class RestaurantListViewController: UIViewController {
     }.disposed(by: disposeBag)
 
     output.favourite.drive { [weak self] models in
-      self?.dataSource.accept(models)
+      self?.animateInReload = false
     }.disposed(by: disposeBag)
-
 
     output.share.drive { [weak self] promo in
       self?.coordinator.presentShare(text: promo)
@@ -121,13 +118,21 @@ class RestaurantListViewController: UIViewController {
                 saveFavourite: saveFavourite)
     }.disposed(by: self.disposeBag)
 
-
-    sortDriver.drive().disposed(by: disposeBag)
   }
-
 
   func style () {
     self.view.backgroundColor = AppColor.white
+
+    tableView.rx.willDisplayCell.subscribe { [weak self] cell in
+      if (self?.animateInReload ?? false) {
+        cell.cell.alpha = 0
+        UIView.animate(withDuration: 0.4) {cell.cell.alpha = 1}
+      }
+    } onCompleted: { [weak self] in
+      self?.animateInReload = true
+    }.disposed(by: disposeBag)
+
+
     setLogo()
   }
 

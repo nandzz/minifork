@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigation = DefaultNavigation(item: UINavigationController())
     let coordinator = CoordinatorFactory().makeRestaurantListCoordinator(with: navigation)
 
+    //MARK: DEBUG PURPOSE(Retain Cycle)
 //    DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
 //      self?.window?.rootViewController?.dismiss(animated: true, completion: nil)
 //      self?.window = nil
@@ -36,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     print(paths[0])
     return true
   }
-
-
 
 }
 
