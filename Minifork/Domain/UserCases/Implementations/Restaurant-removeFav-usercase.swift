@@ -27,7 +27,7 @@ final class UserCaseRemoveFavouriteRestaurant: UserCase {
   func start() -> Observable<Void> {
     return Observable.create { observe in
       guard let restaurant = self.restaurant else {
-        observe.onError(NetworkTypeError.ErrorDecoding)
+        observe.onError(UsercaseErros.Generic)
         return Disposables.create()
       }
       self.repository.removeRestaurantFromFavourite(uuid: restaurant.uuid) { result in

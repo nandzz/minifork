@@ -17,50 +17,136 @@ class RestaurantListViewController: UIViewController {
   private let disposeBag = DisposeBag()
 
   lazy var tableView: UITableView = {
-    let tableView = UITableView()
+    let tableView = UITableView(frame: .zero, style: .grouped)
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = UITableView.automaticDimension
     tableView.backgroundColor = .white
     tableView.separatorStyle = .none
-    tableView.backgroundColor = AppColor.gray
+    tableView.backgroundColor = AppColor.white
     tableView.allowsSelection = false
     self.view.addSubview(tableView)
     tableView.register(RestaurantViewCell.self, forCellReuseIdentifier: RestaurantViewCell.identifier)
     return tableView
   }()
 
+  lazy var header: UIView = {
+    let view = UIView()
+    view.backgroundColor = .clear
+    self.view.addSubview(view)
+    return view
+  }()
+
+  lazy var segmentControl: UISegmentedControl = {
+    let segment = UISegmentedControl(items: ["by Name", "by Rate"])
+    header.addSubview(segment)
+    return segment
+  }()
+
   var viewModel: RestaurantListViewModel!
+  let dataSource = BehaviorRelay(value: [RestaurantEntityViewModel]())
+
   weak var coordinator: RestaurantListCoordinator!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     bindViewModel()
+    style()
+
   }
+
+  deinit { print("I deinited") }
 
   func bindViewModel() {
     assert(viewModel != nil)
 
+
+    //MARK: INPUTS
     let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
       .mapToVoid()
       .asDriverOnErrorJustComplete()
-    
-    let input = RestaurantListViewModel.Input(start: Driver.merge(viewWillAppear))
 
+    let sortDriver = segmentControl.rx.selectedSegmentIndex.asDriverOnErrorJustComplete().map { index -> UserCaseSortRestaurant.SortType in
+      switch index {
+      case 0:
+        return UserCaseSortRestaurant.SortType.byName
+      case 1:
+        return UserCaseSortRestaurant.SortType.byRate
+      default:
+        return UserCaseSortRestaurant.SortType.none
+      }
+    }
+
+    let share = PublishSubject<Restaurant>()
+    let saveFavourite = PublishSubject<Restaurant>()
+
+    let input = RestaurantListViewModel.Input(
+      start: Driver.merge(viewWillAppear),
+      sort: sortDriver,
+      share: share.asDriverOnErrorJustComplete(),
+      favourite: saveFavourite.asDriverOnErrorJustComplete())
+
+
+
+    //MARK: OUTPUTS
     let output = viewModel.transform(input: input)
-    output.list.drive(tableView.rx.items(cellIdentifier: RestaurantViewCell.identifier,
-                                         cellType: RestaurantViewCell.self)) { [weak self] tv, viewModel, cell in
-      guard let self = self else { return }
-      cell.prepareForReuse()
-      cell.bind(viewModel: viewModel, onShareTap: self.coordinator.presentShare(text:))
+
+    output.started.drive { [weak self] models in
+      self?.dataSource.accept(models)
     }.disposed(by: disposeBag)
+
+    output.sorted.drive { [weak self] models in
+      self?.dataSource.accept(models)
+      if !(self?.tableView.indexPathsForVisibleRows?.isEmpty ?? true){
+        self?.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+      }
+    }.disposed(by: disposeBag)
+
+    output.favourite.drive { [weak self] models in
+      self?.dataSource.accept(models)
+    }.disposed(by: disposeBag)
+
+
+    output.share.drive { [weak self] promo in
+      self?.coordinator.presentShare(text: promo)
+    } onCompleted: {
+      print("Completed")
+    } onDisposed: {
+      print("Disposed")
+    }.disposed(by: disposeBag)
+
+
+    self.dataSource.bind(to: self.tableView.rx.items(cellIdentifier: RestaurantViewCell.identifier, cellType: RestaurantViewCell.self)) { index, model, cell in
+      cell.bind(viewModel: model,
+                share: share,
+                saveFavourite: saveFavourite)
+    }.disposed(by: self.disposeBag)
+
+
+    sortDriver.drive().disposed(by: disposeBag)
+  }
+
+
+  func style () {
+    self.view.backgroundColor = AppColor.white
+    setLogo()
   }
 
   override func viewDidLayoutSubviews() {
-    tableView.pin
+
+    header.pin
       .top(view.pin.safeArea.top)
+      .horizontally()
+      .height(60)
+
+    tableView.pin
+      .below(of: header)
       .bottom()
       .horizontally()
 
+    segmentControl.pin
+      .horizontally(30)
+      .vCenter()
+      .height(80%)
+
   }
 }
-

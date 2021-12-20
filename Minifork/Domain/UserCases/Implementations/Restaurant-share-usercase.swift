@@ -24,7 +24,7 @@ final class UsercaseRestaurantShare: UserCase {
   func start() -> Observable<String> {
     return Observable.create { observe in
       guard let item = self.restaurant else {
-        observe.onError(NetworkTypeError.ErrorDecoding)
+        observe.onError(UsercaseErros.Generic)
         return Disposables.create()
       }
       var msg = """

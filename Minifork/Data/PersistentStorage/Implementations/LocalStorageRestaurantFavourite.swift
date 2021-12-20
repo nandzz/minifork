@@ -19,7 +19,7 @@ class DefaultStorageRestaurantFavourite {
 
 extension DefaultStorageRestaurantFavourite: RestaurantPersitenceStorage {
 
-  func removeFavouriteRestaurant(uuid: String, completion: @escaping StoragePersistenceCompletion<Void>) {
+  func removeFavouriteRestaurant(uuid: String, completion: @escaping StoragePersistenceCompletion<String>) {
 
     localStorage.performBackgroundTask { context in
 
@@ -56,7 +56,7 @@ extension DefaultStorageRestaurantFavourite: RestaurantPersitenceStorage {
         }
 
         try context.save()
-        completion(.success(()))
+        completion(.success(uuid))
       } catch (let error) {
         completion(.failure(CoreDataError.deleteError(error)))
       }

@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigation = DefaultNavigation(item: UINavigationController())
     let coordinator = CoordinatorFactory().makeRestaurantListCoordinator(with: navigation)
 
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+//      self?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//      self?.window = nil
+//      self?.mainCoordinator = nil
+//    }
     mainCoordinator = coordinator
     mainCoordinator?.start()
 

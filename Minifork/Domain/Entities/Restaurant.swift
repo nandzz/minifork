@@ -7,12 +7,17 @@
 
 import Foundation
 
+class RestaurantRefPro {
+
+  var isFavourite = false
+}
+
 
 struct RestaurantList {
   var list: [Restaurant]
 }
 
-struct Restaurant {
+class Restaurant {
 
   let name: String
   let uuid: String
@@ -23,12 +28,39 @@ struct Restaurant {
   let aggregateRatings: Ratings
   let mainPhoto: Picture?
   let bestOffer: BestOffer
-
   var isFavourite: Bool = false
+  var key: DefaultCacheKey
+
+  /// Property - Referenced
+  var ref: RestaurantRefPro = RestaurantRefPro()
 
 
-  mutating func setFavourite(isFavourite: Bool) {
-    self.isFavourite = isFavourite
+
+  init(name: String,
+       uuid: String,
+       servesCuisine: String,
+       priceRange: Double,
+       currenciesAccepted: String,
+       address: Address,
+       aggregateRatings: Ratings,
+       mainPhoto: Picture?,
+       bestOffer: BestOffer) {
+    self.name = name
+    self.uuid = uuid
+    self.servesCuisine = servesCuisine
+    self.priceRange = priceRange
+    self.currenciesAccepted = currenciesAccepted
+    self.address = address
+    self.aggregateRatings = aggregateRatings
+    self.mainPhoto = mainPhoto
+    self.bestOffer = bestOffer
+    self.isFavourite = false
+    self.key = DefaultCacheKey(url: mainPhoto?.medium ?? "")
+
+  }
+
+  func setFavourite(isFavourite: Bool) {
+    self.ref.isFavourite = isFavourite
   }
 
   func getName() -> String {

@@ -38,7 +38,7 @@ class DefaultRespositoryFavourite: RepositoryFavouriteRestaurant {
     }
   }
 
-  func removeRestaurantFromFavourite(uuid: String, completion: @escaping RepositoryCompletionResponse<Void>) {
+  func removeRestaurantFromFavourite(uuid: String, completion: @escaping RepositoryCompletionResponse<String>) {
     storage.removeFavouriteRestaurant(uuid: uuid, completion: completion)
   }
 }

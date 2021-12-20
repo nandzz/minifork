@@ -33,7 +33,7 @@ final class UserCaseRestaurantGetList: UserCase {
               var newlist: [Restaurant] = []
               serviceList.toDomain().list.forEach { restaurant in
                 if savedList.list.contains(where: {$0.uuid == restaurant.uuid }) {
-                  var newRestaurant = restaurant
+                  let newRestaurant = restaurant
                   newRestaurant.isFavourite = true
                   newlist.append(newRestaurant)
                 } else {

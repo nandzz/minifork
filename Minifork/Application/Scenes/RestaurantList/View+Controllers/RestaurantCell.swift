@@ -18,7 +18,7 @@ class RestaurantViewCell: UITableViewCell {
   // MARK: VIEWS
   lazy var background: UIView = {
     let view = UIView()
-    view.backgroundColor = AppColor.gray
+    view.backgroundColor = AppColor.white
     view.layer.cornerRadius = 20
     view.clipsToBounds = true
     return view
@@ -26,15 +26,14 @@ class RestaurantViewCell: UITableViewCell {
 
   lazy var backgroundPicture: UIImageView = {
     let view = UIImageView()
-    view.backgroundColor = AppColor.gray
+    view.backgroundColor = AppColor.white
     view.contentMode = .scaleAspectFill
     return view
   }()
 
   lazy var overlay: UIView = {
     let view = UIView()
-    view.backgroundColor = AppColor.white
-    view.layer.opacity = 0.7
+    view.backgroundColor = AppColor.blackgray
     view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     view.layer.cornerRadius = 20
     return view
@@ -61,8 +60,8 @@ class RestaurantViewCell: UITableViewCell {
   // MARK: LABELS
   lazy var restaurantName: UILabel = {
     let label = UILabel()
-    label.font = Font.get(trait: .Regular, size: 22)
-    label.textColor = AppColor.black
+    label.font = Font.get(trait: .Bold, size: 22)
+    label.textColor = AppColor.white
     label.lineBreakMode = .byClipping
     label.numberOfLines = 0
     label.textAlignment = .center
@@ -72,7 +71,7 @@ class RestaurantViewCell: UITableViewCell {
   lazy var restaurantCousine: UILabel = {
     let label = UILabel()
     label.font = Font.get(trait: .Bold, size: 14)
-    label.textColor = AppColor.black
+    label.textColor = AppColor.white
     label.numberOfLines = 1
     label.lineBreakMode = .byClipping
     return label
@@ -221,9 +220,8 @@ class RestaurantViewCell: UITableViewCell {
     bannerOne.addSubview(favIcon)
     bannerTwo.addSubview(offerLabel)
 
-    self.backgroundColor = AppColor.gray
+    self.backgroundColor = AppColor.white
     self.selectionStyle = .none
-
   }
 
   override func prepareForReuse() {
@@ -241,7 +239,8 @@ class RestaurantViewCell: UITableViewCell {
   }
 
   func bind(viewModel: RestaurantEntityViewModel,
-            onShareTap: @escaping (String) -> Void) {
+            share: PublishSubject<Restaurant>,
+            saveFavourite: PublishSubject<Restaurant>) {
 
     self.viewModel = viewModel
     self.restaurantName.text = viewModel.restaurant.getName()
@@ -256,26 +255,39 @@ class RestaurantViewCell: UITableViewCell {
 
     let favourite: Driver<Restaurant> = favIcon.rx.tap.asDriver().map{ viewModel.restaurant }
     let picture: Driver<Restaurant> = loadPicture.asDriverOnErrorJustComplete().map{ viewModel.restaurant }
+    let shareDriver: Driver<Restaurant> = shareIcon.rx.tap.asDriver().map({ viewModel.restaurant })
+
+    // Print let for debug purpose
+    shareDriver.drive { restaurant in
+      share.onNext(restaurant)
+    } onCompleted: {
+      print("Completed sharing")
+    } onDisposed: {
+      print("Disposed")
+    }.disposed(by: disposedBag)
+
+    // Print let for debug purpose
+    favourite.drive { restaurant in
+      saveFavourite.onNext(restaurant)
+    } onCompleted: {
+      print("Completed Sharing")
+    } onDisposed: {
+      print("Disposed")
+    }.disposed(by: disposedBag)
 
     let input = RestaurantEntityViewModel.Input(
-      shareRestaurant: shareIcon.rx.tap.asDriver().map{ viewModel.restaurant },
-      favourite: favourite,
       resolvePicture: picture)
 
     let output = viewModel.transform(input: input)
 
-    output.shared.drive { promo in
-      onShareTap(promo)
-    }.disposed(by: disposedBag)
-
-    output.changeRestaurantFavState.drive { newState in
-      self.viewModel.restaurant.isFavourite = newState
-      self.favIcon.isSelected = viewModel.restaurant.isFavourite
-    }.disposed(by: disposedBag)
-
-    output.picture.drive { data in
-      self.backgroundPicture.image = UIImage(data: data)
-      self.removeLoadingAnimation()
+    output.picture.drive { [weak self] data in
+      if data.isEmpty {
+        self?.removeLoadingAnimation()
+        self?.backgroundPicture.image = UIImage(named: "imageplaceholder")
+        return
+      }
+      self?.backgroundPicture.image = UIImage(data: data)
+      self?.removeLoadingAnimation()
     }.disposed(by: disposedBag)
 
     loadPicture.onNext(())
@@ -289,6 +301,11 @@ class RestaurantViewCell: UITableViewCell {
     return CGSize(width: frame.width, height: limit)
   }
 
+
+  deinit {
+    print("Cell Deinited")
+  }
+
   /*
    I chosen Pin Layout over Constraints
    Because I beliave is cleaner and faster
@@ -296,9 +313,15 @@ class RestaurantViewCell: UITableViewCell {
 
   override func layoutSubviews() {
 
-    background.pin.horizontally(20)
+    background.pin
+      .height(400)
+      .horizontally(20)
+
+
     backgroundPicture.pin.horizontally()
-    overlay.pin.horizontally(0)
+    overlay.pin
+      .height(100)
+      .horizontally(0)
 
     restaurantName.pin.horizontally(20)
     restaurantName.pin.sizeToFit(.width)

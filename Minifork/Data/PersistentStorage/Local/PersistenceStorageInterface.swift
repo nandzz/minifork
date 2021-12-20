@@ -10,5 +10,5 @@ import Foundation
 protocol RestaurantPersitenceStorage {
   func getFavouriteRestaurantList(completion: @escaping StoragePersistenceCompletion<[RestaurantDTO]>)
   func saveFavouriteRestaurant(restautant: RestaurantDTO, completion: @escaping StoragePersistenceCompletion<RestaurantDTO>)
-  func removeFavouriteRestaurant(uuid: String, completion: @escaping StoragePersistenceCompletion<Void>)
+  func removeFavouriteRestaurant(uuid: String, completion: @escaping StoragePersistenceCompletion<String>)
 }

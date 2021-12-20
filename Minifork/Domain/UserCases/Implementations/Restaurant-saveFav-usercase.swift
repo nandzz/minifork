@@ -10,7 +10,7 @@ import RxSwift
 
 final class UserCaseSaveFavouriteRestaurant: UserCase {
 
-  typealias observed = Void
+  typealias observed = Restaurant
 
   private var repository: RepositoryFavouriteRestaurant
   private var restaurant: Restaurant?
@@ -23,17 +23,17 @@ final class UserCaseSaveFavouriteRestaurant: UserCase {
     self.restaurant = restaurant
   }
   
-  func start() -> Observable<Void> {
+  func start() -> Observable<Restaurant> {
     let dto = restaurant?.toDTO()
     return Observable.create { observe in
       guard let requestedData = dto else {
-        observe.onError(NetworkTypeError.ErrorDecoding)
+        observe.onError(UsercaseErros.Generic)
         return Disposables.create()
       }
       self.repository.saveFavourite(restaurant: requestedData) { result in
         switch result {
-        case .success(_):
-          observe.onNext(())
+        case .success(let restaurant):
+          observe.onNext(restaurant)
           observe.onCompleted()
         case .failure(let error):
           observe.onError(error)

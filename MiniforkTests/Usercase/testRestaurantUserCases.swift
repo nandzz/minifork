@@ -15,7 +15,7 @@ class testRestaurantUserCases: XCTestCase {
     func testGetRestaurantListUserCase() throws {
 
       let configurations = DefaultNetworkConfiguration(baseURL: .url(scheme: "https", host: "alanflament.github.io"))
-      let service = DefaultService(configuration: configurations)
+      _ = DefaultService(configuration: configurations)
       let repository = RepositoryFactory().makeRestaurantListRepository()
       let favouriteRepository = RepositoryFactory().makeRestaurantFavouriteRepository()
 

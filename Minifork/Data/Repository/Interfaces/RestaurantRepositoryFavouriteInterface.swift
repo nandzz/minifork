@@ -14,6 +14,6 @@ protocol RepositoryFavouriteRestaurant {
 
   func saveFavourite(restaurant: RestaurantDTO, completion: @escaping RepositoryCompletionResponse<Restaurant>)
   func restoreListOfFavourite( completion: @escaping RepositoryCompletionResponse<RestaurantList>)
-  func removeRestaurantFromFavourite(uuid: String, completion: @escaping RepositoryCompletionResponse<Void>)
+  func removeRestaurantFromFavourite(uuid: String, completion: @escaping RepositoryCompletionResponse<String>)
   
 }

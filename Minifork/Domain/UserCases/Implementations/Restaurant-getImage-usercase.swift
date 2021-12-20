@@ -28,7 +28,7 @@ final class UsercaseGetPicture: UserCase {
   func start() -> Observable<Data> {
     return Observable.create { observe in
       guard let key = self.key else {
-        observe.onError(NetworkTypeError.ErrorDecoding)
+        observe.onError(UsercaseErros.Generic)
         return Disposables.create()
       }
 
