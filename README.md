@@ -19,7 +19,7 @@ iOS App - Rest API
 - ✅ Clean Architecture
 - ✅ Unit Test
 
-* I used Pin Layout over constraints only because it's cleaner and faster in some contexts.
+* I used Pin Layout over constraints because it's cleaner and faster in some contexts.
 * - ✅ Pin Layout [https://github.com/layoutBox/PinLayout]
 
 * I let some console output for debbug purpose.
