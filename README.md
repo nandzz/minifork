@@ -29,6 +29,7 @@ iOS App - Rest API
 - Error Handling
 - UI 
 
-- Mini app developed in 4 days for interview Process. 
-- Feedbacks are welcome.
+
+Mini app developed in 4 days for interview Process. 
+Feedbacks are welcome.
 
