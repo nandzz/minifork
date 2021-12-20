@@ -39,6 +39,8 @@ class RestaurantListViewController: UIViewController {
   lazy var segmentControl: UISegmentedControl = {
     let segment = UISegmentedControl(items: ["by Name", "by Rate"])
     segment.backgroundColor = AppColor.blackgray
+    segment.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+    segment.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
     header.addSubview(segment)
     return segment
   }()

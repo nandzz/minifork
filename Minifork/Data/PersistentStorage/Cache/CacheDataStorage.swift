@@ -72,15 +72,9 @@ class DefaultCacheStorage: CacheDataStorage {
     } else {
       return false
     }
-
   }
 
   func retrieve(key: DefaultCacheKey) -> DefaultCacheItem? {
-    if let all = self.cache.value(forKey: "allObjects") as? NSArray {
-      for object in all {
-        print("object is \(object)")
-      }
-    }
     return self.cache.object(forKey: key)
   }
 }
