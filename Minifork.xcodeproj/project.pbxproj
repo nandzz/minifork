@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE3BB82027710E9E00D4FD15 /* brand.png in Resources */ = {isa = PBXBuildFile; fileRef = BE3BB81F27710E9D00D4FD15 /* brand.png */; };
+		BE3BB82227710ECE00D4FD15 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BE3BB82127710ECE00D4FD15 /* README.md */; };
 		BE5B8DDE276AA0710060C847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5B8DDD276AA0710060C847 /* AppDelegate.swift */; };
 		BE5B8DE7276AA0750060C847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE5B8DE6276AA0750060C847 /* Assets.xcassets */; };
 		BE5B8DEA276AA0750060C847 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5B8DE8276AA0750060C847 /* LaunchScreen.storyboard */; };
@@ -91,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE3BB81F27710E9D00D4FD15 /* brand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brand.png; sourceTree = "<group>"; };
+		BE3BB82127710ECE00D4FD15 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE5B8DDA276AA0710060C847 /* Minifork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Minifork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE5B8DDD276AA0710060C847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE5B8DE6276AA0750060C847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 		BE5B8DD1276AA0700060C847 = {
 			isa = PBXGroup;
 			children = (
+				BE3BB82127710ECE00D4FD15 /* README.md */,
+				BE3BB81F27710E9D00D4FD15 /* brand.png */,
 				BE5B8DDC276AA0710060C847 /* Minifork */,
 				BE5B8E46276AAF040060C847 /* MiniforkTests */,
 				BE5B8DDB276AA0710060C847 /* Products */,
@@ -656,6 +662,8 @@
 			files = (
 				BE5B8DEA276AA0750060C847 /* LaunchScreen.storyboard in Resources */,
 				BE5B8DE7276AA0750060C847 /* Assets.xcassets in Resources */,
+				BE3BB82227710ECE00D4FD15 /* README.md in Resources */,
+				BE3BB82027710E9E00D4FD15 /* brand.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

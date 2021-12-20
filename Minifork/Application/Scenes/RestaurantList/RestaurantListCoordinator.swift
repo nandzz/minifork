@@ -32,7 +32,7 @@ class RestaurantListCoordinator: Coordinator {
     print("Opening sharing")
     let textToShare = [ text ]
     let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-    activityViewController.popoverPresentationController?.sourceView = rootViewController.view // so that iPads won't crash
+    activityViewController.popoverPresentationController?.sourceView = rootViewController.view
     rootViewController.present(activityViewController, animated: true, completion: nil)
   }
 }
