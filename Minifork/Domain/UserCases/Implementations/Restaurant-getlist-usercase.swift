@@ -8,7 +8,11 @@
 import Foundation
 import RxSwift
 
-final class UserCaseRestaurantGetList: UserCase {
+protocol UserCaseRestaurantGetList {
+  func start() -> Observable<RestaurantList>
+}
+
+final class DefaultUserCaseRestaurantList: UserCaseRestaurantGetList {
 
   typealias observed = RestaurantList
   typealias ResultValue = (Result<RestaurantList, Error>)
@@ -22,7 +26,7 @@ final class UserCaseRestaurantGetList: UserCase {
   }
 
   /// Cast the result value to RestaurantList
-  func start() -> Observable<Any> {
+  func start() -> Observable<RestaurantList> {
     return Observable.create { observe in
       self.repository.getRestaurantList { result in
         switch result {

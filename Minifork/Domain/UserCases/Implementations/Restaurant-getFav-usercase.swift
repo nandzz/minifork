@@ -8,10 +8,11 @@
 import Foundation
 import RxSwift
 
+protocol UserCaseGetGavouriteRestaurantList {
+    func start() -> Observable<RestaurantList>
+}
 
-final class UserCaseGetFavouriteRestaurantList: UserCase {
-  
-  typealias observed = RestaurantList
+final class DefaultUserCaseGetFavouriteRestaurantList: UserCaseGetGavouriteRestaurantList {
   
   private var repository: RepositoryFavouriteRestaurant
   
@@ -20,7 +21,7 @@ final class UserCaseGetFavouriteRestaurantList: UserCase {
   }
   
   /// Cast Type: `RestaurantList`
-  func start() -> Observable<Any> {
+func start() -> Observable<RestaurantList> {
     return Observable.create { observe in
       self.repository.restoreListOfFavourite { result in
         switch result {

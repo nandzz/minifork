@@ -12,38 +12,38 @@ import Foundation
 
 struct UserCaseFactory {
 
-  func makeGetListUserCase() -> UserCase {
+  func makeGetListUserCase() -> UserCaseRestaurantGetList {
     let repository = RepositoryFactory().makeRestaurantListRepository()
     let favoriteRepository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseRestaurantGetList(repository: repository, favouriteRepository: favoriteRepository)
+    return DefaultUserCaseRestaurantList(repository: repository, favouriteRepository: favoriteRepository)
   }
 
-  func makeSortUserCase (_ type: UserCaseSortRestaurant.SortType, _ restaurants: [Restaurant]) -> UserCase {
-    return UserCaseSortRestaurant(type, restaurants)
+  func makeSortUserCase () -> UserCaseSortRestaurant {
+    return DefaultUserCaseSortRestaurant()
   }
 
-  func makeSaveFavUserCase (_ restaurant: Restaurant?) -> UserCase {
+  func makeSaveFavUserCase () -> UserCaseSaveFavouriteRestaurant {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseSaveFavouriteRestaurant(repository, restaurant)
+    return DefaultUserCaseSaveFavouriteRestaurant(repository)
   }
 
-  func makeRemoveFavUseCase (_ restaurant: Restaurant?) -> UserCase  {
+  func makeRemoveFavUseCase () -> UserCaseRemoveFavouriteRestaurant  {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseRemoveFavouriteRestaurant(repository, restaurant)
+    return DefaultUserCaseRemoveFavouriteRestaurant(repository)
   }
 
-  func makeGetImageUserCase (_ restaurant: Restaurant) -> UserCase {
+  func makeGetImageUserCase () -> UserCaseGetPicture {
     let repository = RepositoryFactory().makePictureRepository()
-    return UsercaseGetPicture(repository, restaurant)
+    return DefaultUserCaseGetImage(repository)
   }
 
-  func makeShareUserCase (_ restaurant: Restaurant?) -> UserCase {
-    return UsercaseRestaurantShare(restaurant)
+  func makeShareUserCase () -> UserCaseRestaurantShare {
+    return DefaultUsercaseRestaurantShare()
   }
 
-  func makeGetFavListUserCase () -> UserCase {
+  func makeGetFavListUserCase () -> UserCaseSaveFavouriteRestaurant {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
-    return UserCaseGetFavouriteRestaurantList(repository)
+    return DefaultUserCaseSaveFavouriteRestaurant(repository)
   }
 
 }

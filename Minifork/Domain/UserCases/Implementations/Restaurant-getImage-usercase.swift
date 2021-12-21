@@ -8,27 +8,22 @@
 import Foundation
 import RxSwift
 
+protocol UserCaseGetPicture {
+  func start(_ restaurant: Restaurant) -> Observable<Data>
+}
 
-final class UsercaseGetPicture: UserCase {
-
-  typealias observed = Data
+final class DefaultUserCaseGetImage: UserCaseGetPicture {
 
   private var repository: RepositoryPicture
-  private var restaurant: Restaurant?
 
-  init(_ repository: RepositoryPicture,_ restaurant: Restaurant) {
+  init(_ repository: RepositoryPicture) {
     self.repository = repository
-    self.restaurant = restaurant
   }
 
 
   ///Cast type: Data()
-  func start() -> Observable<Any> {
+  func start(_ restaurant: Restaurant) -> Observable<Data> {
     return Observable.create { observe in
-      guard let restaurant = self.restaurant else {
-        observe.onError(UsercaseErros.ObjectNotPresent)
-        return Disposables.create()
-      }
       DispatchQueue.global(qos: .background).async {
         self.repository.getPicture(restaurant: restaurant.toDTO()) { result in
           switch result {

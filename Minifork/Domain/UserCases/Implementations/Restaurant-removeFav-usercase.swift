@@ -8,26 +8,21 @@
 import Foundation
 import RxSwift
 
+protocol UserCaseRemoveFavouriteRestaurant {
+  func start(_ restaurant: Restaurant) -> Observable<Void>
+}
 
-final class UserCaseRemoveFavouriteRestaurant: UserCase {
-
-  typealias observed = Void
+final class DefaultUserCaseRemoveFavouriteRestaurant: UserCaseRemoveFavouriteRestaurant {
 
   private var repository: RepositoryFavouriteRestaurant
-  private var restaurant: Restaurant?
 
-  init(_ repository: RepositoryFavouriteRestaurant,_ restaurant: Restaurant?) {
+  init(_ repository: RepositoryFavouriteRestaurant) {
     self.repository = repository
-    self.restaurant = restaurant
   }
 
   /// Cast output type to `Void`
-  func start() -> Observable<Any> {
+  func start(_ restaurant: Restaurant) -> Observable<Void> {
     return Observable.create { observe in
-      guard let restaurant = self.restaurant else {
-        observe.onError(UsercaseErros.ObjectNotPresent)
-        return Disposables.create()
-      }
       self.repository.removeRestaurantFromFavourite(uuid: restaurant.uuid) { result in
         switch result {
         case .success(_):

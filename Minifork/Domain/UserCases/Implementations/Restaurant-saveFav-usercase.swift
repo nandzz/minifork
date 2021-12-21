@@ -8,27 +8,22 @@
 import Foundation
 import RxSwift
 
-final class UserCaseSaveFavouriteRestaurant: UserCase {
+protocol UserCaseSaveFavouriteRestaurant {
+  func start(_ restaurant: Restaurant) -> Observable<Restaurant>
+}
 
-  typealias observed = Restaurant
+final class DefaultUserCaseSaveFavouriteRestaurant: UserCaseSaveFavouriteRestaurant {
 
   private var repository: RepositoryFavouriteRestaurant
-  private var restaurant: Restaurant?
 
-  init(_ repository: RepositoryFavouriteRestaurant,_ restaurant: Restaurant?) {
+  init(_ repository: RepositoryFavouriteRestaurant) {
     self.repository = repository
-    self.restaurant = restaurant
   }
 
-  /// Cast output type to `Restaurant`
-  func start() -> Observable<Any> {
-    let dto = restaurant?.toDTO()
+  func start(_ restaurant: Restaurant) -> Observable<Restaurant> {
+    let dto = restaurant.toDTO()
     return Observable.create { observe in
-      guard let requestedData = dto else {
-        observe.onError(UsercaseErros.Generic)
-        return Disposables.create()
-      }
-      self.repository.saveFavourite(restaurant: requestedData) { result in
+      self.repository.saveFavourite(restaurant: dto) { result in
         switch result {
         case .success(let restaurant):
           observe.onNext(restaurant)

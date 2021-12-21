@@ -20,21 +20,17 @@ final class RestaurantEntityViewModel: ViewModelType {
     let picture: Driver<Data>
   }
   
-  var pictureUseCase: UserCase
+  var pictureUseCase: UserCaseGetPicture
   var restaurant: Restaurant
   
-  init(picture: UserCase,
-       restaurant: Restaurant) {
-    self.restaurant = restaurant
+  init(picture: UserCaseGetPicture, restaurant: Restaurant) {
     self.pictureUseCase = picture
+    self.restaurant = restaurant
   }
   
   func transform(input: Input) -> Output {
     let picture: Driver<Data> = input.resolvePicture.flatMapLatest { restaurant in
-      self.pictureUseCase = UserCaseFactory().makeGetImageUserCase(restaurant)
-      return self.pictureUseCase.start()
-        .map { guard let data = $0 as? Data else { return Data() }
-          return data }
+      return self.pictureUseCase.start(restaurant)
         .asDriver(onErrorJustReturn: Data())
     }
     return Output(picture: picture)}

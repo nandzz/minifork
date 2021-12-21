@@ -12,7 +12,6 @@ import XCTest
 
 class testRestaurantFavouriteUsercases: XCTestCase {
 
-
   var disposableBag: DisposeBag!
 
   override func setUpWithError() throws {
@@ -23,12 +22,11 @@ class testRestaurantFavouriteUsercases: XCTestCase {
     self.disposableBag = nil
   }
 
-
   func testSavingFavouriteRestaurantUserCase() throws {
     let repository = RepositoryFactory().makeRestaurantFavouriteRepository()
     let expectation = XCTestExpectation(description: "save-restaurant-usercase-test")
-    let saveUsercase = UserCaseSaveFavouriteRestaurant(repository, Restaurant.mock(uuid: UUID().uuidString))
-    let saveObserver = saveUsercase.start()
+    let saveUsercase = DefaultUserCaseSaveFavouriteRestaurant(repository)
+    let saveObserver = saveUsercase.start(Restaurant.mock(uuid: UUID().uuidString))
 
     saveObserver.subscribe { element in
       print(element)
@@ -51,10 +49,10 @@ class testRestaurantFavouriteUsercases: XCTestCase {
     let expectation = XCTestExpectation(description: "get-restaurant-usercase-test")
     let restaurant = Restaurant.mock(uuid: "123")
 
-    let saveUsercase = UserCaseSaveFavouriteRestaurant(repository, restaurant)
-    let getObserver = UserCaseGetFavouriteRestaurantList(repository)
+    let saveUsercase = DefaultUserCaseSaveFavouriteRestaurant(repository)
+    let getObserver = DefaultUserCaseGetFavouriteRestaurantList(repository)
 
-    let saveObserve = saveUsercase.start()
+    let saveObserve = saveUsercase.start(restaurant)
     let getObserve = getObserver.start()
 
 
@@ -65,11 +63,7 @@ class testRestaurantFavouriteUsercases: XCTestCase {
       XCTFail()
     } onCompleted: { [self] in
 
-      getObserve.subscribe { objc in
-        guard let list = objc as? RestaurantList else {
-          XCTFail()
-          return
-        }
+      getObserve.subscribe { list in
         print(list)
         XCTAssert(!list.list.isEmpty)
       } onError: { error in
@@ -93,33 +87,26 @@ class testRestaurantFavouriteUsercases: XCTestCase {
     let expectation = XCTestExpectation(description: "remove-restaurant-usercase-test")
     let restaurant = Restaurant.mock(uuid: UUID().uuidString)
 
-    let saveUserCase = UserCaseSaveFavouriteRestaurant(repository, restaurant)
-    let removeUserCase = UserCaseRemoveFavouriteRestaurant(repository, restaurant)
-    let getObserver = UserCaseGetFavouriteRestaurantList(repository).start()
-
-    let saveObserver = saveUserCase.start()
-    let removeObserver = removeUserCase.start()
+    let save = DefaultUserCaseSaveFavouriteRestaurant(repository).start(restaurant)
+    let remove = DefaultUserCaseRemoveFavouriteRestaurant(repository).start(restaurant)
+    let get = DefaultUserCaseGetFavouriteRestaurantList(repository).start()
 
 
-    saveObserver.subscribe { restaurant in
+    save.subscribe { restaurant in
       print(restaurant)
     } onError: { error in
       expectation.fulfill()
       XCTFail()
     } onCompleted: { [self] in
 
-      removeObserver.subscribe { _ in
+      remove.subscribe { _ in
 
       } onError: { error in
         expectation.fulfill()
         XCTFail()
       } onCompleted: {
 
-        getObserver.subscribe { objc in
-          guard let list = objc as? RestaurantList else {
-            XCTFail()
-            return
-          }
+        get.subscribe { list in
           XCTAssert(!list.list.contains(where: {$0.uuid == restaurant.uuid}))
           expectation.fulfill()
         } onError: { error in

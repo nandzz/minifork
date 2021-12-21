@@ -14,7 +14,7 @@ struct ViewModelFactory  {
 
   func CreateRestaurantEntityViewModel(restaurant: Restaurant) -> RestaurantEntityViewModel {
     let factory = UserCaseFactory()
-    let pictureUserCase = factory.makeGetImageUserCase(restaurant)
+    let pictureUserCase = factory.makeGetImageUserCase()
 
     return RestaurantEntityViewModel(picture: pictureUserCase,
                                      restaurant: restaurant)
@@ -24,11 +24,11 @@ struct ViewModelFactory  {
   func createRestaurantListViewModel() -> RestaurantListViewModel {
     // Usercases
     let factory = UserCaseFactory()
-    let shareUserCase = factory.makeShareUserCase(nil)
+    let shareUserCase = factory.makeShareUserCase()
     let listUserCase =  factory.makeGetListUserCase()
-    let sortUserCase =  factory.makeSortUserCase(.none, [])
-    let saveFavUserCase = factory.makeSaveFavUserCase(nil)
-    let removeFavUserCase = factory.makeRemoveFavUseCase(nil)
+    let sortUserCase =  factory.makeSortUserCase()
+    let saveFavUserCase = factory.makeSaveFavUserCase()
+    let removeFavUserCase = factory.makeRemoveFavUseCase()
 
 
     return RestaurantListViewModel(listUserCase: listUserCase,

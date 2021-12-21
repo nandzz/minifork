@@ -22,7 +22,7 @@ class testRestaurantUserCases: XCTestCase {
       let expectation = XCTestExpectation(description: "repository-call-api-restaurant-list")
       let disposeBag = DisposeBag()
 
-      let observable = UserCaseRestaurantGetList(repository: repository, favouriteRepository: favouriteRepository).start()
+      let observable = DefaultUserCaseRestaurantList(repository: repository, favouriteRepository: favouriteRepository).start()
 
       observable.subscribe { restaurant in
         print(restaurant)

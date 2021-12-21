@@ -8,34 +8,23 @@
 import Foundation
 import RxSwift
 
-final class UsercaseRestaurantShare: UserCase {
+protocol UserCaseRestaurantShare {
+  func start(_ restaurant: Restaurant) -> Observable<String>
+}
 
-  typealias observed = String
-  
-  private var restaurant: Restaurant?
+final class DefaultUsercaseRestaurantShare: UserCaseRestaurantShare {
 
-  init (_ restaurant: Restaurant?) {
-    self.restaurant = restaurant
-  }
-
-  /// Cast Type: `String`
-  func start() -> Observable<Any> {
+  func start(_ restaurant: Restaurant) -> Observable<String> {
     return Observable.create { observe in
-      guard let item = self.restaurant else {
-        observe.onError(UsercaseErros.ObjectNotPresent)
-        return Disposables.create()
-      }
       var msg = """
-      Hello, I just found this nice restaurant called \(item.name) in \(item.address.street), \(item.address.locality)-\(item.address.country), take a look!
+      Hello, I just found this nice restaurant called \(restaurant.getName()) in \(restaurant.getAddressStreet()), \(restaurant.getCityCountry()), take a look!
 
-      Serves: \(item.servesCuisine)
-      Tripadvisor Rate: \(item.aggregateRatings.tripadvisor.ratingValue)/5
-      TheFork Rate: \(item.aggregateRatings.thefork.ratingValue)/10
-      PriceRange: 0-\(item.priceRange)
-      Currency Accepted: "\(item.currenciesAccepted)"
-
+      Serves: \(restaurant.getCousine())
+      Tripadvisor Rate: \(restaurant.getTripAdRate())/5
+      TheFork Rate: \(restaurant.getTheForkRate())/10
+      PriceRange: 0-\(restaurant.getPriceRange())"
       """
-      if let photos = item.mainPhoto {
+      if let photos = restaurant.mainPhoto {
         msg += "Image: \(photos.big)"
       }
 

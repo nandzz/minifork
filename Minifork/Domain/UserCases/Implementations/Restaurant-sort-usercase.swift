@@ -8,41 +8,32 @@
 import Foundation
 import RxSwift
 
+enum SortType {
+  case byRate
+  case byName
+  case none
+}
 
-final class UserCaseSortRestaurant: UserCase {
+protocol UserCaseSortRestaurant {
+  func start(type: SortType, _ restaurant: [Restaurant]) -> Observable<[Restaurant]>
+}
 
-  enum SortType {
-    case byRate
-    case byName
-    case none
-  }
-
-  typealias observed = [Restaurant]
-
-  private var restaurants: [Restaurant] = []
-  private var type: SortType = .none
-
-  init (_ type: SortType,_ restaurants: [Restaurant]) {
-    self.type = type
-    self.restaurants = restaurants
-  }
-
-  ///Cast  output type: ` Array of Restaurant
-  func start() -> Observable<Any> {
+final class DefaultUserCaseSortRestaurant: UserCaseSortRestaurant {
+  func start(type: SortType, _ restaurants: [Restaurant]) -> Observable<[Restaurant]> {
     Observable.create { observe in
-      switch self.type {
+      switch type {
       case .byName:
-        let newList = self.restaurants.sorted { $0.name < $1.name }
+        let newList = restaurants.sorted { $0.name < $1.name }
         observe.onNext(newList)
       case .byRate:
-        let newList = self.restaurants.sorted { lfs, rhs in
+        let newList = restaurants.sorted { lfs, rhs in
           let leftTotal = lfs.aggregateRatings.tripadvisor.ratingValue + lfs.aggregateRatings.thefork.ratingValue
           let rightTotal = rhs.aggregateRatings.tripadvisor.ratingValue + rhs.aggregateRatings.thefork.ratingValue
           return leftTotal > rightTotal
         }
         observe.onNext(newList)
       case .none:
-        observe.onNext(self.restaurants)
+        observe.onNext(restaurants)
       }
       return Disposables.create()
     }

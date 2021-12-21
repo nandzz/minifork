@@ -67,14 +67,14 @@ class RestaurantListViewController: UIViewController {
       .mapToVoid()
       .asDriverOnErrorJustComplete()
 
-    let sortDriver = segmentControl.rx.selectedSegmentIndex.asDriverOnErrorJustComplete().map { index -> UserCaseSortRestaurant.SortType in
+    let sortDriver = segmentControl.rx.selectedSegmentIndex.asDriverOnErrorJustComplete().map { index -> SortType in
       switch index {
       case 0:
-        return UserCaseSortRestaurant.SortType.byName
+        return SortType.byName
       case 1:
-        return UserCaseSortRestaurant.SortType.byRate
+        return SortType.byRate
       default:
-        return UserCaseSortRestaurant.SortType.none
+        return SortType.none
       }
     }
 
