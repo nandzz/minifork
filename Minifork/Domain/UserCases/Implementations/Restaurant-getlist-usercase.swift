@@ -14,9 +14,6 @@ protocol UserCaseRestaurantGetList {
 
 final class DefaultUserCaseRestaurantList: UserCaseRestaurantGetList {
 
-  typealias observed = RestaurantList
-  typealias ResultValue = (Result<RestaurantList, Error>)
-
   private let repository: RepositoryRestaurantList
   private let favouriteReposiroty: RepositoryFavouriteRestaurant
 
