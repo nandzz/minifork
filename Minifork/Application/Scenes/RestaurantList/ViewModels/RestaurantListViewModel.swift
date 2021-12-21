@@ -11,11 +11,6 @@ import RxCocoa
 
 final class RestaurantListViewModel: ViewModelType {
 
-  enum SortType {
-    case byRate
-    case byName
-  }
-
   struct Input {
     let start: Driver<Void>
     let sort: Driver<UserCaseSortRestaurant.SortType>
